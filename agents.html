@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0A0705" />
+  <title>LulaSync — Become a Sales Agent</title>
+  <meta name="description"
+    content="Join the LulaSync agent network. Earn commission every time a business you signed up pays their monthly subscription. 5% setup + 5% recurring forever." />
+  <meta property="og:title" content="LulaSync — Your Business, App-ified." />
+  <meta property="og:description" content="No developers. No agencies. Live in 3 days, guaranteed." />
+  <meta property="og:image" content="https://lula-studio.xyz/opengraph-image?48ed4a1861e99a18" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0A0705;
+      --paper: #F5EDD8;
+      --gold: #F0A500;
+      --fire: #E04E14;
+      --dim: rgba(245, 237, 216, 0.55);
+      --card: #0f0f0f;
+      --border: #1a1a1a;
+      --wa: #25D366;
+      --purple: #8B5CF6;
+      --cyan: #00C2FF;
+      --green: #1DB954;
+      /* agents page tokens */
+      --r: 10px;
+      --lime: #A8FF3E;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      background: rgba(10, 7, 5, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px)
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--paper);
+      text-decoration: none
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .nav-link {
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--dim);
+      letter-spacing: .04em;
+      text-decoration: none;
+      padding: 4px 8px;
+      transition: color .15s
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold)
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--gold), var(--fire));
+      color: var(--ink);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--paper)
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      transition: all .25s
+    }
+
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      background: rgba(10, 7, 5, 0.97);
+      backdrop-filter: blur(20px)
+    }
+
+    .mobile-overlay.open {
+      display: flex
+    }
+
+    .mobile-overlay .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 5vw;
+      background: none;
+      border: none;
+      color: var(--paper);
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 8px
+    }
+
+    .mobile-nav-link {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: var(--paper);
+      display: block;
+      text-align: center;
+      margin: 4px 0;
+      transition: color .15s
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link.active {
+      color: var(--gold)
+    }
+
+    .grad-line {
+      position: sticky;
+      top: 56px;
+      z-index: 99;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--fire) 20%, var(--gold) 50%, var(--fire) 80%, transparent);
+      opacity: .6;
+      pointer-events: none
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      padding: 56px 5vw 32px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+      margin-bottom: 48px
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px
+    }
+
+    .footer-desc {
+      font-size: .8rem;
+      color: rgba(245, 237, 216, .4);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      max-width: 240px
+    }
+
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-link {
+      font-size: .8rem;
+      color: rgba(245, 237, 216, .4);
+      text-decoration: none;
+      transition: color .15s
+    }
+
+    .footer-link:hover {
+      color: var(--gold)
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .footer-copy {
+      font-size: .65rem;
+      color: rgba(245, 237, 216, .2)
+    }
+
+    .btn-wa-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--wa);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 8px;
+      text-decoration: none
+    }
+
+    /* Agents page animations */
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    @keyframes pixelBob {
+      from {
+        transform: translateY(0)
+      }
+
+      to {
+        transform: translateY(-1px)
+      }
+    }
+
+    @media(max-width:900px) {
+      .nav-links {
+        display: none
+      }
+
+      .hamburger {
+        display: flex
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="./lulasync.dev/index.html" class="nav-logo" style="display:flex;align-items:center;gap:10px"><img
+        src="./lulasync.dev/assets/logo-ls.svg" width="36" height="36" alt="LulaSync" /><span>Lula<span
+          style="color:var(--gold)">Sync</span></span></a>
+    <div class="nav-links" role="menubar">
+      <a href="./lulasync.dev/index.html" class="nav-link">Home</a>
+      <a href="./showcase.html" class="nav-link">Showcase</a>
+      <a href="./lulasync.dev/about.html" class="nav-link">About</a>
+      <a href="./agents.html" class="nav-link active">Agents</a>
+      <a href="./lulasync.dev/contact.html" class="nav-link">Contact</a>
+      <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20chat." target="_blank"
+        rel="noopener noreferrer" class="nav-cta" style="margin-left:8px">WhatsApp Us →</a>
+    </div>
+    <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="grad-line"></div>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-label="Mobile navigation">
+    <button class="close-btn" id="closeBtn" aria-label="Close menu">✕</button>
+    <div style="text-align:center">
+      <a href="./lulasync.dev/index.html" class="mobile-nav-link">Home</a>
+      <a href="./showcase.html" class="mobile-nav-link">Showcase</a>
+      <a href="./lulasync.dev/about.html" class="mobile-nav-link">About</a>
+      <a href="./agents.html" class="mobile-nav-link active">Agents</a>
+      <a href="./lulasync.dev/contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+    <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20chat." target="_blank"
+      rel="noopener noreferrer" class="btn-wa" style="width:min(320px,80vw);justify-content:center">WhatsApp Us
+      →</a>
+  </div>
+
+  <!-- MAIN CONTENT (LulaSync agents page — unchanged) -->
+  <main>
+    <main style="background:#030D08;min-height:100vh">
+
+      <!-- HERO -->
+      <section
+        style="padding:50px 5vw 44px;position:relative;overflow:hidden;background:radial-gradient(ellipse 140% 80% at 100% 0%,rgba(0,217,126,.1) 0%,transparent 60%), radial-gradient(ellipse 80% 60% at 0% 100%,rgba(168,255,62,.06) 0%,transparent 55%);color:#E8F5EE">
+        <div
+          style="display:inline-flex;align-items:center;gap:7px;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.25);padding:6px 12px;border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#00D97E;margin-bottom:18px">
+          <span
+            style="width:6px;height:6px;border-radius:50%;background:#A8FF3E;animation:blink 1.8s ease-in-out infinite;flex-shrink:0"></span>Now
+          recruiting sales agents across SA
+        </div>
+        <h1 class="display"
+          style="font-size:clamp(3.2rem,16vw,7rem);line-height:0.9;letter-spacing:1px;margin-bottom:20px"><span
+            style="color:#00D97E">Earn Money</span><br /><span style="color:#A8FF3E">Spreading</span><br /><span
+            style="-webkit-text-stroke:1.5px rgba(232,245,238,.18);-webkit-text-fill-color:transparent">The Word.</span>
+        </h1>
+        <p style="font-size:.95rem;color:#4A7A62;line-height:1.7;max-width:480px;margin-bottom:26px">Join the Lula
+          Studio Sales Network. Go out into your community, sign up local businesses to our platform, and <strong
+            style="color:#E8F5EE;font-weight:700">earn a commission on every single one</strong> — including recurring
+          monthly payments for life.</p>
+        <div
+          style="background:#071410;border:1px solid #0F2B1E;border-radius:10px;padding:16px;margin-bottom:26px;position:relative;overflow:hidden">
+          <div
+            style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#00D97E,#A8FF3E)">
+          </div>
+          <div
+            style="font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4A7A62;margin-bottom:10px">
+            💰 Example: Sign up 10 businesses this month</div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <div style="text-align:center;flex:1;min-width:70px">
+              <div class="display" style="font-size:1.7rem;color:#00D97E;line-height:1">10</div>
+              <div style="font-size:.6rem;color:#4A7A62;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">
+                Businesses</div>
+            </div>
+            <div style="color:#0F2B1E;font-size:1.2rem;flex-shrink:0">→</div>
+            <div style="text-align:center;flex:1;min-width:70px">
+              <div class="display" style="font-size:1.7rem;color:#00D97E;line-height:1">5%</div>
+              <div style="font-size:.6rem;color:#4A7A62;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">
+                Your Cut</div>
+            </div>
+            <div style="color:#0F2B1E;font-size:1.2rem;flex-shrink:0">→</div>
+            <div style="text-align:center;flex:1;min-width:70px">
+              <div class="display" style="font-size:1.7rem;color:#A8FF3E;line-height:1">R1,625+</div>
+              <div style="font-size:.6rem;color:#4A7A62;text-transform:uppercase;letter-spacing:.05em;margin-top:2px">
+                You Earn</div>
+            </div>
+          </div>
+          <div style="font-size:.7rem;color:#4A7A62;margin-top:10px;padding-top:10px;border-top:1px solid #0F2B1E">Plus
+            <strong style="color:#A8FF3E">recurring monthly commissions</strong> every month they stay subscribed. Sign
+            once, earn forever.
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="https://wa.me/27837195064?text=Hi%20Lula%20Studio!%20I%27d%20like%20to%20apply%20as%20a%20sales%20agent."
+            target="_blank" rel="noopener noreferrer"
+            style="display:flex;align-items:center;justify-content:center;gap:8px;background:#00D97E;color:#030D08;font-weight:800;font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;padding:16px 24px;border-radius:10px;text-decoration:none;box-shadow:0 8px 28px rgba(0,217,126,.3)">💬
+            Apply on WhatsApp</a>
+          <a href="#how"
+            style="display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid #0F2B1E;color:#4A7A62;font-weight:600;font-size:.88rem;padding:14px 24px;border-radius:10px;text-decoration:none">How
+            It Works ↓</a>
+        </div>
+      </section>
+
+      <!-- MARQUEE -->
+      <div
+        style="overflow:hidden;border-top:1px solid #0F2B1E;border-bottom:1px solid #0F2B1E;padding:10px 0;background:rgba(0,217,126,.03)">
+        <div style="display:flex;width:max-content;animation:marquee 20s linear infinite">
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>5% Commission</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>Recurring Monthly Pay</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>No Experience Needed</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>Work Your Own Hours</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>Your Own Referral Code</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>Gauteng · Soweto · Durban · Cape Town</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>Earn While You Sleep</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>5% Commission</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>Recurring Monthly Pay</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>No Experience Needed</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>Work Your Own Hours</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>Your Own Referral Code</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>Gauteng · Soweto · Durban · Cape Town</span>
+          <span
+            style="display:flex;align-items:center;gap:8px;padding:0 20px;white-space:nowrap;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,217,126,.5)"><span
+              style="color:#A8FF3E">✦</span>Earn While You Sleep</span>
+        </div>
+      </div>
+
+      <!-- HOW IT WORKS -->
+      <section id="how" style="padding:56px 5vw;background:#071410;color:#E8F5EE">
+        <div
+          style="display:flex;align-items:center;gap:6px;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#00D97E;margin-bottom:8px">
+          <span style="color:#A8FF3E">→</span>How It Works
+        </div>
+        <h2 class="display"
+          style="font-size:clamp(2rem,9vw,4rem);letter-spacing:1px;line-height:0.92;margin-bottom:12px;color:#E8F5EE">
+          Simple as<br /><span style="color:#00D97E">1, 2, 3.</span></h2>
+        <p style="font-size:.88rem;color:#4A7A62;line-height:1.7;max-width:540px;margin-bottom:28px">You don't need to
+          be a tech person. You just need to know your community and be willing to have conversations.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:12px">
+          <div
+            style="background:#030D08;border:1px solid #0F2B1E;border-radius:10px;padding:20px;position:relative;overflow:hidden">
+            <div
+              style="position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,#00D97E,#A8FF3E)">
+            </div>
+            <div class="display"
+              style="font-size:3.5rem;color:rgba(0,217,126,.07);position:absolute;top:8px;right:12px;line-height:1">01
+            </div>
+            <div
+              style="width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(0,217,126,.08);border:1px solid rgba(0,217,126,.16);margin-bottom:12px">
+              📋</div>
+            <h3 style="font-weight:800;font-size:.95rem;margin-bottom:6px;color:#E8F5EE">Apply &amp; Get Your Code</h3>
+            <p style="font-size:.82rem;color:#4A7A62;line-height:1.65">Send us a WhatsApp. We verify you, give you your
+              personal referral code and a digital pitch kit — everything you need to talk to business owners.</p>
+            <span
+              style="display:inline-block;margin-top:10px;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#00D97E;background:rgba(0,217,126,.07);border:1px solid rgba(0,217,126,.18);padding:4px 10px;border-radius:100px">Takes
+              24 hours</span>
+          </div>
+          <div
+            style="background:#030D08;border:1px solid #0F2B1E;border-radius:10px;padding:20px;position:relative;overflow:hidden">
+            <div
+              style="position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,#00D97E,#A8FF3E)">
+            </div>
+            <div class="display"
+              style="font-size:3.5rem;color:rgba(0,217,126,.07);position:absolute;top:8px;right:12px;line-height:1">02
+            </div>
+            <div
+              style="width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(0,217,126,.08);border:1px solid rgba(0,217,126,.16);margin-bottom:12px">
+              🚶🏾</div>
+            <h3 style="font-weight:800;font-size:.95rem;margin-bottom:6px;color:#E8F5EE">Go Out &amp; Sign Up Businesses
+            </h3>
+            <p style="font-size:.82rem;color:#4A7A62;line-height:1.65">Walk into spaza shops, salons, shisa nyamas, car
+              washes — anywhere. Show them the demo. When they sign up, they enter your referral code. That's it.</p>
+            <span
+              style="display:inline-block;margin-top:10px;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#00D97E;background:rgba(0,217,126,.07);border:1px solid rgba(0,217,126,.18);padding:4px 10px;border-radius:100px">Your
+              community</span>
+          </div>
+          <div
+            style="background:#030D08;border:1px solid #0F2B1E;border-radius:10px;padding:20px;position:relative;overflow:hidden">
+            <div
+              style="position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,#00D97E,#A8FF3E)">
+            </div>
+            <div class="display"
+              style="font-size:3.5rem;color:rgba(0,217,126,.07);position:absolute;top:8px;right:12px;line-height:1">03
+            </div>
+            <div
+              style="width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(0,217,126,.08);border:1px solid rgba(0,217,126,.16);margin-bottom:12px">
+              💸</div>
+            <h3 style="font-weight:800;font-size:.95rem;margin-bottom:6px;color:#E8F5EE">Get Paid</h3>
+            <p style="font-size:.82rem;color:#4A7A62;line-height:1.65">You earn 5% of the once-off setup fee
+              immediately. Then 5% of their monthly subscription every single month they stay on the platform — forever.
+            </p>
+            <span
+              style="display:inline-block;margin-top:10px;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#00D97E;background:rgba(0,217,126,.07);border:1px solid rgba(0,217,126,.18);padding:4px 10px;border-radius:100px">Paid
+              via EFT / SnapScan</span>
+          </div>
+          <div
+            style="background:#030D08;border:1px solid #0F2B1E;border-radius:10px;padding:20px;position:relative;overflow:hidden">
+            <div
+              style="position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,#00D97E,#A8FF3E)">
+            </div>
+            <div class="display"
+              style="font-size:3.5rem;color:rgba(0,217,126,.07);position:absolute;top:8px;right:12px;line-height:1">04
+            </div>
+            <div
+              style="width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(0,217,126,.08);border:1px solid rgba(0,217,126,.16);margin-bottom:12px">
+              📈</div>
+            <h3 style="font-weight:800;font-size:.95rem;margin-bottom:6px;color:#E8F5EE">Build Your Portfolio</h3>
+            <p style="font-size:.82rem;color:#4A7A62;line-height:1.65">The more businesses you sign up, the more you
+              earn every month without doing anything extra. 50 businesses = a consistent monthly income just from
+              referrals.</p>
+            <span
+              style="display:inline-block;margin-top:10px;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#00D97E;background:rgba(0,217,126,.07);border:1px solid rgba(0,217,126,.18);padding:4px 10px;border-radius:100px">Passive
+              income</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PITCH SCRIPTS -->
+      <section style="padding:56px 5vw;background:#030D08">
+        <div
+          style="display:flex;align-items:center;gap:6px;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#00D97E;margin-bottom:8px">
+          <span style="color:#A8FF3E">→</span> Pitch Scripts
+        </div>
+        <h2 class="display"
+          style="font-size:clamp(2rem,9vw,4rem);letter-spacing:1px;line-height:0.92;margin-bottom:12px;color:#E8F5EE">
+          Know what to say.<br /><span style="color:#00D97E">Close any business owner.</span></h2>
+        <p style="font-size:.88rem;color:#7FA98A;line-height:1.7;max-width:520px;margin-bottom:28px">Every owner has a
+          different goal. Match the hook to their ambition and you'll close on the spot.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;margin-top:32px">
+          <div
+            style="background:rgba(0,201,126,0.05);border:1px solid rgba(0,201,126,0.18);border-top:2px solid #00D97E;border-radius:10px;padding:22px">
+            <div
+              style="font-size:.7rem;font-weight:700;color:#A8FF3E;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">
+              Use when: owner wants to grow stock</div>
+            <div style="font-size:1rem;font-weight:700;color:#E8F5EE;margin-bottom:14px">The Fintech Loan Hook</div>
+            <blockquote
+              style="margin:0;padding:12px 14px;background:rgba(255,255,255,0.04);border-left:2px solid #00D97E;border-radius:4px;font-size:.8rem;color:#A8C4B0;line-height:1.7;font-style:italic">
+              "Boss, if you need R20,000 next month to buy bulk stock, the bank will say no because you only use cash.
+              Sign up for LulaSync today and the app starts building your digital financial footprint — within
+              months, you can unlock fast cash advances from local lenders based on your actual sales records."
+            </blockquote>
+            <div style="font-size:.7rem;color:#4A7A5A;margin-top:12px">Spaza shops · Tuck shops · Wholesalers</div>
+          </div>
+          <div
+            style="background:rgba(0,201,126,0.05);border:1px solid rgba(0,201,126,0.18);border-top:2px solid #00D97E;border-radius:10px;padding:22px">
+            <div
+              style="font-size:.7rem;font-weight:700;color:#A8FF3E;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">
+              Use when: owner makes or bakes products</div>
+            <div style="font-size:1rem;font-weight:700;color:#E8F5EE;margin-bottom:14px">The Supplier Access Hook</div>
+            <blockquote
+              style="margin:0;padding:12px 14px;background:rgba(255,255,255,0.04);border-left:2px solid #00D97E;border-radius:4px;font-size:.8rem;color:#A8C4B0;line-height:1.7;font-style:italic">
+              "Your products are amazing, but Shoprite and SPAR won't stock them if your records are on paper. This app
+              tracks your inventory and generates the exact digital invoices and compliance records that corporate
+              supplier programmes need to take you on as an official supplier."</blockquote>
+            <div style="font-size:.7rem;color:#4A7A5A;margin-top:12px">Bakers · Farmers · Manufacturers · Caterers</div>
+          </div>
+          <div
+            style="background:rgba(0,201,126,0.05);border:1px solid rgba(0,201,126,0.18);border-top:2px solid #00D97E;border-radius:10px;padding:22px">
+            <div
+              style="font-size:.7rem;font-weight:700;color:#A8FF3E;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">
+              Use when: owner is always tired or overwhelmed</div>
+            <div style="font-size:1rem;font-weight:700;color:#E8F5EE;margin-bottom:14px">The Midnight Admin Hook</div>
+            <blockquote
+              style="margin:0;padding:12px 14px;background:rgba(255,255,255,0.04);border-left:2px solid #00D97E;border-radius:4px;font-size:.8rem;color:#A8C4B0;line-height:1.7;font-style:italic">
+              "You work on your feet all day and then spend your night calculating profits on paper. With LulaSync,
+              you just send a WhatsApp voice note — 'I sold 10 plates for R500' — and the AI does your bookkeeping
+              instantly. When you close the shop, you actually get to go home and rest."</blockquote>
+            <div style="font-size:.7rem;color:#4A7A5A;margin-top:12px">Any business owner · Salons · Shisa nyama · Food
+              vendors</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMMISSION STRUCTURE -->
+      <section id="commissions" style="padding:56px 5vw;color:#E8F5EE">
+        <div
+          style="display:flex;align-items:center;gap:6px;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#00D97E;margin-bottom:8px">
+          <span style="color:#A8FF3E">→</span>Commission Structure
+        </div>
+        <h2 class="display"
+          style="font-size:clamp(2rem,9vw,4rem);letter-spacing:1px;line-height:0.92;margin-bottom:12px;color:#E8F5EE">
+          See exactly<br /><span style="color:#00D97E">what you earn.</span></h2>
+        <p style="font-size:.88rem;color:#4A7A62;line-height:1.7;max-width:540px;margin-bottom:28px">5% on setup. 5% on
+          every monthly payment. <strong style="color:#E8F5EE">No cap. No limit on how many businesses you can
+            sign.</strong></p>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div
+            style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px;position:relative;overflow:hidden">
+            <div
+              style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00D97E,#A8FF3E)">
+            </div>
+            <div class="display" style="font-size:1.8rem;letter-spacing:1px;margin-bottom:4px">Per Business — What You
+              Get</div>
+            <div style="font-size:.8rem;color:var(--dim);margin-bottom:20px;line-height:1.5">Based on the plan the
+              business owner chooses:</div>
+            <div
+              style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:8px;gap:10px;flex-wrap:wrap">
+              <div>
+                <div style="font-weight:800;font-size:.88rem;color:var(--paper)">Starter Plan</div>
+                <div style="font-size:.72rem;color:var(--dim);margin-top:2px">R1,000 setup + R99/month</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0">
+                <div class="display" style="font-size:1.6rem;color:#00D97E;line-height:1">R50</div>
+                <div style="font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.05em">setup
+                  earning</div>
+                <div
+                  style="display:inline-block;font-size:.6rem;font-weight:800;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.2);color:#00D97E;padding:2px 8px;border-radius:100px;margin-top:4px">
+                  + R4.95/month</div>
+              </div>
+            </div>
+            <div
+              style="display:flex;align-items:center;justify-content:space-between;background:rgba(0,217,126,.04);border:1px solid rgba(0,217,126,.2);border-radius:8px;padding:14px;margin-bottom:8px;gap:10px;flex-wrap:wrap">
+              <div>
+                <div style="font-weight:800;font-size:.88rem;color:#00D97E">Growth Plan ⭐</div>
+                <div style="font-size:.72rem;color:var(--dim);margin-top:2px">R2,500 setup + R250/month</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0">
+                <div class="display" style="font-size:1.6rem;color:#A8FF3E;line-height:1">R125</div>
+                <div style="font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.05em">setup
+                  earning</div>
+                <div
+                  style="display:inline-block;font-size:.6rem;font-weight:800;background:rgba(168,255,62,.1);border:1px solid rgba(168,255,62,.25);color:#A8FF3E;padding:2px 8px;border-radius:100px;margin-top:4px">
+                  + R12.50/month</div>
+              </div>
+            </div>
+            <div
+              style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:8px;gap:10px;flex-wrap:wrap">
+              <div>
+                <div style="font-weight:800;font-size:.88rem;color:#FFB800">Boss Plan 🔥</div>
+                <div style="font-size:.72rem;color:var(--dim);margin-top:2px">R5,000 setup + R750/month</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0">
+                <div class="display" style="font-size:1.6rem;color:#FFB800;line-height:1">R250</div>
+                <div style="font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.05em">setup
+                  earning</div>
+                <div
+                  style="display:inline-block;font-size:.6rem;font-weight:800;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.2);color:#00D97E;padding:2px 8px;border-radius:100px;margin-top:4px">
+                  + R37.50/month</div>
+              </div>
+            </div>
+            <div
+              style="background:rgba(168,255,62,.06);border:1px solid rgba(168,255,62,.2);border-radius:var(--r);padding:16px;margin-top:16px">
+              <div
+                style="font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#A8FF3E;margin-bottom:10px">
+                📅 If You Sign 10 Growth Businesses</div>
+              <div
+                style="display:flex;justify-content:space-between;align-items:center;font-size:.82rem;padding:6px 0;border-bottom:1px solid rgba(168,255,62,.1);color:var(--dim)">
+                <span>10 × R125 setup commission</span><span style="color:#A8FF3E;font-weight:700">R1,250 upfront</span>
+              </div>
+              <div
+                style="display:flex;justify-content:space-between;align-items:center;font-size:.82rem;padding:6px 0;border-bottom:1px solid rgba(168,255,62,.1);color:var(--dim)">
+                <span>10 × R12.50 every month</span><span style="color:#A8FF3E;font-weight:700">R125/month</span>
+              </div>
+              <div
+                style="display:flex;justify-content:space-between;align-items:center;font-size:.82rem;padding:6px 0;border-bottom:1px solid rgba(168,255,62,.1);color:var(--dim)">
+                <span>After 12 months total earned</span><span style="color:#A8FF3E;font-weight:700">R2,750</span>
+              </div>
+              <div
+                style="display:flex;justify-content:space-between;align-items:center;font-size:.82rem;padding:6px 0;color:var(--paper);font-weight:700">
+                <span>After 24 months (same 10 businesses)</span><span
+                  style="color:#A8FF3E;font-weight:700">R4,250</span>
+              </div>
+            </div>
+          </div>
+          <div
+            style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px;position:relative;overflow:hidden">
+            <div
+              style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00D97E,#A8FF3E)">
+            </div>
+            <div class="display" style="font-size:1.8rem;letter-spacing:1px;margin-bottom:4px">🧮 Your Earnings
+              Calculator</div>
+            <div style="font-size:.8rem;color:var(--dim);margin-bottom:20px">Drag the slider to see what you could earn
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;font-weight:700;margin-bottom:8px">
+              <span>Businesses signed up:</span><span id="sliderVal" style="color:#00D97E">10</span>
+            </div>
+            <input type="range" id="calcSlider" min="1" max="100" value="10"
+              style="width:100%;-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;background:linear-gradient(to right,#00D97E 10%,#0F2B1E 10%);outline:none;margin-bottom:16px;cursor:pointer" />
+            <div
+              style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:rgba(0,217,126,.06);border:1px solid rgba(0,217,126,.18);border-radius:8px;padding:14px;text-align:center">
+              <div>
+                <div class="display" id="calcUpfront" style="font-size:1.5rem;color:#00D97E;line-height:1">R1 150</div>
+                <div
+                  style="font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;margin-top:2px">
+                  Upfront (setup)</div>
+              </div>
+              <div>
+                <div class="display" id="calcMonthly" style="font-size:1.5rem;color:#00D97E;line-height:1">R127</div>
+                <div
+                  style="font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;margin-top:2px">
+                  Per Month</div>
+              </div>
+              <div>
+                <div class="display" id="calcYear" style="font-size:1.5rem;color:#A8FF3E;line-height:1">R2 674</div>
+                <div
+                  style="font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;margin-top:2px">
+                  After 1 Year</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET -->
+      <section id="perks" style="padding:56px 5vw;background:#071410;color:#E8F5EE">
+        <div
+          style="display:flex;align-items:center;gap:6px;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#00D97E;margin-bottom:8px">
+          <span style="color:#A8FF3E">→</span>What You Get
+        </div>
+        <h2 class="display"
+          style="font-size:clamp(2rem,9vw,4rem);letter-spacing:1px;line-height:0.92;margin-bottom:12px;color:#E8F5EE">
+          Everything you need<br /><span style="color:#00D97E">to succeed.</span></h2>
+        <p style="font-size:.88rem;color:#4A7A62;line-height:1.7;max-width:540px;margin-bottom:28px">We don't just send
+          you out empty-handed. You get real tools to make your job easy.</p>
+        <div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 0;border-bottom:1px solid #0F2B1E">
+            <div
+              style="width:22px;height:22px;border-radius:6px;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#00D97E;flex-shrink:0;margin-top:1px">
+              ✓</div>
+            <div>
+              <div style="font-weight:700;font-size:.88rem;margin-bottom:2px">Your Personal Referral Code</div>
+              <div style="font-size:.75rem;color:#4A7A62;line-height:1.55">Every business that signs up with your code
+                is permanently linked to you. You earn on them forever — even if you stop selling.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 0;border-bottom:1px solid #0F2B1E">
+            <div
+              style="width:22px;height:22px;border-radius:6px;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#00D97E;flex-shrink:0;margin-top:1px">
+              ✓</div>
+            <div>
+              <div style="font-weight:700;font-size:.88rem;margin-bottom:2px">Digital Pitch Kit</div>
+              <div style="font-size:.75rem;color:#4A7A62;line-height:1.55">A shareable link with the demo website,
+                explainer videos, and pricing — everything you need to show a business owner in 2 minutes.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 0;border-bottom:1px solid #0F2B1E">
+            <div
+              style="width:22px;height:22px;border-radius:6px;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#00D97E;flex-shrink:0;margin-top:1px">
+              ✓</div>
+            <div>
+              <div style="font-weight:700;font-size:.88rem;margin-bottom:2px">Free Live Demo to Show</div>
+              <div style="font-size:.75rem;color:#4A7A62;line-height:1.55">Pull out your phone and show them a real
+                working app for their business type. Nothing sells better than seeing it live.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 0;border-bottom:1px solid #0F2B1E">
+            <div
+              style="width:22px;height:22px;border-radius:6px;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#00D97E;flex-shrink:0;margin-top:1px">
+              ✓</div>
+            <div>
+              <div style="font-weight:700;font-size:.88rem;margin-bottom:2px">WhatsApp Support from Our Team</div>
+              <div style="font-size:.75rem;color:#4A7A62;line-height:1.55">Stuck on a question a business owner is
+                asking? Message us directly and we'll help you close the deal in real time.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 0;border-bottom:1px solid #0F2B1E">
+            <div
+              style="width:22px;height:22px;border-radius:6px;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#00D97E;flex-shrink:0;margin-top:1px">
+              ✓</div>
+            <div>
+              <div style="font-weight:700;font-size:.88rem;margin-bottom:2px">Monthly Commission Dashboard</div>
+              <div style="font-size:.75rem;color:#4A7A62;line-height:1.55">See all your referrals, active subscriptions,
+                and exactly how much you're owed each month. Full transparency, always.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 0;border-bottom:1px solid #0F2B1E">
+            <div
+              style="width:22px;height:22px;border-radius:6px;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#00D97E;flex-shrink:0;margin-top:1px">
+              ✓</div>
+            <div>
+              <div style="font-weight:700;font-size:.88rem;margin-bottom:2px">Bonus Tiers for Top Agents</div>
+              <div style="font-size:.75rem;color:#4A7A62;line-height:1.55">Sign 20+ businesses in a month and unlock a
+                7% commission rate. Sign 50+ and unlock 10%. The more you hustle, the more you earn.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 0;border-bottom:1px solid #0F2B1E">
+            <div
+              style="width:22px;height:22px;border-radius:6px;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#00D97E;flex-shrink:0;margin-top:1px">
+              ✓</div>
+            <div>
+              <div style="font-weight:700;font-size:.88rem;margin-bottom:2px">Printed Flyers &amp; QR Cards</div>
+              <div style="font-size:.75rem;color:#4A7A62;line-height:1.55">We print physical marketing materials with
+                your referral QR code. Drop them in spaza shops, community centres, and taxi ranks.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BONUS STRUCTURE -->
+      <section style="padding:56px 5vw;color:#E8F5EE">
+        <div
+          style="display:flex;align-items:center;gap:6px;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#00D97E;margin-bottom:8px">
+          <span style="color:#A8FF3E">→</span>Bonus Structure
+        </div>
+        <h2 class="display"
+          style="font-size:clamp(2rem,9vw,4rem);letter-spacing:1px;line-height:0.92;margin-bottom:12px;color:#E8F5EE">
+          Hustle more, <em style="font-style:normal;color:#A8FF3E">earn more.</em></h2>
+        <p style="font-size:.88rem;color:#4A7A62;line-height:1.7;max-width:540px;margin-bottom:28px">Your commission
+          rate goes up the more businesses you sign. <strong style="color:#E8F5EE">No ceiling.</strong></p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div
+            style="background:#030D08;border:1px solid #0F2B1E;border-radius:10px;padding:18px;display:flex;gap:14px;align-items:flex-start">
+            <div
+              style="width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:2px;background:rgba(74,122,98,.1);border:1px solid rgba(74,122,98,.2)">
+              🌱</div>
+            <div>
+              <div style="font-weight:800;font-size:.9rem;margin-bottom:4px;color:#E8F5EE">Starter Agent — 5%</div>
+              <div style="font-size:.8rem;color:#4A7A62;line-height:1.6">Default rate for all new agents. Earn 5% on
+                every setup fee and every monthly payment from your referrals.</div>
+            </div>
+          </div>
+          <div
+            style="background:#030D08;border:1px solid #0F2B1E;border-radius:10px;padding:18px;display:flex;gap:14px;align-items:flex-start">
+            <div
+              style="width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:2px;background:rgba(0,217,126,.08);border:1px solid rgba(0,217,126,.2)">
+              ⚡</div>
+            <div>
+              <div style="font-weight:800;font-size:.9rem;margin-bottom:4px;color:#00D97E">Growth Agent — 7%</div>
+              <div style="font-size:.8rem;color:#4A7A62;line-height:1.6">Unlock when you have 20+ active businesses on
+                the platform. Applies to all your referrals from that point forward.</div>
+            </div>
+          </div>
+          <div
+            style="background:#030D08;border:1px solid #0F2B1E;border-radius:10px;padding:18px;display:flex;gap:14px;align-items:flex-start">
+            <div
+              style="width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:2px;background:rgba(168,255,62,.07);border:1px solid rgba(168,255,62,.2)">
+              👑</div>
+            <div>
+              <div style="font-weight:800;font-size:.9rem;margin-bottom:4px;color:#A8FF3E">Top Agent — 10%</div>
+              <div style="font-size:.8rem;color:#4A7A62;line-height:1.6">Unlock when you have 50+ active businesses.
+                Plus featured on our leaderboard and eligible for quarterly cash bonuses.</div>
+            </div>
+          </div>
+          <div
+            style="background:#030D08;border:1px solid #0F2B1E;border-radius:10px;padding:18px;display:flex;gap:14px;align-items:flex-start">
+            <div
+              style="width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:2px;background:rgba(255,184,0,.07);border:1px solid rgba(255,184,0,.2)">
+              🔥</div>
+            <div>
+              <div style="font-weight:800;font-size:.9rem;margin-bottom:4px;color:#FFB800">Monthly Sprint Bonus</div>
+              <div style="font-size:.8rem;color:#4A7A62;line-height:1.6">Sign 10+ businesses in any calendar month and
+                receive an extra R500 cash bonus directly to your account. Sprint bonuses stack.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LEADERBOARD -->
+      <section style="padding:56px 5vw;background:#071410;color:#E8F5EE">
+        <div
+          style="display:flex;align-items:center;gap:6px;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#00D97E;margin-bottom:8px">
+          <span style="color:#A8FF3E">→</span>Agent Leaderboard
+        </div>
+        <h2 class="display"
+          style="font-size:clamp(2rem,9vw,4rem);letter-spacing:1px;line-height:0.92;margin-bottom:12px;color:#E8F5EE">
+          See who's<br /><span style="color:#00D97E">winning.</span></h2>
+        <p style="font-size:.88rem;color:#4A7A62;line-height:1.7;max-width:540px;margin-bottom:28px">Top agents are
+          tracked monthly. Your name could be on this list.</p>
+        <div style="display:flex;gap:32px;justify-content:center;margin-bottom:32px">
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="display:inline-block;width:36px;height:42px;position:relative;flex-shrink:0">
+              <div
+                style="width:6px;height:6px;position:absolute;top:0;left:0;background:transparent;box-shadow:12px 0px 0 0 #8B5E3C,18px 0px 0 0 #8B5E3C,12px 6px 0 0 #8B5E3C,18px 6px 0 0 #8B5E3C,12px 12px 0 0 #E8A020,18px 12px 0 0 #E8A020,12px 18px 0 0 #E8A020,18px 18px 0 0 #E8A020,12px 24px 0 0 #E8A020,18px 24px 0 0 #E8A020,6px 12px 0 0 #8B5E3C,6px 18px 0 0 #8B5E3C,24px 12px 0 0 #8B5E3C,24px 18px 0 0 #8B5E3C,12px 30px 0 0 #0A0705,12px 36px 0 0 #0A0705,18px 30px 0 0 #0A0705,18px 36px 0 0 #0A0705;animation:pixelBob 0.6s ease-in-out infinite alternate;filter:drop-shadow(0 0 4px #00D97E);image-rendering:pixelated">
+              </div>
+            </div>
+            <div
+              style="font-size:.7rem;color:#4A7A62;text-align:center;margin-top:6px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">
+              Onboarder</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="display:inline-block;width:36px;height:42px;position:relative;flex-shrink:0">
+              <div
+                style="width:6px;height:6px;position:absolute;top:0;left:0;background:transparent;box-shadow:12px 0px 0 0 #7B4226,18px 0px 0 0 #7B4226,12px 6px 0 0 #7B4226,18px 6px 0 0 #7B4226,12px 12px 0 0 #1A4A33,18px 12px 0 0 #1A4A33,12px 18px 0 0 #1A4A33,18px 18px 0 0 #1A4A33,12px 24px 0 0 #1A4A33,18px 24px 0 0 #1A4A33,6px 12px 0 0 #7B4226,6px 18px 0 0 #7B4226,24px 12px 0 0 #7B4226,24px 18px 0 0 #7B4226,12px 30px 0 0 #0A0705,12px 36px 0 0 #0A0705,18px 30px 0 0 #0A0705,18px 36px 0 0 #0A0705;animation:pixelBob 0.6s ease-in-out infinite alternate;image-rendering:pixelated">
+              </div>
+            </div>
+            <div
+              style="font-size:.7rem;color:#4A7A62;text-align:center;margin-top:6px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">
+              Customer Bot</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="display:inline-block;width:36px;height:42px;position:relative;flex-shrink:0">
+              <div
+                style="width:6px;height:6px;position:absolute;top:0;left:0;background:transparent;box-shadow:12px 0px 0 0 #2C1810,18px 0px 0 0 #2C1810,12px 6px 0 0 #2C1810,18px 6px 0 0 #2C1810,12px 12px 0 0 #1A4A33,18px 12px 0 0 #1A4A33,12px 18px 0 0 #1A4A33,18px 18px 0 0 #1A4A33,12px 24px 0 0 #1A4A33,18px 24px 0 0 #1A4A33,6px 12px 0 0 #2C1810,6px 18px 0 0 #2C1810,24px 12px 0 0 #2C1810,24px 18px 0 0 #2C1810,12px 30px 0 0 #0A0705,12px 36px 0 0 #0A0705,18px 30px 0 0 #0A0705,18px 36px 0 0 #0A0705;animation:pixelBob 0.6s ease-in-out infinite alternate;image-rendering:pixelated">
+              </div>
+            </div>
+            <div
+              style="font-size:.7rem;color:#4A7A62;text-align:center;margin-top:6px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">
+              Owner Assistant</div>
+          </div>
+        </div>
+        <div
+          style="background:#030D08;border:1px solid #0F2B1E;border-radius:10px;padding:20px;overflow:hidden;position:relative">
+          <div
+            style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#A8FF3E,#00D97E)">
+          </div>
+          <div class="display" style="font-size:1.5rem;letter-spacing:1px;margin-bottom:4px">🏆 Top Agents This Month
+          </div>
+          <div style="font-size:.75rem;color:#4A7A62;margin-bottom:16px">Ranked by total active referrals · Live data
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #0F2B1E">
+            <div class="display" style="font-size:1.3rem;width:26px;text-align:center;flex-shrink:0;color:#FFB800">1
+            </div>
+            <div style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <div style="display:inline-block;width:24px;height:28px;position:relative;flex-shrink:0">
+                <div
+                  style="width:4px;height:4px;position:absolute;top:0;left:0;background:transparent;box-shadow:8px 0px 0 0 #8B5E3C,12px 0px 0 0 #8B5E3C,8px 4px 0 0 #8B5E3C,12px 4px 0 0 #8B5E3C,8px 8px 0 0 #E8A020,12px 8px 0 0 #E8A020,8px 12px 0 0 #E8A020,12px 12px 0 0 #E8A020,8px 16px 0 0 #E8A020,12px 16px 0 0 #E8A020,4px 8px 0 0 #8B5E3C,4px 12px 0 0 #8B5E3C,16px 8px 0 0 #8B5E3C,16px 12px 0 0 #8B5E3C,8px 20px 0 0 #0A0705,8px 24px 0 0 #0A0705,12px 20px 0 0 #0A0705,12px 24px 0 0 #0A0705;animation:pixelBob 0.6s ease-in-out infinite alternate;filter:drop-shadow(0 0 4px #00D97E);image-rendering:pixelated">
+                </div>
+              </div>
+            </div>
+            <div style="flex:1">
+              <div style="font-weight:700;font-size:.85rem">Thandi M.</div>
+              <div style="font-size:.68rem;color:#4A7A62">Soweto, Gauteng</div>
+            </div>
+            <div style="text-align:right">
+              <div class="display" style="font-size:1.2rem;color:#00D97E;white-space:nowrap">—</div>
+              <div style="font-size:.62rem;color:#4A7A62">0 referrals</div>
+            </div>
+          </div>
+          <div
+            style="background:rgba(0,217,126,.05);border:1px dashed rgba(0,217,126,.2);border-radius:8px;padding:10px 12px;margin-top:12px;text-align:center;font-size:.8rem;color:#4A7A62">
+            👆 <strong style="color:#00D97E">This could be you.</strong> Apply now and start building your referral
+            list.</div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section style="padding:56px 5vw;color:#E8F5EE">
+        <div
+          style="display:flex;align-items:center;gap:6px;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#00D97E;margin-bottom:8px">
+          <span style="color:#A8FF3E">→</span>Common Questions
+        </div>
+        <h2 class="display"
+          style="font-size:clamp(2rem,9vw,4rem);letter-spacing:1px;line-height:0.92;margin-bottom:12px;color:#E8F5EE">
+          Got questions?<br /><span style="color:#00D97E">We got answers.</span></h2>
+        <div id="faq">
+          <div class="faq-item" style="border-bottom:1px solid #0F2B1E;overflow:hidden"><button
+              onclick="toggleFaq(this)"
+              style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:12px;cursor:pointer;background:transparent;border:none;width:100%;text-align:left;color:var(--paper)"><span
+                style="font-weight:700;font-size:.88rem">Do I need any experience or qualifications?</span><span
+                style="color:#00D97E;font-size:1rem;flex-shrink:0;transition:transform .3s;display:inline-block">+</span></button>
+            <div class="faq-body" style="max-height:0;overflow:hidden;transition:max-height .3s ease">
+              <p style="font-size:.82rem;color:#4A7A62;line-height:1.65;padding-bottom:14px">No qualifications needed.
+                If you know your community, can hold a conversation, and have a smartphone, you have everything you need
+                to start.</p>
+            </div>
+          </div>
+          <div class="faq-item" style="border-bottom:1px solid #0F2B1E;overflow:hidden"><button
+              onclick="toggleFaq(this)"
+              style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:12px;cursor:pointer;background:transparent;border:none;width:100%;text-align:left;color:var(--paper)"><span
+                style="font-weight:700;font-size:.88rem">How do I prove I referred a business?</span><span
+                style="color:#00D97E;font-size:1rem;flex-shrink:0;transition:transform .3s;display:inline-block">+</span></button>
+            <div class="faq-body" style="max-height:0;overflow:hidden;transition:max-height .3s ease">
+              <p style="font-size:.82rem;color:#4A7A62;line-height:1.65;padding-bottom:14px">Every business signs up
+                using your unique referral code. The system automatically tracks every sign-up to your account — no
+                manual claiming needed.</p>
+            </div>
+          </div>
+          <div class="faq-item" style="border-bottom:1px solid #0F2B1E;overflow:hidden"><button
+              onclick="toggleFaq(this)"
+              style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:12px;cursor:pointer;background:transparent;border:none;width:100%;text-align:left;color:var(--paper)"><span
+                style="font-weight:700;font-size:.88rem">When and how do I get paid?</span><span
+                style="color:#00D97E;font-size:1rem;flex-shrink:0;transition:transform .3s;display:inline-block">+</span></button>
+            <div class="faq-body" style="max-height:0;overflow:hidden;transition:max-height .3s ease">
+              <p style="font-size:.82rem;color:#4A7A62;line-height:1.65;padding-bottom:14px">Setup commissions are paid
+                within 48 hours of a business going live. Monthly recurring commissions are paid on the 5th of each
+                month via EFT or SnapScan.</p>
+            </div>
+          </div>
+          <div class="faq-item" style="border-bottom:1px solid #0F2B1E;overflow:hidden"><button
+              onclick="toggleFaq(this)"
+              style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:12px;cursor:pointer;background:transparent;border:none;width:100%;text-align:left;color:var(--paper)"><span
+                style="font-weight:700;font-size:.88rem">What if a business cancels their subscription?</span><span
+                style="color:#00D97E;font-size:1rem;flex-shrink:0;transition:transform .3s;display:inline-block">+</span></button>
+            <div class="faq-body" style="max-height:0;overflow:hidden;transition:max-height .3s ease">
+              <p style="font-size:.82rem;color:#4A7A62;line-height:1.65;padding-bottom:14px">You simply stop earning the
+                monthly commission for that business. Your other referrals are unaffected. The setup commission you
+                already earned stays with you.</p>
+            </div>
+          </div>
+          <div class="faq-item" style="border-bottom:1px solid #0F2B1E;overflow:hidden"><button
+              onclick="toggleFaq(this)"
+              style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:12px;cursor:pointer;background:transparent;border:none;width:100%;text-align:left;color:var(--paper)"><span
+                style="font-weight:700;font-size:.88rem">Is there a limit on how many businesses I can sign?</span><span
+                style="color:#00D97E;font-size:1rem;flex-shrink:0;transition:transform .3s;display:inline-block">+</span></button>
+            <div class="faq-body" style="max-height:0;overflow:hidden;transition:max-height .3s ease">
+              <p style="font-size:.82rem;color:#4A7A62;line-height:1.65;padding-bottom:14px">No limit whatsoever. Sign 5
+                or sign 500 — the more you sign, the more you earn every single month.</p>
+            </div>
+          </div>
+          <div class="faq-item" style="border-bottom:1px solid #0F2B1E;overflow:hidden"><button
+              onclick="toggleFaq(this)"
+              style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:12px;cursor:pointer;background:transparent;border:none;width:100%;text-align:left;color:var(--paper)"><span
+                style="font-weight:700;font-size:.88rem">Can I do this while working another job?</span><span
+                style="color:#00D97E;font-size:1rem;flex-shrink:0;transition:transform .3s;display:inline-block">+</span></button>
+            <div class="faq-body" style="max-height:0;overflow:hidden;transition:max-height .3s ease">
+              <p style="font-size:.82rem;color:#4A7A62;line-height:1.65;padding-bottom:14px">Absolutely. There are no
+                hours requirements, no targets, no check-ins. Work around your schedule completely.</p>
+            </div>
+          </div>
+          <div class="faq-item" style="border-bottom:1px solid #0F2B1E;overflow:hidden"><button
+              onclick="toggleFaq(this)"
+              style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:12px;cursor:pointer;background:transparent;border:none;width:100%;text-align:left;color:var(--paper)"><span
+                style="font-weight:700;font-size:.88rem">What areas can I operate in?</span><span
+                style="color:#00D97E;font-size:1rem;flex-shrink:0;transition:transform .3s;display:inline-block">+</span></button>
+            <div class="faq-body" style="max-height:0;overflow:hidden;transition:max-height .3s ease">
+              <p style="font-size:.82rem;color:#4A7A62;line-height:1.65;padding-bottom:14px">Anywhere in South Africa.
+                We're currently most active in Gauteng but expanding across all provinces. The whole country is your
+                territory.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPLY CTA -->
+      <section id="apply" style="padding:56px 5vw;background:#071410;color:#E8F5EE">
+        <div
+          style="background:linear-gradient(160deg,rgba(0,217,126,.1),rgba(168,255,62,.05));border:1px solid rgba(0,217,126,.2);border-radius:10px;padding:28px;text-align:center">
+          <div
+            style="display:flex;align-items:center;gap:6px;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#00D97E;margin-bottom:8px;justify-content:center">
+            <span style="color:#A8FF3E">→</span>Apply Now
+          </div>
+          <h2 class="display"
+            style="font-size:clamp(2.2rem,10vw,3.8rem);letter-spacing:1px;line-height:0.92;margin-bottom:12px;color:#E8F5EE">
+            Ready to<br /><span style="color:#A8FF3E">start earning?</span></h2>
+          <p
+            style="font-size:.88rem;color:#4A7A62;line-height:1.7;margin-bottom:22px;max-width:440px;margin-left:auto;margin-right:auto">
+            Send us a WhatsApp right now. Tell us your name, your area, and why you want to join the LulaSync agent
+            network. We'll be in touch within 24 hours.</p>
+          <div
+            style="display:flex;flex-direction:column;gap:8px;margin-bottom:22px;text-align:left;max-width:400px;margin:0 auto 22px">
+            <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:#4A7A62">
+              <div
+                style="width:24px;height:24px;border-radius:50%;background:rgba(0,217,126,.12);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#00D97E;flex-shrink:0">
+                1</div><span><strong style="color:#E8F5EE">Send us a WhatsApp</strong> with your name and area</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:#4A7A62">
+              <div
+                style="width:24px;height:24px;border-radius:50%;background:rgba(0,217,126,.12);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#00D97E;flex-shrink:0">
+                2</div><span><strong style="color:#E8F5EE">We verify you</strong> and activate your referral code</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:#4A7A62">
+              <div
+                style="width:24px;height:24px;border-radius:50%;background:rgba(0,217,126,.12);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#00D97E;flex-shrink:0">
+                3</div><span><strong style="color:#E8F5EE">Receive your pitch kit</strong> — demo link, flyers, pricing
+                guide</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:#4A7A62">
+              <div
+                style="width:24px;height:24px;border-radius:50%;background:rgba(0,217,126,.12);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#00D97E;flex-shrink:0">
+                4</div><span><strong style="color:#E8F5EE">Start signing businesses</strong> and earning from day
+                one</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;max-width:400px;margin:0 auto">
+            <a href="apply.html"
+              style="display:flex;align-items:center;justify-content:center;gap:9px;background:#00D97E;color:#030D08;font-weight:800;font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;padding:16px 24px;border-radius:10px;text-decoration:none;box-shadow:0 8px 28px rgba(0,217,126,.3)">Apply
+              Now →</a>
+            <a href="mailto:lulamilem@outlook.com?subject=Sales%20Agent%20Application%20-%20Lula%20Studio"
+              style="display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid #0F2B1E;color:#4A7A62;font-weight:600;font-size:.85rem;padding:13px 24px;border-radius:10px;text-decoration:none">📧
+              Apply via Email Instead</a>
+            <a href="agent-login.html"
+              style="display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid rgba(0,217,126,.2);color:#00D97E;font-weight:600;font-size:.85rem;padding:13px 24px;border-radius:10px;text-decoration:none;background:rgba(0,217,126,.05)">Already
+              an agent? Sign In →</a>
+          </div>
+          <p style="font-size:.65rem;color:rgba(232,245,238,.18);margin-top:10px">No CV needed · No targets · Work your
+            own hours · Earn forever</p>
+        </div>
+      </section>
+
+    </main>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="./lulasync.dev/index.html" class="nav-logo"
+          style="display:flex;align-items:center;gap:10px; margin-bottom: 14px !important;"><img
+            src="./assets/logo-ls.svg" width="36" height="36" alt="LulaSync" /><span>Lula<span
+              style="color:var(--gold)">Sync</span></span></a>
+        <p class="footer-desc">Your one stop Custom/end to end software, automation, UX/UI, PWAs, and WhatsApp ordering
+          systems and more for
+          South African teams — from startups to large enterprises.</p>
+        <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%20want%20an%20app%20for%20my%20business."
+          target="_blank" rel="noopener noreferrer" class="btn-wa-sm">💬 WhatsApp Us</a>
+      </div>
+      <div>
+        <p class="footer-col-title">Products</p>
+        <div class="footer-links">
+          <a href="showcase.html" class="footer-link">App showcase</a>
+          <a href="lulasync.dev/products.html" class="footer-link">Pricing &amp; catalogue</a>
+          <a href="lulasync.dev/index.html#products" class="footer-link">Solutions (home)</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <div class="footer-links">
+          <a href="lulasync.dev/about.html" class="footer-link">About Us</a>
+          <a href="lulasync.dev/contact.html" class="footer-link">Contact</a>
+          <a href="../lulasync/agents.html" class="footer-link">Become an Agent</a>
+          <a href="" class="footer-link">Terms and Conditions</a>
+          <a href="" class="footer-link">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 LulaSync · Built with love in South Africa 🇿🇦</p>
+      <p class="footer-copy">Building software for South African businesses.</p>
+    </div>
+  </footer>
+
+  <script src="lulasync.dev/assets/chat-widget.js" defer></script>
+  <script>
+    // Mobile nav
+    const menuBtn = document.getElementById('menuBtn'), closeBtn = document.getElementById('closeBtn'), overlay = document.getElementById('mobileOverlay');
+    menuBtn.addEventListener('click', () => { overlay.classList.add('open'); document.body.style.overflow = 'hidden' });
+    closeBtn.addEventListener('click', () => { overlay.classList.remove('open'); document.body.style.overflow = '' });
+    overlay.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => { overlay.classList.remove('open'); document.body.style.overflow = '' }));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) { overlay.classList.remove('open'); document.body.style.overflow = '' } });
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const body = btn.nextElementSibling, icon = btn.querySelector('span:last-child'), open = body.style.maxHeight && body.style.maxHeight !== '0px';
+      document.querySelectorAll('.faq-body').forEach(b => b.style.maxHeight = '0px');
+      document.querySelectorAll('.faq-item button span:last-child').forEach(i => i.textContent = '+');
+      if (!open) { body.style.maxHeight = body.scrollHeight + 'px'; icon.textContent = '−' }
+    }
+
+    // Earnings calculator
+    const slider = document.getElementById('calcSlider');
+    if (slider) {
+      slider.addEventListener('input', function () {
+        const n = +this.value;
+        // Weighted avg commission: mix of starter/growth/boss plans
+        const upfront = Math.round(n * 115);
+        const monthly = Math.round(n * 12.7);
+        const year = upfront + (monthly * 12);
+        document.getElementById('sliderVal').textContent = n;
+        document.getElementById('calcUpfront').textContent = 'R' + upfront.toLocaleString('en-ZA').replace(/,/g, ' ');
+        document.getElementById('calcMonthly').textContent = 'R' + monthly.toLocaleString('en-ZA').replace(/,/g, ' ');
+        document.getElementById('calcYear').textContent = 'R' + year.toLocaleString('en-ZA').replace(/,/g, ' ');
+        const pct = ((n - 1) / 99 * 100).toFixed(1);
+        this.style.background = `linear-gradient(to right,#00D97E ${pct}%,#0F2B1E ${pct}%)`;
+      });
+    }
+  </script>
+</body>
+
+</html>

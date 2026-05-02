@@ -1,0 +1,3225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0A0705" />
+  <title>LulaSync — AI Products for South African Businesses</title>
+  <meta name="description"
+    content="Your one stop Custom/end to end software, automation, UX/UI, PWAs, and WhatsApp ordering systems and more for South African teams — from startups to large enterprises." />
+  <link rel="canonical" href="https://lulasync.app/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="manifest" href="./manifest.json" />
+  <style>
+    :root {
+      --ink: #0A0705;
+      --paper: #F5EDD8;
+      --gold: #F0A500;
+      --fire: #E04E14;
+      --dim: rgba(245, 237, 216, 0.55);
+      --card: #0f0f0f;
+      --border: #1a1a1a;
+      --wa: #25D366;
+      --purple: #8B5CF6;
+      --cyan: #00C2FF;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      background: rgba(10, 7, 5, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--paper);
+      text-decoration: none
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .nav-link {
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--dim);
+      letter-spacing: .04em;
+      text-decoration: none;
+      padding: 4px 8px;
+      transition: color .15s
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold)
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--gold), var(--fire));
+      color: var(--ink);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--paper)
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      transition: all .25s
+    }
+
+    /* MOBILE NAV */
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      background: rgba(10, 7, 5, 0.97);
+      backdrop-filter: blur(20px);
+    }
+
+    .mobile-overlay.open {
+      display: flex
+    }
+
+    .mobile-overlay .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 5vw;
+      background: none;
+      border: none;
+      color: var(--paper);
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-nav-link {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: var(--paper);
+      transition: color .15s;
+      margin: 4px 0;
+      display: block;
+      text-align: center;
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link.active {
+      color: var(--gold)
+    }
+
+    /* GRADIENT LINE */
+    .grad-line {
+      position: sticky;
+      top: 56px;
+      z-index: 99;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--fire) 20%, var(--gold) 50%, var(--fire) 80%, transparent);
+      opacity: .6;
+      pointer-events: none;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 100px 5vw 80px;
+    }
+
+    .hero-glow-1 {
+      position: absolute;
+      top: -8%;
+      right: -4%;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(224, 78, 20, .18) 0%, transparent 65%);
+      pointer-events: none;
+      filter: blur(70px)
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -12%;
+      left: -8%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 165, 0, .12) 0%, transparent 65%);
+      pointer-events: none;
+      filter: blur(60px)
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: clamp(32px, 5vw, 72px);
+      flex-wrap: wrap
+    }
+
+    .hero-text {
+      flex: 1 1 340px;
+      max-width: 580px
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      opacity: .85
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.4rem, 12vw, 7.5rem);
+      line-height: .92;
+      letter-spacing: 1px;
+      margin-bottom: 24px
+    }
+
+    .hero-desc {
+      font-size: clamp(.95rem, 2.5vw, 1.1rem);
+      color: var(--dim);
+      line-height: 1.8;
+      margin-bottom: 36px;
+      max-width: 480px
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--wa);
+      color: #000;
+      font-weight: 800;
+      font-size: .95rem;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: .04em;
+      box-shadow: 0 8px 32px rgba(37, 211, 102, .25);
+      transition: opacity .2s;
+    }
+
+    .btn-wa:hover {
+      opacity: .9
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: .95rem;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: .04em;
+      border: 1px solid var(--gold);
+      transition: background .2s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(240, 165, 0, .08)
+    }
+
+    .hero-trust {
+      display: flex;
+      gap: 24px;
+      margin-top: 48px;
+      flex-wrap: wrap
+    }
+
+    .hero-trust span {
+      font-size: 12px;
+      color: var(--dim);
+      letter-spacing: .04em
+    }
+
+    .hero-trust span::before {
+      content: '✓ ';
+      color: var(--gold)
+    }
+
+    /* PHONE */
+    .hero-phone-col {
+      flex: 1 1 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px
+    }
+
+    .phone-wrap {
+      width: 242px;
+      height: 508px;
+      position: relative;
+      flex-shrink: 0
+    }
+
+    .phone-shell {
+      width: 242px;
+      height: 508px;
+      border-radius: 40px;
+      background: linear-gradient(135deg, #1e2025, #181a1d);
+      padding: 7px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .45);
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 34px;
+      overflow: hidden;
+      background: #ece5dd;
+      position: relative
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72px;
+      height: 22px;
+      background: #000;
+      border-radius: 12px;
+      z-index: 2
+    }
+
+    /* SLIDES */
+    .phone-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      flex-direction: column;
+      font-size: 11px;
+      opacity: 0;
+      transition: opacity .4s ease
+    }
+
+    .phone-slide.active {
+      display: flex;
+      opacity: 1
+    }
+
+    /* SLIDE 1 — WhatsApp Chat */
+    .wa-header {
+      background: #E04E14;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      padding-top: 34px
+    }
+
+    .wa-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0
+    }
+
+    .wa-title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 10px;
+      line-height: 1.2
+    }
+
+    .wa-sub {
+      color: rgba(255, 255, 255, .75);
+      font-size: 8px
+    }
+
+    .wa-badge {
+      background: rgba(255, 255, 255, .18);
+      border-radius: 4px;
+      padding: 2px 7px;
+      flex-shrink: 0
+    }
+
+    .wa-badge span {
+      color: #fff;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: .04em
+    }
+
+    .wa-msgs {
+      flex: 1;
+      padding: 6px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      overflow: hidden
+    }
+
+    .wa-msg {
+      background: #fff;
+      border-radius: 8px 8px 8px 2px;
+      padding: 6px 8px;
+      font-size: 9px;
+      color: #333;
+      max-width: 80%;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .08)
+    }
+
+    .wa-msg.out {
+      background: #d9fdd3;
+      align-self: flex-end;
+      border-radius: 8px 8px 2px 8px
+    }
+
+    .wa-input {
+      background: #f0f0f0;
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      border-top: 1px solid #ddd
+    }
+
+    .wa-input-field {
+      flex: 1;
+      background: #fff;
+      border-radius: 18px;
+      padding: 5px 10px;
+      color: #bbb;
+      font-size: 9px
+    }
+
+    .wa-send {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #E04E14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    /* SLIDE 2 — WhatsApp Ordering System (Kitchen + Order notification) */
+    .slide2-wrap {
+      display: flex;
+      flex-direction: column;
+      height: 100%
+    }
+
+    .slide2-order-header {
+      background: linear-gradient(135deg, #E04E14, #F0A500);
+      padding: 10px 10px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      padding-top: 34px
+    }
+
+    .slide2-order-header .s2-title {
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .04em
+    }
+
+    .slide2-order-header .s2-badge {
+      background: rgba(0, 0, 0, .35);
+      color: #fff;
+      font-size: 7px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 8px
+    }
+
+    .slide2-msgs {
+      flex: 1;
+      background: #ece5dd;
+      padding: 6px 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 4px
+    }
+
+    .slide2-order-card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 7px 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .1)
+    }
+
+    .slide2-order-card .order-num {
+      font-size: 7px;
+      font-weight: 800;
+      color: #E04E14;
+      margin-bottom: 3px
+    }
+
+    .slide2-order-card .order-name {
+      font-size: 8px;
+      font-weight: 700;
+      color: #222
+    }
+
+    .slide2-order-card .order-detail {
+      font-size: 7px;
+      color: #666;
+      margin-top: 1px
+    }
+
+    .slide2-order-card .order-items {
+      font-size: 7px;
+      color: #444;
+      margin-top: 3px;
+      line-height: 1.5
+    }
+
+    .slide2-order-card .order-total {
+      font-size: 8px;
+      font-weight: 800;
+      color: #222;
+      margin-top: 3px
+    }
+
+    .slide2-order-card .order-paid {
+      font-size: 7px;
+      font-weight: 800;
+      color: #25D366
+    }
+
+    .slide2-order-card .order-drop {
+      font-size: 7px;
+      color: #888;
+      margin-top: 2px
+    }
+
+    .slide2-footer {
+      background: linear-gradient(135deg, #25D366, #167a3d);
+      padding: 6px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0
+    }
+
+    .slide2-footer .sf-label {
+      font-size: 7px;
+      font-weight: 800;
+      color: #fff
+    }
+
+    .slide2-footer .sf-btn {
+      font-size: 6px;
+      font-weight: 800;
+      color: #fff;
+      background: rgba(255, 255, 255, .2);
+      padding: 2px 6px;
+      border-radius: 6px
+    }
+
+    /* SLIDE 3 — Content Dashboard */
+    .slide3-wrap {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: #0f0f0f
+    }
+
+    .slide3-header {
+      background: #0f0f0f;
+      border-bottom: 1px solid #222;
+      padding: 8px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      padding-top: 34px
+    }
+
+    .slide3-header .s3-title {
+      font-size: 9px;
+      font-weight: 800;
+      color: #fff
+    }
+
+    .slide3-header .s3-badge {
+      background: #F0A500;
+      color: #000;
+      font-size: 6px;
+      font-weight: 800;
+      padding: 2px 5px;
+      border-radius: 3px
+    }
+
+    .slide3-body {
+      flex: 1;
+      padding: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .slide3-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px
+    }
+
+    .slide3-col-label {
+      font-size: 6px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 4px;
+      font-weight: 700
+    }
+
+    .slide3-caption-box {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      padding: 5px;
+      border-radius: 3px;
+      height: 44px;
+      font-size: 7px;
+      color: #555;
+      font-style: italic
+    }
+
+    .slide3-platforms {
+      display: flex;
+      gap: 3px;
+      margin-top: 4px
+    }
+
+    .slide3-plat {
+      font-size: 6px;
+      font-weight: 800;
+      padding: 2px 4px;
+      border-radius: 2px
+    }
+
+    .slide3-preview {
+      background: linear-gradient(135deg, #F0A500, #E04E14);
+      height: 44px;
+      border-radius: 3px;
+      display: flex;
+      align-items: flex-end;
+      padding: 3px;
+      font-size: 6px;
+      color: #fff;
+      font-weight: 700
+    }
+
+    .slide3-stats {
+      display: flex;
+      gap: 4px;
+      margin-top: 3px;
+      font-size: 6px;
+      color: #888
+    }
+
+    .slide3-schedule-btn {
+      background: linear-gradient(90deg, #25D366, #F0A500);
+      height: 20px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 7px;
+      font-weight: 800
+    }
+
+    .slide3-recent {
+      background: #1a1a1a;
+      border-radius: 4px;
+      padding: 6px
+    }
+
+    .slide3-recent-label {
+      font-size: 6px;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 700;
+      margin-bottom: 4px
+    }
+
+    .slide3-post {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 0;
+      border-bottom: 1px solid #222
+    }
+
+    .slide3-post:last-child {
+      border-bottom: none
+    }
+
+    .slide3-post-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 2px;
+      flex-shrink: 0
+    }
+
+    .slide3-post-info {
+      flex: 1
+    }
+
+    .slide3-post-title {
+      font-size: 7px;
+      font-weight: 700;
+      color: #ccc
+    }
+
+    .slide3-post-meta {
+      font-size: 6px;
+      color: #555
+    }
+
+    .slide3-post-badge {
+      font-size: 6px;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px
+    }
+
+    /* SLIDE 4 — AI Voice Agent */
+    .slide4-wrap {
+      height: 100%;
+      background: linear-gradient(180deg, #4c2d99, #2a1a5a);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      padding-top: 38px;
+      padding-bottom: 14px;
+      color: #fff
+    }
+
+    .slide4-top {
+      text-align: center
+    }
+
+    .slide4-business {
+      font-size: 8px;
+      font-weight: 800;
+      margin-bottom: 2px
+    }
+
+    .slide4-status {
+      font-size: 7px;
+      color: rgba(255, 255, 255, .6)
+    }
+
+    .slide4-num {
+      font-size: 7px;
+      color: rgba(255, 255, 255, .5);
+      margin-top: 2px
+    }
+
+    .slide4-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8B5CF6, #6d3ecf);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 0 28px rgba(139, 92, 246, .55)
+    }
+
+    .slide4-wave {
+      display: flex;
+      gap: 3px;
+      align-items: center;
+      height: 30px
+    }
+
+    .slide4-wave span {
+      width: 3px;
+      border-radius: 2px;
+      background: #8B5CF6;
+      display: block;
+      animation: wave-bar 1.1s ease-in-out infinite
+    }
+
+    .slide4-wave span:nth-child(1) {
+      height: 8px;
+      animation-delay: 0s
+    }
+
+    .slide4-wave span:nth-child(2) {
+      height: 16px;
+      animation-delay: .1s
+    }
+
+    .slide4-wave span:nth-child(3) {
+      height: 24px;
+      animation-delay: .2s
+    }
+
+    .slide4-wave span:nth-child(4) {
+      height: 14px;
+      animation-delay: .3s
+    }
+
+    .slide4-wave span:nth-child(5) {
+      height: 20px;
+      animation-delay: .15s
+    }
+
+    .slide4-wave span:nth-child(6) {
+      height: 10px;
+      animation-delay: .25s
+    }
+
+    .slide4-wave span:nth-child(7) {
+      height: 18px;
+      animation-delay: .05s
+    }
+
+    .slide4-wave span:nth-child(8) {
+      height: 12px;
+      animation-delay: .35s
+    }
+
+    @keyframes wave-bar {
+
+      0%,
+      100% {
+        transform: scaleY(1);
+        opacity: .6
+      }
+
+      50% {
+        transform: scaleY(1.6);
+        opacity: 1
+      }
+    }
+
+    .slide4-transcript {
+      text-align: center;
+      font-size: 8px;
+      color: #d7c9ff;
+      font-style: italic;
+      padding: 0 4px;
+      min-height: 20px;
+      line-height: 1.4
+    }
+
+    .slide4-actions {
+      display: flex;
+      gap: 10px
+    }
+
+    .slide4-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px
+    }
+
+    .slide4-btn.decline {
+      background: #ff4444
+    }
+
+    .slide4-btn.accept {
+      background: #25D366
+    }
+
+    .slide4-ai-badge {
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-size: 7px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .8);
+      letter-spacing: .04em
+    }
+
+    /* PHONE HOME BAR */
+    .phone-home {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, .5);
+      z-index: 10
+    }
+
+    /* DOTS */
+    .demo-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center
+    }
+
+    .demo-dot {
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, .18);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: all .35s
+    }
+
+    .demo-dot.active {
+      width: 22px;
+      background: var(--fire)
+    }
+
+    .demo-dot:not(.active) {
+      width: 6px
+    }
+
+    .demo-label {
+      font-size: 9px;
+      color: var(--fire);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 14px
+    }
+
+    .pulse-dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--fire);
+      animation: pulse 1.4s ease-in-out infinite
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .4
+      }
+    }
+
+    /* KENTE */
+    .kente-strip {
+      height: 4px;
+      width: 100%;
+      background: repeating-linear-gradient(90deg, var(--fire) 0, var(--fire) 8px, var(--gold) 8px, var(--gold) 16px, #1a1a1a 16px, #1a1a1a 20px, var(--gold) 20px, var(--gold) 28px, var(--fire) 28px, var(--fire) 36px, var(--paper) 36px, var(--paper) 40px);
+    }
+
+    .kente-strip.short {
+      width: 160px;
+      margin-bottom: 28px
+    }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      overflow: hidden;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--card)
+    }
+
+    .marquee-inner {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      animation: marquee 28s linear infinite;
+      width: max-content
+    }
+
+    .marquee-item {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: .06em;
+      text-transform: uppercase
+    }
+
+    .marquee-sep {
+      color: var(--fire);
+      font-size: .5rem;
+      margin-left: 48px
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* PRODUCTS */
+    #products {
+      padding: 80px 5vw;
+      background: #0a0a0a
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      opacity: .85
+    }
+
+    .section-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 8vw, 4.5rem);
+      line-height: .95;
+      letter-spacing: 1px;
+      margin-bottom: 48px;
+      color: var(--paper)
+    }
+
+    .product-list {
+      border-top: 1px solid #1a1a1a
+    }
+
+    .product-item {
+      border-bottom: 1px solid #1a1a1a;
+      transition: background .2s
+    }
+
+    .product-item:hover {
+      background: rgba(255, 255, 255, .02)
+    }
+
+    .product-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      cursor: pointer;
+      gap: 20px;
+      list-style: none;
+      user-select: none;
+    }
+
+    .product-header::-webkit-details-marker {
+      display: none
+    }
+
+    .product-num {
+      color: #333;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: monospace;
+      min-width: 28px
+    }
+
+    .product-title-wrap {
+      flex: 1
+    }
+
+    .product-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 900;
+      color: var(--paper);
+      letter-spacing: 1px;
+      transition: color .2s
+    }
+
+    .product-tagline {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #555;
+      text-transform: uppercase;
+      margin-top: 2px
+    }
+
+    .product-price-wrap {
+      text-align: right
+    }
+
+    .product-price {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 900;
+      color: var(--paper)
+    }
+
+    .product-price-sub {
+      font-size: 12px;
+      color: #555
+    }
+
+    .product-arrow {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #222;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #444;
+      font-size: 14px;
+      flex-shrink: 0;
+      transition: all .2s;
+    }
+
+    details[open] .product-arrow {
+      transform: rotate(45deg);
+      color: var(--gold);
+      border-color: var(--gold)
+    }
+
+    details[open] .product-name {
+      color: var(--gold)
+    }
+
+    .product-body {
+      padding: 0 0 28px 48px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap
+    }
+
+    .product-features {
+      flex: 1;
+      min-width: 280px
+    }
+
+    .feature-eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-weight: 700
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: #888;
+      padding: 8px 10px;
+      background: #0a0a0a;
+      border-radius: 4px;
+      border-left: 2px solid transparent;
+      transition: border-color .15s, color .15s;
+    }
+
+    .feature-item:hover {
+      border-left-color: currentColor;
+      color: #aaa
+    }
+
+    .feature-arrow {
+      font-size: 10px;
+      margin-top: 2px;
+      flex-shrink: 0
+    }
+
+    .feature-tags {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .feature-tag {
+      font-size: 11px;
+      color: #666;
+      background: #111;
+      border: 1px solid #222;
+      padding: 4px 10px;
+      border-radius: 20px
+    }
+
+    .product-actions {
+      width: 200px;
+      flex-shrink: 0
+    }
+
+    .actions-eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: #555;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-weight: 700
+    }
+
+    .btn-paction {
+      width: 100%;
+      border: none;
+      padding: 13px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: opacity .15s;
+      display: block;
+    }
+
+    .btn-paction:hover {
+      opacity: .85
+    }
+
+    .btn-wa-small {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--wa);
+      border: 1px solid var(--wa);
+      padding: 11px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      box-sizing: border-box;
+      transition: background .15s;
+    }
+
+    .btn-wa-small:hover {
+      background: rgba(37, 211, 102, .08)
+    }
+
+    /* ======= MODAL BASE ======= */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      background: rgba(10, 7, 5, .88);
+      backdrop-filter: blur(14px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: flex
+    }
+
+    @keyframes modal-in {
+      from {
+        opacity: 0;
+        transform: scale(.94) translateY(14px)
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0)
+      }
+    }
+
+    /* ======= DEMO COMING SOON MODAL ======= */
+    .demo-modal {
+      background: #111;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 440px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .6);
+      animation: modal-in .25s ease forwards;
+    }
+
+    .demo-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: none;
+      border: 1px solid #222;
+      color: var(--dim);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .15s;
+    }
+
+    .demo-modal-close:hover {
+      border-color: #444;
+      color: var(--paper)
+    }
+
+    /* ======= HOW IT WORKS MODAL ======= */
+    .hiw-modal {
+      background: #0f0f0f;
+      border: 1px solid #222;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, .75);
+      animation: modal-in .25s ease forwards;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .hiw-modal::-webkit-scrollbar {
+      width: 4px
+    }
+
+    .hiw-modal::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 4px
+    }
+
+    .hiw-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: 1px solid #222;
+      color: var(--dim);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .15s;
+      z-index: 2;
+    }
+
+    .hiw-modal-close:hover {
+      border-color: #444;
+      color: var(--paper)
+    }
+
+    .hiw-header {
+      padding: 36px 36px 0
+    }
+
+    .hiw-badge {
+      display: inline-block;
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 16px
+    }
+
+    .hiw-title-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 4px
+    }
+
+    .hiw-icon {
+      font-size: 2.4rem
+    }
+
+    .hiw-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      line-height: 1;
+      letter-spacing: 1px;
+      color: var(--paper)
+    }
+
+    .hiw-subtitle {
+      font-size: .78rem;
+      color: #555;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 24px
+    }
+
+    .hiw-body {
+      padding: 0 36px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px
+    }
+
+    .hiw-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px
+    }
+
+    .hiw-col-label {
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 8px
+    }
+
+    .hiw-col-text {
+      font-size: .86rem;
+      color: var(--dim);
+      line-height: 1.65
+    }
+
+    .hiw-section-label {
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 12px
+    }
+
+    .hiw-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .hiw-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .86rem;
+      color: var(--dim);
+      line-height: 1.5
+    }
+
+    .hiw-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .68rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px
+    }
+
+    .hiw-checklist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px
+    }
+
+    .hiw-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .84rem;
+      color: var(--paper)
+    }
+
+    .hiw-check .chk {
+      font-weight: 800;
+      flex-shrink: 0;
+      font-size: .9rem
+    }
+
+    .hiw-price-box {
+      background: rgba(240, 165, 0, .05);
+      border: 1px solid rgba(240, 165, 0, .18);
+      border-radius: 10px;
+      padding: 16px 18px
+    }
+
+    .hiw-price-label {
+      font-size: .7rem;
+      color: var(--dim);
+      margin-bottom: 4px
+    }
+
+    .hiw-price-val {
+      font-size: 1.15rem;
+      font-weight: 800
+    }
+
+    .hiw-cta-btn {
+      display: block;
+      text-align: center;
+      padding: 14px 24px;
+      font-weight: 800;
+      font-size: .9rem;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: .04em;
+      transition: opacity .2s;
+      background: var(--wa);
+      color: #000;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, .2);
+    }
+
+    .hiw-cta-btn:hover {
+      opacity: .9
+    }
+
+    /* WHO ITS FOR */
+    .who-section {
+      padding: 80px 5vw;
+      background: #080808
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px
+    }
+
+    .who-card {
+      background: #0f0f0f;
+      border: 1px solid #1a1a1a;
+      border-radius: 4px;
+      padding: 24px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .who-card:hover {
+      border-color: #333;
+      transform: translateY(-2px)
+    }
+
+    .who-emoji {
+      font-size: 28px;
+      margin-bottom: 12px
+    }
+
+    .who-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--paper);
+      letter-spacing: 1px;
+      margin-bottom: 8px
+    }
+
+    .who-desc {
+      font-size: 13px;
+      color: var(--dim);
+      margin-bottom: 16px;
+      line-height: 1.5
+    }
+
+    .who-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px
+    }
+
+    .who-tag {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 700;
+      letter-spacing: .5px
+    }
+
+    .who-badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 10px
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 80px 5vw;
+      text-align: center;
+      background: linear-gradient(180deg, var(--ink) 0%, rgba(224, 78, 20, .06) 50%, var(--ink) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 165, 0, .1) 0%, transparent 70%);
+      pointer-events: none;
+      filter: blur(40px);
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1
+    }
+
+    .cta-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 9vw, 4rem);
+      letter-spacing: 1px;
+      line-height: .92;
+      margin: 0 auto 16px;
+      max-width: 600px;
+    }
+
+    .cta-desc {
+      font-size: .9rem;
+      color: var(--dim);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 40px
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .btn-fire {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--fire), #F26B1D);
+      color: #fff;
+      font-weight: 700;
+      font-size: .95rem;
+      padding: 15px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(224, 78, 20, .3);
+      transition: opacity .2s;
+    }
+
+    .btn-fire:hover {
+      opacity: .9
+    }
+
+    .btn-gold-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(240, 165, 0, .35);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: .95rem;
+      padding: 15px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: border-color .2s;
+    }
+
+    .btn-gold-outline:hover {
+      border-color: var(--gold)
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      padding: 56px 5vw 32px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+      margin-bottom: 48px
+    }
+
+    .footer-brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px
+    }
+
+    .footer-desc {
+      font-size: .8rem;
+      color: rgba(245, 237, 216, .4);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      max-width: 240px
+    }
+
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-link {
+      font-size: .8rem;
+      color: rgba(245, 237, 216, .4);
+      text-decoration: none;
+      transition: color .15s
+    }
+
+    .footer-link:hover {
+      color: var(--gold)
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .footer-copy {
+      font-size: .65rem;
+      color: rgba(245, 237, 216, .2)
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px) {
+      .nav-links {
+        display: none
+      }
+
+      .hamburger {
+        display: flex
+      }
+
+      .hero-phone-col {
+        display: none
+      }
+    }
+
+    @media(max-width:600px) {
+      .product-body {
+        padding-left: 0
+      }
+
+      .product-actions {
+        width: 100%
+      }
+
+      .hiw-two-col {
+        grid-template-columns: 1fr
+      }
+
+      .hiw-checklist {
+        grid-template-columns: 1fr
+      }
+
+      .hiw-header {
+        padding: 24px 20px 0
+      }
+
+      .hiw-body {
+        padding: 0 20px 28px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== DEMO COMING SOON MODAL ========== -->
+  <div class="modal-overlay" id="demoOverlay" role="dialog" aria-modal="true">
+    <div class="demo-modal">
+      <button class="demo-modal-close" id="demoClose" aria-label="Close">✕</button>
+      <div style="font-size:2.5rem;margin-bottom:14px" id="demoIcon">🚀</div>
+      <div class="display" style="font-size:1.8rem;letter-spacing:1px;color:var(--paper);margin-bottom:8px">Demo Coming
+        Soon!</div>
+      <p style="font-size:.9rem;color:var(--dim);line-height:1.7;margin-bottom:24px" id="demoBody">We're putting the
+        finishing touches on this live demo. WhatsApp us and we'll walk you through it personally — live, right now.</p>
+      <a id="demoWaBtn" href="https://wa.me/27837195064" target="_blank" rel="noopener noreferrer"
+        style="display:flex;align-items:center;justify-content:center;gap:10px;background:var(--wa);color:#000;font-weight:800;font-size:.9rem;padding:14px;border-radius:8px;text-decoration:none;letter-spacing:.04em;box-shadow:0 6px 24px rgba(37,211,102,.2);">
+        💬 WhatsApp Us for a Live Walkthrough
+      </a>
+      <p style="font-size:.7rem;color:#444;margin-top:10px;text-align:center">No commitment · Responds fast · ZAR
+        pricing</p>
+    </div>
+  </div>
+
+  <!-- ========== HOW IT WORKS MODAL ========== -->
+  <div class="modal-overlay" id="hiwOverlay" role="dialog" aria-modal="true">
+    <div class="hiw-modal" id="hiwContent"><!-- injected --></div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="./index.html" class="nav-logo" style="display:flex;align-items:center;gap:10px"><img
+        src="./assets/logo-ls.svg" width="36" height="36" alt="LulaSync" /><span>Lula<span
+          style="color:var(--gold)">Sync</span></span></a>
+    <div class="nav-links" role="menubar">
+      <a href="./index.html" class="nav-link active">Home</a>
+      <a href="../showcase.html" class="nav-link">Showcase</a>
+      <a href="./about.html" class="nav-link">About</a>
+      <a href="../agents.html" class="nav-link">Agents</a>
+      <a href="./contact.html" class="nav-link">Contact</a>
+      <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20chat." target="_blank"
+        rel="noopener noreferrer" class="nav-cta" style="margin-left:8px">WhatsApp Us →</a>
+    </div>
+    <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="grad-line"></div>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-label="Mobile navigation">
+    <button class="close-btn" id="closeBtn" aria-label="Close menu">✕</button>
+    <div style="text-align:center">
+      <a href="./index.html" class="mobile-nav-link active">Home</a>
+      <a href="../showcase.html" class="mobile-nav-link">Showcase</a>
+      <a href="./about.html" class="mobile-nav-link">About</a>
+      <a href="../agents.html" class="mobile-nav-link">Agents</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+    <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20chat." target="_blank"
+      rel="noopener noreferrer" class="btn-wa" style="width:min(320px,80vw);justify-content:center">WhatsApp Us →</a>
+  </div>
+
+  <main>
+  </div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow-2" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-eyebrow">// South Africa's AI Automation Studio</p>
+          <h1 class="hero-h1 display">
+            <span style="color:var(--paper);display:block">We BUILD</span>
+            <span style="color:var(--paper);display:block">THE TOOLS.</span>
+            <span style="color:var(--gold);display:block">YOU RUN THE</span>
+            <span style="color:var(--gold);display:block">BUSINESS.</span>
+          </h1>
+          <div class="kente-strip short"></div>
+          <p class="hero-desc">Websites, WhatsApp ordering, AI voice agents, content dashboards, SaaS admin views,
+            software &amp; app development, and speed-to-lead automation — priced in ZAR. Startups, SMEs, and large
+            enterprises.</p>
+          <div class="hero-btns">
+            <a href="../pricing.html" rel="noopener noreferrer" class="btn-fire">Our Pricing →</a>
+            <a href="../sssf.html" class="btn-outline" style="color:#fff;border-color:rgba(255,255,255,.45)">SSSF
+              Funding →</a>
+          </div>
+          <div class="hero-trust">
+            <span>ZAR Pricing</span><span>7-Day Refund</span><span>Cancel Anytime</span>
+          </div>
+        </div>
+
+        <!-- PHONE SLIDER -->
+        <div class="hero-phone-col">
+          <div class="phone-wrap">
+            <div class="phone-shell">
+              <div class="phone-screen">
+                <div class="phone-notch"></div>
+
+                <!-- SLIDE 1: WhatsApp Chat Ordering (original) -->
+                <div class="phone-slide active" id="slide-0">
+                  <div class="wa-header">
+                    <div class="wa-avatar">🍖</div>
+                    <div style="flex:1;min-width:0">
+                      <div class="wa-title">Shisa Nyama</div>
+                      <div class="wa-sub">ZeroComm Kitchen</div>
+                    </div>
+                    <div class="wa-badge"><span>WhatsApp Ordering</span></div>
+                  </div>
+                  <div class="wa-msgs">
+                    <div class="wa-msg">Hi! What would you like to order today? 😊</div>
+                    <div class="wa-msg out">1x Lamb chops please 🔥</div>
+                    <div class="wa-msg">Got it! Lamb chops — R85. Add sides?</div>
+                    <div class="wa-msg out">Pap and chakalaka please</div>
+                    <div class="wa-msg">🧾 Total: R110. Pay via EFT or SnapScan?</div>
+                    <div class="wa-msg out">SnapScan!</div>
+                    <div class="wa-msg">✅ Order confirmed! Ready in 20 mins 🍽️</div>
+                  </div>
+                  <div class="wa-input">
+                    <div class="wa-input-field">Type a message</div>
+                    <div class="wa-send"><svg width="11" height="11" viewBox="0 0 24 24" fill="white">
+                        <path d="M2 21l21-9L2 3v7l15 2-15 2z" />
+                      </svg></div>
+                  </div>
+                </div>
+
+                <!-- SLIDE 2: WhatsApp Ordering System — Kitchen order notification -->
+                <div class="phone-slide" id="slide-1">
+                  <div class="slide2-wrap">
+                    <div class="slide2-order-header">
+                      <div class="s2-title">Mama Kofi's Kitchen 🍲</div>
+                      <div class="s2-badge">★ 4.8 · 25 min</div>
+                    </div>
+                    <!-- Menu bar -->
+                    <div
+                      style="padding:4px 8px;display:flex;gap:4px;background:#fff;border-bottom:1px solid #eee;flex-shrink:0">
+                      <span
+                        style="background:#E04E14;color:#fff;padding:2px 7px;border-radius:8px;font-size:7px;font-weight:700">Mains</span>
+                      <span
+                        style="background:#f0f0f0;color:#888;padding:2px 7px;border-radius:8px;font-size:7px;font-weight:700">Sides</span>
+                      <span
+                        style="background:#f0f0f0;color:#888;padding:2px 7px;border-radius:8px;font-size:7px;font-weight:700">Drinks</span>
+                    </div>
+                    <!-- Menu items -->
+                    <div
+                      style="flex:1;padding:6px 8px;background:#fff;display:flex;flex-direction:column;gap:4px;overflow:hidden">
+                      <!-- item 1 -->
+                      <div
+                        style="display:flex;gap:6px;padding:5px;border-radius:4px;background:#fff3ed;border:1px solid rgba(224,78,20,.2)">
+                        <div
+                          style="width:32px;height:32px;border-radius:4px;background:linear-gradient(135deg,#8b3a0a,#E04E14);flex-shrink:0">
+                        </div>
+                        <div style="flex:1;min-width:0">
+                          <div style="font-size:8px;font-weight:700;color:#222">Shisa Ribs Platter</div>
+                          <div style="font-size:7px;color:#888;margin-top:1px">ribs · pap · chakalaka</div>
+                          <div style="font-size:8px;font-weight:700;color:#E04E14;margin-top:1px">R70</div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:3px;align-self:center">
+                          <span
+                            style="width:14px;height:14px;border-radius:50%;background:#E04E14;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1">-</span>
+                          <span style="font-size:8px;font-weight:700;color:#222">2</span>
+                          <span
+                            style="width:14px;height:14px;border-radius:50%;background:#E04E14;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1">+</span>
+                        </div>
+                      </div>
+                      <!-- item 2 -->
+                      <div
+                        style="display:flex;gap:6px;padding:5px;border-radius:4px;background:#fff3ed;border:1px solid rgba(224,78,20,.2)">
+                        <div
+                          style="width:32px;height:32px;border-radius:4px;background:linear-gradient(135deg,#c98700,#F0A500);flex-shrink:0">
+                        </div>
+                        <div style="flex:1;min-width:0">
+                          <div style="font-size:8px;font-weight:700;color:#222">Slap Chips</div>
+                          <div style="font-size:7px;color:#888;margin-top:1px">large · peri salt</div>
+                          <div style="font-size:8px;font-weight:700;color:#E04E14;margin-top:1px">R40</div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:3px;align-self:center">
+                          <span
+                            style="width:14px;height:14px;border-radius:50%;background:#E04E14;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1">-</span>
+                          <span style="font-size:8px;font-weight:700;color:#222">1</span>
+                          <span
+                            style="width:14px;height:14px;border-radius:50%;background:#E04E14;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1">+</span>
+                        </div>
+                      </div>
+                      <!-- item 3 -->
+                      <div style="display:flex;gap:6px;padding:5px;border-radius:4px">
+                        <div
+                          style="width:32px;height:32px;border-radius:4px;background:linear-gradient(135deg,#555,#888);flex-shrink:0">
+                        </div>
+                        <div style="flex:1;min-width:0">
+                          <div style="font-size:8px;font-weight:700;color:#222">Beef Stew + Pap</div>
+                          <div style="font-size:7px;color:#888;margin-top:1px">slow-cooked</div>
+                          <div style="font-size:8px;font-weight:700;color:#E04E14;margin-top:1px">R85</div>
+                        </div>
+                        <div
+                          style="border:1px solid #E04E14;color:#E04E14;padding:2px 5px;border-radius:6px;font-size:7px;font-weight:700;align-self:center">
+                          + Add</div>
+                      </div>
+                    </div>
+                    <!-- Cart bar -->
+                    <div class="slide2-footer">
+                      <div class="sf-label">3 items · R205</div>
+                      <div class="sf-btn">Pay on SnapScan →</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SLIDE 3: Content Dashboard -->
+                <div class="phone-slide" id="slide-2">
+                  <div class="slide3-wrap">
+                    <div class="slide3-header">
+                      <span class="s3-title">✨ Content Dashboard</span>
+                      <span class="s3-badge">Draft</span>
+                    </div>
+                    <div class="slide3-body">
+                      <div class="slide3-grid">
+                        <div>
+                          <div class="slide3-col-label">Caption</div>
+                          <div class="slide3-caption-box"
+                            style="display:flex;align-items:center;justify-content:center">
+                            <span style="font-size:8px;color:#F0A500;font-style:normal;animation:pulse 1.4s infinite">✦
+                              AI writing...</span>
+                          </div>
+                          <div class="slide3-platforms">
+                            <span class="slide3-plat" style="background:#F0A500;color:#000">IG</span>
+                            <span class="slide3-plat" style="background:#1877F2;color:#fff">FB</span>
+                            <span class="slide3-plat"
+                              style="background:#000;color:#fff;border:1px solid #333">TikTok</span>
+                            <span class="slide3-plat" style="background:#1DA1F2;color:#fff">X</span>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="slide3-col-label">Preview</div>
+                          <div class="slide3-preview">🍲 Shisa R75</div>
+                          <div class="slide3-stats">
+                            <span>👁 2.4k</span>
+                            <span>❤ 180</span>
+                            <span>🔁 34</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slide3-schedule-btn">⚡ Generate + Schedule</div>
+                      <div class="slide3-recent">
+                        <div class="slide3-recent-label">Recent Posts</div>
+                        <div class="slide3-post">
+                          <div class="slide3-post-thumb" style="background:linear-gradient(135deg,#F0A500,#E04E14)">
+                          </div>
+                          <div class="slide3-post-info">
+                            <div class="slide3-post-title">Weekend special 🔥</div>
+                            <div class="slide3-post-meta">3 platforms · 2h ago</div>
+                          </div>
+                          <span class="slide3-post-badge"
+                            style="background:rgba(37,211,102,.15);color:#25D366">Live</span>
+                        </div>
+                        <div class="slide3-post">
+                          <div class="slide3-post-thumb" style="background:linear-gradient(135deg,#8B5CF6,#4c2d99)">
+                          </div>
+                          <div class="slide3-post-info">
+                            <div class="slide3-post-title">New menu drop 🍖</div>
+                            <div class="slide3-post-meta">4 platforms · tomorrow 9am</div>
+                          </div>
+                          <span class="slide3-post-badge"
+                            style="background:rgba(240,165,0,.15);color:#F0A500">Sched.</span>
+                        </div>
+                        <div class="slide3-post" style="border-bottom:none">
+                          <div class="slide3-post-thumb" style="background:linear-gradient(135deg,#00C2FF,#0066aa)">
+                          </div>
+                          <div class="slide3-post-info">
+                            <div class="slide3-post-title">Friday vibes ✨</div>
+                            <div class="slide3-post-meta">All platforms · Fri 12pm</div>
+                          </div>
+                          <span class="slide3-post-badge"
+                            style="background:rgba(0,194,255,.15);color:#00C2FF">Sched.</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SLIDE 4: AI Voice Agent -->
+                <div class="phone-slide" id="slide-3">
+                  <div class="slide4-wrap">
+                    <div class="slide4-top">
+                      <div class="slide4-business">Glam & Go Salon 💜</div>
+                      <div class="slide4-status">Incoming call · 00:42</div>
+                      <div class="slide4-num">+27 83 555 0142</div>
+                    </div>
+                    <div class="slide4-avatar">💜</div>
+                    <div class="slide4-wave">
+                      <span></span><span></span><span></span><span></span>
+                      <span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="slide4-transcript">"Hi, I'd like a haircut appointment Saturday morning please"</div>
+                    <div class="slide4-ai-badge">🤖 AI Voice Agent · Responding</div>
+                    <div class="slide4-actions">
+                      <div class="slide4-btn decline">📵</div>
+                      <div class="slide4-btn accept">📞</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="phone-home"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DOTS + LABEL -->
+          <div class="demo-dots" id="demoDots">
+            <button class="demo-dot active" aria-label="Demo 1" data-slide="0"></button>
+            <button class="demo-dot" aria-label="Demo 2" data-slide="1"></button>
+            <button class="demo-dot" aria-label="Demo 3" data-slide="2"></button>
+            <button class="demo-dot" aria-label="Demo 4" data-slide="3"></button>
+          </div>
+          <div class="demo-label" id="demoLabel"><span class="pulse-dot"></span> <span id="demoLabelText">Live Demo ·
+              WhatsApp Ordering Chat</span></div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="kente-strip"></div>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee-inner">
+        <span class="marquee-item">🏢 Mid-market &amp; enterprise teams<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">📦 Logistics &amp; fulfilment<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🏦 Financial &amp; professional services<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🛍️ Retail &amp; franchise groups<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🏥 Clinics &amp; health operators<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🏭 Manufacturing &amp; field services<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">☁️ SaaS &amp; internal platforms<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🎓 EdTech &amp; training platforms<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🔧 Engineering &amp; construction firms<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🏢 Mid-market &amp; enterprise teams<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">📦 Logistics &amp; fulfilment<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🏦 Financial &amp; professional services<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🛍️ Retail &amp; franchise groups<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🏥 Clinics &amp; health operators<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🏭 Manufacturing &amp; field services<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">☁️ SaaS &amp; internal platforms<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🎓 EdTech &amp; training platforms<span class="marquee-sep">◆</span></span>
+        <span class="marquee-item">🔧 Engineering &amp; construction firms<span class="marquee-sep">◆</span></span>
+      </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+      <p class="section-eyebrow">// What We Build For You</p>
+      <h2 class="section-h2">PRODUCTS &amp; SOLUTIONS.<br /><span style="color:var(--gold)">ONE
+          STUDIO.</span><br /><span
+          style="font-size:clamp(1rem,2.5vw,1.4rem);color:#555;font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.02em;text-transform:none;line-height:1.6">Startups
+          · SMEs · Medium &amp; Large Enterprises</span></h2>
+
+      <div class="product-list">
+
+        <!-- 01 Website -->
+        <div class="product-item">
+          <details>
+            <summary class="product-header">
+              <span class="product-num">01</span>
+              <div class="product-title-wrap">
+                <div class="product-name">Website</div>
+                <div class="product-tagline">Your Business Online.</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:24px">
+                <div class="product-price-wrap">
+                  <div class="product-price">from R1,500</div>
+                  <div class="product-price-sub">from R300/mo</div>
+                </div>
+                <div class="product-arrow">↗</div>
+              </div>
+            </summary>
+            <div class="product-body">
+              <div class="product-features">
+                <p class="feature-eyebrow" style="color:var(--gold)">Why businesses choose this</p>
+                <div class="feature-grid">
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Looks
+                    professional on any deveice(s)</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Works offline
+                    like an app on mobile</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Customers can
+                    install it from their browser</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Loads fast on
+                    any network</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>WhatsApp
+                    contact built-in</div>
+                  <div class="feature-item"><span class="feature-arrow"
+                      style="color:var(--gold)">▸</span>Google-friendly (SEO ready)</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>No app store
+                    needed</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Push
+                    notifications to your clients</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>You control
+                    your own content</div>
+                </div>
+                <div class="feature-tags"><span class="feature-tag">Single Page PWA: R1,500 + R300/mo</span><span
+                    class="feature-tag">Full Page PWA: R2,500 + R600/mo</span></div>
+              </div>
+              <div class="product-actions">
+                <p class="actions-eyebrow">Explore</p>
+                <button class="btn-paction" style="background:var(--gold);color:var(--ink)"
+                  onclick="openHiw('website')">Interested?</button>
+                <button class="btn-paction" style="background:#151515;color:var(--gold);border:1px solid #2a2000"
+                  onclick="openDemo('Website','🌐','https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20a%20Website.')">▶
+                  See Demo</button>
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20a%20Website."
+                  target="_blank" rel="noopener noreferrer" class="btn-wa-small">💬 WhatsApp Us</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- 02 WhatsApp Ordering -->
+        <div class="product-item">
+          <details>
+            <summary class="product-header">
+              <span class="product-num">02</span>
+              <div class="product-title-wrap">
+                <div class="product-name">WhatsApp Ordering System</div>
+                <div class="product-tagline">Your Own Uber Eats.</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:24px">
+                <div class="product-price-wrap">
+                  <div class="product-price">R3,000</div>
+                  <div class="product-price-sub">R1,000/mo</div>
+                </div>
+                <div class="product-arrow">↗</div>
+              </div>
+            </summary>
+            <div class="product-body">
+              <div class="product-features">
+                <p class="feature-eyebrow" style="color:var(--fire)">Why businesses choose this</p>
+                <div class="feature-grid">
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Customers
+                    order directly via WhatsApp</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Kitchen UI
+                    shows live incoming orders</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Admin
+                    dashboard manages stock &amp; menu</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Driver
+                    delivery tracking UI included</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Zero
+                    commission — keep all your revenue</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Payments
+                    processed via WhatsApp</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Full sales
+                    reporting and history</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Works for
+                    food, bookings, and retail</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Remembers
+                    repeat customers' orders</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>You own all
+                    your customer data</div>
+                </div>
+                <div class="feature-tags"><span class="feature-tag">Dashboard/Business App can be created that handles
+                    all your business needs</span></div>
+
+              </div>
+              <div class="product-actions">
+                <p class="actions-eyebrow">Explore</p>
+                <button class="btn-paction" style="background:var(--fire);color:#fff"
+                  onclick="openHiw('whatsapp')">Interested?</button>
+                <button class="btn-paction" style="background:#151515;color:var(--fire);border:1px solid #2a0a00"
+                  onclick="openDemo('WhatsApp Ordering System','💬','https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20a%20WhatsApp%20Ordering%20System.')">▶
+                  See Demo</button>
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20a%20WhatsApp%20Ordering%20System."
+                  target="_blank" rel="noopener noreferrer" class="btn-wa-small">💬 WhatsApp Us</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- 03 AI Voice Agents -->
+        <div class="product-item">
+          <details>
+            <summary class="product-header">
+              <span class="product-num">03</span>
+              <div class="product-title-wrap">
+                <div class="product-name">AI Voice Agents</div>
+                <div class="product-tagline">Calls. 24/7. No Staff.</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:24px">
+                <div class="product-price-wrap">
+                  <div class="product-price">from R2,500</div>
+                  <div class="product-price-sub">from R1,500/mo</div>
+                </div>
+                <div class="product-arrow">↗</div>
+              </div>
+            </summary>
+            <div class="product-body">
+              <div class="product-features">
+                <p class="feature-eyebrow" style="color:var(--purple)">Why businesses choose this</p>
+                <div class="feature-grid">
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Answers
+                    calls 24/7 with no staff needed</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Takes
+                    bookings automatically</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>SA phone
+                    number included</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Integrates
+                    with your existing calendar</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Never misses
+                    a customer call again</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Handles FAQs
+                    without human input</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Sends
+                    WhatsApp follow-ups after calls</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Full call
+                    transcripts and summaries</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Sounds
+                    natural, not robotic</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Scales with
+                    your call volume</div>
+                </div>
+                <div class="feature-tags"><span class="feature-tag">SA phone number: R400</span><span
+                    class="feature-tag">International number: R200</span></div>
+              </div>
+              <div class="product-actions">
+                <p class="actions-eyebrow">Explore</p>
+                <button class="btn-paction" style="background:var(--purple);color:#fff"
+                  onclick="openHiw('voice')">Interested?</button>
+                <button class="btn-paction" style="background:#151515;color:var(--purple);border:1px solid #1a0a2a"
+                  onclick="openDemo('AI Voice Agents','🤖','https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20AI%20Voice%20Agents.')">▶
+                  See Demo</button>
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20AI%20Voice%20Agents."
+                  target="_blank" rel="noopener noreferrer" class="btn-wa-small">💬 WhatsApp Us</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- 04 Content & SaaS Dashboard -->
+        <div class="product-item">
+          <details>
+            <summary class="product-header">
+              <span class="product-num">04</span>
+              <div class="product-title-wrap">
+                <div class="product-name">Content &amp; SaaS Dashboard</div>
+                <div class="product-tagline">Post From WhatsApp. Manage Everything.</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:24px">
+                <div class="product-price-wrap">
+                  <div class="product-price">R5,000</div>
+                  <div class="product-price-sub">R1,500/mo</div>
+                </div>
+                <div class="product-arrow">↗</div>
+              </div>
+            </summary>
+            <div class="product-body">
+              <div class="product-features">
+                <p class="feature-eyebrow" style="color:var(--wa)">What's included</p>
+                <div class="feature-grid">
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>Post to all
+                    social platforms with one message</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>Schedule content
+                    weeks in advance</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>Create posts
+                    directly from WhatsApp</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>AI writes
+                    captions in your brand voice</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>Instagram,
+                    Facebook, TikTok, X (Twitter)</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>Unlimited posts,
+                    flat monthly fee</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>SaaS admin panel
+                    with role-based access</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>User &amp;
+                    subscription management</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>Billing,
+                    invoicing &amp; payment hooks</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>KPI widgets:
+                    MRR, churn, active users</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>Audit logs &amp;
+                    activity feed per user</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--wa)">▸</span>White-label
+                    ready — your brand, your domain</div>
+                </div>
+                <div class="feature-tags"><span class="feature-tag">Content scheduler</span><span
+                    class="feature-tag">SaaS admin panel</span><span class="feature-tag">Billing module</span><span
+                    class="feature-tag">Analytics dashboard</span></div>
+              </div>
+              <div class="product-actions">
+                <p class="actions-eyebrow">Explore</p>
+                <button class="btn-paction" style="background:var(--wa);color:#000"
+                  onclick="openHiw('content')">Interested?</button>
+                <button class="btn-paction" style="background:#151515;color:var(--wa);border:1px solid #0a2010"
+                  onclick="openDemo('Content & SaaS Dashboard','📊','https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20the%20Content%20Dashboard.')">▶
+                  See Demo</button>
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20the%20Content%20Dashboard."
+                  target="_blank" rel="noopener noreferrer" class="btn-wa-small">💬 WhatsApp Us</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- 05 Speed to Lead -->
+        <div class="product-item">
+          <details>
+            <summary class="product-header">
+              <span class="product-num">05</span>
+              <div class="product-title-wrap">
+                <div class="product-name">Speed to Lead</div>
+                <div class="product-tagline">First Reply in Seconds.</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:24px">
+                <div class="product-price-wrap">
+                  <div class="product-price">R4,500</div>
+                  <div class="product-price-sub">from R1,000/mo</div>
+                </div>
+                <div class="product-arrow">↗</div>
+              </div>
+            </summary>
+            <div class="product-body">
+              <div class="product-features">
+                <p class="feature-eyebrow" style="color:var(--gold)">Why businesses choose this</p>
+                <div class="feature-grid">
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Responds to
+                    new leads in seconds</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Works around
+                    the clock, while you sleep</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Qualifies
+                    leads automatically</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Books
+                    appointments without human input</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Follows up if
+                    the lead doesn't reply</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Works with
+                    WhatsApp and email</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Syncs with
+                    your CRM or Google Sheets</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>More
+                    conversions from the same leads</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>No staff
+                    needed to handle first contact</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>See every
+                    lead's live status in one place</div>
+                </div>
+              </div>
+              <div class="product-actions">
+                <p class="actions-eyebrow">Explore</p>
+                <button class="btn-paction" style="background:var(--gold);color:var(--ink)"
+                  onclick="openHiw('speedtolead')">Interested?</button>
+                <button class="btn-paction" style="background:#151515;color:var(--gold);border:1px solid #2a2000"
+                  onclick="openDemo('Speed to Lead','⚡','https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20Speed%20to%20Lead.')">▶
+                  See Demo</button>
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20Speed%20to%20Lead."
+                  target="_blank" rel="noopener noreferrer" class="btn-wa-small">💬 WhatsApp Us</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- 06 Custom & Automated -->
+        <div class="product-item">
+          <details>
+            <summary class="product-header">
+              <span class="product-num">06</span>
+              <div class="product-title-wrap">
+                <div class="product-name">Custom &amp; Automated Services</div>
+                <div class="product-tagline">Automations that match how you already work.</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:24px">
+                <div class="product-price-wrap">
+                  <div class="product-price">From quote</div>
+                  <div class="product-price-sub">Scoped to your build</div>
+                </div>
+                <div class="product-arrow">↗</div>
+              </div>
+            </summary>
+            <div class="product-body">
+              <div class="product-features">
+                <p class="feature-eyebrow" style="color:var(--cyan)">Why teams choose this</p>
+                <div class="feature-grid">
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--cyan)">▸</span>Workflows
+                    across email, WhatsApp, sheets, and your CRM</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--cyan)">▸</span>Scheduled
+                    jobs, reminders, and alerts instead of manual chasing</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--cyan)">▸</span>Validation,
+                    deduping, and audit trails you can trust</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--cyan)">▸</span>Integrations
+                    with tools you already pay for</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--cyan)">▸</span>Clear handover
+                    docs so your team can operate it</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--cyan)">▸</span>Not limited to
+                    the services listed — tell me the outcome you need</div>
+                </div>
+              </div>
+              <div class="product-actions">
+                <p class="actions-eyebrow">Explore</p>
+                <button class="btn-paction" style="background:var(--cyan);color:var(--ink)"
+                  onclick="openHiw('custom')">Interested?</button>
+                <button class="btn-paction" style="background:#151515;color:var(--cyan);border:1px solid #001a20"
+                  onclick="openDemo('Custom & Automated Services','⚙️','https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20custom%20automated%20services.')">▶
+                  See Demo</button>
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20custom%20automated%20services."
+                  target="_blank" rel="noopener noreferrer" class="btn-wa-small">💬 WhatsApp Us</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- 07 UX/UI -->
+        <div class="product-item">
+          <details>
+            <summary class="product-header">
+              <span class="product-num">07</span>
+              <div class="product-title-wrap">
+                <div class="product-name">UX / UI Design</div>
+                <div class="product-tagline">Screens people actually finish.</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:24px">
+                <div class="product-price-wrap">
+                  <div class="product-price">From R4,000</div>
+                  <div class="product-price-sub">Sprint-based</div>
+                </div>
+                <div class="product-arrow">↗</div>
+              </div>
+            </summary>
+            <div class="product-body">
+              <div class="product-features">
+                <p class="feature-eyebrow" style="color:var(--purple)">Sample deliverables</p>
+                <div class="feature-grid">
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>IA map:
+                    primary journeys for admins vs customers</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>UI kit:
+                    buttons, tables, filters, and modal patterns</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Responsive
+                    layouts for 360px–1440px breakpoints</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Prototype
+                    pack for stakeholder sign-off</div>
+                  <div class="feature-item"><span class="feature-arrow"
+                      style="color:var(--purple)">▸</span>Accessibility pass: contrast, focus order, hit targets</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--purple)">▸</span>Empty
+                    states, errors, and onboarding microcopy set</div>
+                </div>
+                <div class="feature-tags"><span class="feature-tag">Design system starter</span><span
+                    class="feature-tag">Clickable review prototype</span></div>
+              </div>
+              <div class="product-actions">
+                <p class="actions-eyebrow">Explore</p>
+                <button class="btn-paction" style="background:var(--purple);color:#fff"
+                  onclick="openHiw('uxui')">Interested?</button>
+                <button class="btn-paction" style="background:#151515;color:var(--purple);border:1px solid #1a0a2a"
+                  onclick="openDemo('UX / UI Design','🎨','https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20UX%2FUI%20design%20support.')">▶
+                  See Demo</button>
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20UX%2FUI%20design%20support."
+                  target="_blank" rel="noopener noreferrer" class="btn-wa-small">💬 WhatsApp Us</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- 08 Software / App Development -->
+        <div class="product-item">
+          <details>
+            <summary class="product-header">
+              <span class="product-num">08</span>
+              <div class="product-title-wrap">
+                <div class="product-name">Software / App Development</div>
+                <div class="product-tagline">Web Apps · PWA · Mobile · Backend Systems.</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:24px">
+                <div class="product-price-wrap">
+                  <div class="product-price">From R8,000</div>
+                  <div class="product-price-sub">Optional retainer</div>
+                </div>
+                <div class="product-arrow">↗</div>
+              </div>
+            </summary>
+            <div class="product-body">
+              <div class="product-features">
+                <p class="feature-eyebrow" style="color:var(--gold)">What I build</p>
+                <div class="feature-grid">
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Progressive
+                    Web Apps (PWA): offline, install prompts, push notifications</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Trusted Web
+                    Activities (TWA): ship to Google Play with native splash</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Full-stack web
+                    apps: React / Next.js + Node or Python backends</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>REST &amp;
+                    GraphQL APIs: secure, documented, ready for integration</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Database
+                    design: PostgreSQL, Firebase, Supabase</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Auth: JWT,
+                    OAuth, role-based access control</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Cloud
+                    deployment: Vercel, Railway, AWS, or SA host</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Performance
+                    tested on real 3G/LTE profiles</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Enterprise
+                    portals: HR, ops dashboards, approval workflows</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--gold)">▸</span>Full code
+                    handover — no walled garden</div>
+                </div>
+                <div class="feature-tags"><span class="feature-tag">PWA install flow</span><span class="feature-tag">TWA
+                    Play release</span><span class="feature-tag">Full-stack web app</span><span class="feature-tag">API
+                    development</span><span class="feature-tag">Enterprise portals</span></div>
+              </div>
+              <div class="product-actions">
+                <p class="actions-eyebrow">Explore</p>
+                <button class="btn-paction" style="background:var(--gold);color:var(--ink)"
+                  onclick="openHiw('software')">Interested?</button>
+                <button class="btn-paction" style="background:#151515;color:var(--gold);border:1px solid #2a2000"
+                  onclick="openDemo('Software / App Development','💻','https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20exploring%20software%20development.')">▶
+                  See Demo</button>
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20exploring%20software%20development."
+                  target="_blank" rel="noopener noreferrer" class="btn-wa-small">💬 WhatsApp Us</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- 09 Enterprise -->
+        <div class="product-item">
+          <details>
+            <summary class="product-header">
+              <span class="product-num">09</span>
+              <div class="product-title-wrap">
+                <div class="product-name">Enterprise &amp; Large Business Solutions</div>
+                <div class="product-tagline">Scale-grade systems for mid-market &amp; corporate teams.</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:24px">
+                <div class="product-price-wrap">
+                  <div class="product-price">Custom quote</div>
+                  <div class="product-price-sub">Retainer available</div>
+                </div>
+                <div class="product-arrow">↗</div>
+              </div>
+            </summary>
+            <div class="product-body">
+              <div class="product-features">
+                <p class="feature-eyebrow" style="color:var(--fire)">Built for teams that need more</p>
+                <div class="feature-grid">
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Multi-branch
+                    &amp; multi-tenant architectures</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>ERP &amp; CRM
+                    integrations (Salesforce, SAP, HubSpot)</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Internal ops
+                    portals: procurement, HR, approvals, compliance</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Executive
+                    reporting dashboards with drill-down analytics</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>AI-powered
+                    document processing &amp; data extraction</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Secure SSO
+                    &amp; enterprise-grade authentication</div>
+                  <div class="feature-item"><span class="feature-arrow"
+                      style="color:var(--fire)">▸</span>POPIA-compliant data handling &amp; audit trails</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Load-tested
+                    APIs for high transaction volumes</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Dedicated SLA
+                    &amp; support retainer</div>
+                  <div class="feature-item"><span class="feature-arrow" style="color:var(--fire)">▸</span>Discovery
+                    workshop before any code is written</div>
+                </div>
+                <div class="feature-tags"><span class="feature-tag">Multi-tenant SaaS</span><span
+                    class="feature-tag">ERP integration</span><span class="feature-tag">POPIA compliant</span><span
+                    class="feature-tag">SLA retainer</span><span class="feature-tag">Enterprise SSO</span></div>
+              </div>
+              <div class="product-actions">
+                <p class="actions-eyebrow">Explore</p>
+                <button class="btn-paction" style="background:var(--fire);color:#fff"
+                  onclick="openHiw('enterprise')">Interested?</button>
+                <button class="btn-paction" style="background:#151515;color:var(--fire);border:1px solid #2a0a00"
+                  onclick="openDemo('Enterprise Solutions','🏢','https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20discuss%20enterprise%20solutions.')">▶
+                  See Demo</button>
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20discuss%20enterprise%20solutions."
+                  target="_blank" rel="noopener noreferrer" class="btn-wa-small">💬 WhatsApp Us</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="kente-strip"></div>
+
+    <!-- WHO IT'S FOR -->
+    <section class="who-section">
+      <p class="section-eyebrow">// Who It's For</p>
+      <h2 class="section-h2" style="margin-bottom:16px">IF YOU RUN A<br /><span style="color:var(--gold)">BUSINESS IN
+          SA,</span><br />THIS IS FOR YOU.</h2>
+      <p style="font-size:clamp(.9rem,2vw,1rem);color:var(--dim);margin-bottom:48px;max-width:520px">From founder-led
+        startups to multi-branch operators and large enterprises — I build tools for South African businesses at every
+        stage.</p>
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="who-badge"
+            style="color:var(--wa);background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2)">Startup /
+            Independent</div>
+          <div class="who-emoji">🍽️</div>
+          <h3 class="who-title">Restaurants &amp; Events/Caterers</h3>
+          <p class="who-desc">WhatsApp ordering, voice booking agent, content posting</p>
+          <div class="who-tags">
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">WhatsApp
+              Ordering</span>
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">AI Voice
+              Agents</span>
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Content
+              Dashboard</span>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-badge"
+            style="color:var(--wa);background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2)">Startup /
+            Independent</div>
+          <div class="who-emoji">✂️</div>
+          <h3 class="who-title">Salons &amp; Beauty</h3>
+          <p class="who-desc">Online bookings, speed to lead, automated WhatsApp replies</p>
+          <div class="who-tags">
+            <span class="who-tag"
+              style="color:var(--purple);background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2)">AI Voice
+              Agents</span>
+            <span class="who-tag"
+              style="color:var(--purple);background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2)">Speed to
+              Lead</span>
+            <span class="who-tag"
+              style="color:var(--purple);background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2)">Website</span>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-badge"
+            style="color:var(--wa);background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2)">Startup /
+            Independent</div>
+          <div class="who-emoji">🔧</div>
+          <h3 class="who-title">Service Businesses</h3>
+          <p class="who-desc">Lead capture, instant response, bookings &amp; follow-ups</p>
+          <div class="who-tags">
+            <span class="who-tag"
+              style="color:var(--cyan);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.2)">Speed to
+              Lead</span>
+            <span class="who-tag"
+              style="color:var(--cyan);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.2)">AI Voice
+              Agents</span>
+            <span class="who-tag"
+              style="color:var(--cyan);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.2)">Website</span>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-badge"
+            style="color:var(--gold);background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2)">SME</div>
+          <div class="who-emoji">🏥</div>
+          <h3 class="who-title">Clinics &amp; Practitioners</h3>
+          <p class="who-desc">Appointment booking, 24/7 phone answering, patient follow-ups</p>
+          <div class="who-tags">
+            <span class="who-tag"
+              style="color:var(--wa);background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2)">AI Voice
+              Agents</span>
+            <span class="who-tag"
+              style="color:var(--wa);background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2)">Speed to
+              Lead</span>
+            <span class="who-tag"
+              style="color:var(--wa);background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2)">Custom
+              Automation</span>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-badge"
+            style="color:var(--gold);background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2)">SME</div>
+          <div class="who-emoji">🛍️</div>
+          <h3 class="who-title">Retail &amp; Omnichannel</h3>
+          <p class="who-desc">Online store via WhatsApp, social media content, customer comms</p>
+          <div class="who-tags">
+            <span class="who-tag"
+              style="color:var(--gold);background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2)">WhatsApp
+              Ordering</span>
+            <span class="who-tag"
+              style="color:var(--gold);background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2)">Content
+              Dashboard</span>
+            <span class="who-tag"
+              style="color:var(--gold);background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2)">Website</span>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-badge"
+            style="color:var(--gold);background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2)">SME</div>
+          <div class="who-emoji">🎪</div>
+          <h3 class="who-title">Events &amp; Caterers</h3>
+          <p class="who-desc">Bookings, WhatsApp orders, content across social platforms</p>
+          <div class="who-tags">
+            <span class="who-tag"
+              style="color:var(--gold);background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2)">WhatsApp
+              Ordering</span>
+            <span class="who-tag"
+              style="color:var(--gold);background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2)">Content
+              Dashboard</span>
+            <span class="who-tag"
+              style="color:var(--gold);background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2)">Speed to
+              Lead</span>
+          </div>
+        </div>
+        <div class="who-card" style="border-color:#2a1a05">
+          <div class="who-badge"
+            style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Medium &amp;
+            Large Business</div>
+          <div class="who-emoji">🏦</div>
+          <h3 class="who-title">Financial &amp; Professional Services</h3>
+          <p class="who-desc">Client portals, document automation, compliance workflows for law firms, accountants &amp;
+            advisors</p>
+          <div class="who-tags">
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Enterprise
+              Solutions</span>
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Custom
+              Automation</span>
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">App
+              Development</span>
+          </div>
+        </div>
+        <div class="who-card" style="border-color:#2a1a05">
+          <div class="who-badge"
+            style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Medium &amp;
+            Large Business</div>
+          <div class="who-emoji">🏭</div>
+          <h3 class="who-title">Manufacturing &amp; Field Services</h3>
+          <p class="who-desc">Job cards, fleet tracking, field ops dashboards and procurement workflows</p>
+          <div class="who-tags">
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Enterprise
+              Solutions</span>
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">App
+              Development</span>
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Custom
+              Automation</span>
+          </div>
+        </div>
+        <div class="who-card" style="border-color:#2a1a05">
+          <div class="who-badge"
+            style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Medium &amp;
+            Large Business</div>
+          <div class="who-emoji">☁️</div>
+          <h3 class="who-title">SaaS &amp; Internal Platforms</h3>
+          <p class="who-desc">Multi-tenant SaaS, ERP integrations and executive reporting for corporate and tech teams
+          </p>
+          <div class="who-tags">
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Enterprise
+              Solutions</span>
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">SaaS
+              Dashboard</span>
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">App
+              Development</span>
+          </div>
+        </div>
+        <div class="who-card" style="border-color:#2a1a05">
+          <div class="who-badge"
+            style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Medium &amp;
+            Large Business</div>
+          <div class="who-emoji">📦</div>
+          <h3 class="who-title">Logistics &amp; Retail Chains</h3>
+          <p class="who-desc">Order management, driver tracking, franchise dashboards and inventory automation</p>
+          <div class="who-tags">
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Enterprise
+              Solutions</span>
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">Custom
+              Automation</span>
+            <span class="who-tag"
+              style="color:var(--fire);background:rgba(224,78,20,.08);border:1px solid rgba(224,78,20,.2)">WhatsApp
+              Ordering</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="kente-strip"></div>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="cta-inner">
+        <div class="kente-strip" style="width:120px;margin:0 auto 32px"></div>
+        <p class="section-eyebrow" style="margin-bottom:10px">// Get Started</p>
+        <h2 class="cta-h2">Your roadmap deserves<br /><span style="color:var(--gold)">a senior builder.</span></h2>
+        <p class="cta-desc">We help teams ship faster: clearer digital solutions, calmer operations, and customer
+          journeys that
+          convert — whether you need WhatsApp, web, voice, or a full custom stack.</p>
+        <div class="cta-btns">
+          <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%20want%20an%20app%20for%20my%20business."
+            target="_blank" rel="noopener noreferrer" class="btn-fire">💬 Start on WhatsApp</a>
+          <a href="../apply.html" class="btn-gold-outline">Become an Agent →</a>
+          <a href="../sssf.html" class="btn-gold-outline" style="color:#fff;border-color:rgba(255,255,255,.45)">Need
+            Govt funding? We can help you with SSF Grant →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="./index.html" class="nav-logo"
+          style="display:flex;align-items:center;gap:10px; margin-bottom: 14px !important;"><img
+            src="./assets/logo-ls.svg" width="36" height="36" alt="LulaSync" /><span>Lula<span
+              style="color:var(--gold)">Sync</span></span></a>
+        <p class="footer-desc">Your one stop Custom/end to end software, automation, UX/UI, PWAs, and WhatsApp
+          ordering systems and more for South African teams — from startups to large enterprises.</p>
+        <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%20want%20an%20app%20for%20my%20business."
+          target="_blank" rel="noopener noreferrer" class="btn-wa" style="font-size:.78rem;padding:9px 18px">💬 WhatsApp
+          Us</a>
+      </div>
+      <div>
+        <p class="footer-col-title">Products</p>
+        <div class="footer-links">
+          <a href="../showcase.html" class="footer-link">App showcase</a>
+          <a href="../pricing.html" class="footer-link">Pricing &amp; catalogue</a>
+          <a href="index.html#products" class="footer-link">Solutions (home)</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <div class="footer-links">
+          <a href="about.html" class="footer-link">About Us</a>
+          <a href="contact.html" class="footer-link">Contact</a>
+          <a href="../agents.html" class="footer-link">Become an Agent</a>
+          <a href="" class="footer-link">Terms and Conditions</a>
+          <a href="" class="footer-link">Privacy Policy</a>
+
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 LulaSync · Built with love in South Africa 🇿🇦</p>
+      <p class="footer-copy">Building software for South African businesses.</p>
+    </div>
+  </footer>
+
+  <script src="assets/chat-widget.js" defer></script>
+  <script>
+    // ===================== PHONE SLIDER =====================
+    const SLIDE_LABELS = [
+      'Live Demo · WhatsApp Ordering Chat',
+      'Live Demo · WhatsApp Ordering System',
+      'Live Demo · Content Dashboard',
+      'Live Demo · AI Voice Agent'
+    ];
+
+    let currentSlide = 0;
+    let autoSlideTimer = null;
+
+    function goToSlide(index) {
+      const slides = document.querySelectorAll('.phone-slide');
+      const dots = document.querySelectorAll('.demo-dot');
+      const label = document.getElementById('demoLabelText');
+
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+
+      currentSlide = index;
+
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+      label.textContent = SLIDE_LABELS[currentSlide];
+    }
+
+    function startAutoSlide() {
+      autoSlideTimer = setInterval(() => {
+        goToSlide((currentSlide + 1) % 4);
+      }, 4000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideTimer);
+      startAutoSlide();
+    }
+
+    document.querySelectorAll('.demo-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        goToSlide(parseInt(dot.dataset.slide));
+        resetAutoSlide();
+      });
+    });
+
+    startAutoSlide();
+
+    // ===================== HOW IT WORKS DATA =====================
+    const HIW = {
+      website: {
+        icon: '🌐', accent: 'var(--gold)', badge: 'Website · How It Works',
+        title: 'Website', sub: 'Single Page PWA · Full Site · Business Online',
+        prob: 'You don\'t have a professional online presence. Customers can\'t find you, and you\'re losing business to competitors who have websites.',
+        sol: 'A fast, mobile-first website (PWA) that looks great, loads on any network, works offline, and is built and hosted for you — priced in ZAR.',
+        steps: ['You send me your logo, colours, and a brief about your business via WhatsApp', 'I design and build your site — usually delivered within 5–7 business days', 'You review, request changes, and approve before it goes live', 'I host and maintain it on an ongoing monthly plan — you just run your business'],
+        gets: ['Professional mobile-first design', 'Offline-capable PWA (installable)', 'WhatsApp contact button built-in', 'Google SEO ready', 'Push notifications to clients', 'You control your content'],
+        price: 'from R1,500 setup + R300/mo',
+        wa: 'https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20a%20Website.'
+      },
+      whatsapp: {
+        icon: '💬', accent: 'var(--fire)', badge: 'WhatsApp Ordering System · How It Works',
+        title: 'WhatsApp Ordering', sub: 'Your Own Uber Eats · Zero Commission',
+        prob: 'You\'re losing 25–30% of every order to platforms like Uber Eats or Mr D. You don\'t own your customer data and have no control over your brand.',
+        sol: 'An AI-powered ordering bot on your WhatsApp number that handles orders, payments, and delivery tracking — and you keep 100% of your revenue.',
+        steps: ['You share your menu, pricing, and delivery zones with me via WhatsApp', 'I build your ordering bot, kitchen dashboard, and driver tracking UI', 'We test end-to-end: customer orders → kitchen receives → driver dispatched', 'Go live — customers order directly from your existing WhatsApp number'],
+        gets: ['WhatsApp ordering bot (24/7)', 'Live kitchen order dashboard', 'Driver delivery tracking UI', 'Admin menu & stock management', 'Zero commission on all orders', 'Full sales reporting & history'],
+        price: 'R3,000 setup + R1,000/mo',
+        wa: 'https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20a%20WhatsApp%20Ordering%20System.'
+      },
+      voice: {
+        icon: '🤖', accent: 'var(--purple)', badge: 'AI Voice Agents · How It Works',
+        title: 'AI Voice Agents', sub: 'Calls. 24/7. No Staff Required.',
+        prob: 'Your phone rings at all hours — you can\'t afford staff to answer every call, and you\'re losing bookings to every missed call.',
+        sol: 'An AI voice agent with a real SA phone number that answers every call, takes bookings into your calendar, and sends WhatsApp follow-ups — automatically.',
+        steps: ['You tell me your FAQs, booking process, and business hours in a WhatsApp voice note', 'I train and configure the AI agent on your specific business data', 'We test live calls together and refine the voice and responses', 'Go live — the agent answers every call while you focus on your work'],
+        gets: ['SA phone number included', '24/7 automated call answering', 'Bookings direct into your calendar', 'WhatsApp follow-up after each call', 'Full call transcripts & summaries', 'Handles FAQs without human input'],
+        price: 'from R2,500 setup + R1,500/mo',
+        wa: 'https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20AI%20Voice%20Agents.'
+      },
+      content: {
+        icon: '📊', accent: 'var(--wa)', badge: 'Content & SaaS Dashboard · How It Works',
+        title: 'Content & SaaS Dashboard', sub: 'Post Once. Appear Everywhere. Manage Everything.',
+        prob: 'You spend hours manually posting on multiple platforms — or you forget entirely. You also have no centralised place to manage your users, billing, and business data.',
+        sol: 'Post once from WhatsApp and it goes everywhere. Plus a full SaaS admin panel to manage users, billing, and analytics — all in one dashboard.',
+        steps: ['Connect your social accounts and share your brand voice guidelines with me', 'I build your content scheduling dashboard and SaaS admin panel', 'You post to WhatsApp — AI writes captions and schedules across all platforms', 'Monitor analytics, manage subscriptions, and track billing from one place'],
+        gets: ['Post to all platforms from WhatsApp', 'AI captions in your brand voice', 'Schedule content weeks ahead', 'SaaS admin: user & subscription mgmt', 'Billing, invoicing & payment hooks', 'KPI widgets: MRR, churn, active users'],
+        price: 'R5,000 setup + R1,500/mo',
+        wa: 'https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20the%20Content%20%26%20SaaS%20Dashboard.'
+      },
+      speedtolead: {
+        icon: '⚡', accent: 'var(--gold)', badge: 'Speed to Lead · How It Works',
+        title: 'Speed to Lead', sub: 'First Reply in Seconds · Never Lose a Lead Again',
+        prob: 'New leads enquire but you only see the message hours later. By then they\'ve moved on to a competitor who replied first.',
+        sol: 'An automated system that replies to every new lead in seconds, qualifies them, books a meeting, and follows up if they go quiet — without you lifting a finger.',
+        steps: ['Connect your lead sources: website forms, Facebook ads, WhatsApp, or email', 'I build your qualification flow, response templates, and booking integration', 'We test the full journey from new enquiry to booked appointment', 'Go live — every lead gets a reply in under 60 seconds, 24/7'],
+        gets: ['Replies in under 60 seconds', 'Works 24/7 including public holidays', 'Qualifies leads automatically', 'Books appointments without human input', 'Follows up cold leads automatically', 'Live lead pipeline dashboard'],
+        price: 'R4,500 setup + from R1,000/mo',
+        wa: 'https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20interested%20in%20Speed%20to%20Lead.'
+      },
+      custom: {
+        icon: '⚙️', accent: 'var(--cyan)', badge: 'Custom & Automated Services · How It Works',
+        title: 'Custom & Automation', sub: 'Workflows Built Around Your Business',
+        prob: 'Your team wastes hours on repetitive tasks: chasing documents, copying data between systems, sending manual reminders, or building reports by hand.',
+        sol: 'I map your current process, identify everything that can be automated, and build exactly what you need — workflows that run without anyone babysitting them.',
+        steps: ['You walk me through your process via WhatsApp voice note or a quick call', 'I scope the automation, propose a solution, and provide a quote', 'I build, test, and document the workflow end-to-end', 'Handover includes full docs so your team can operate it independently'],
+        gets: ['Process mapped before any code', 'Integrates with tools you already use', 'Scheduled jobs, reminders & alerts', 'Validation, deduping & audit trails', 'Full handover documentation', 'Ongoing support available'],
+        price: 'From quote — scoped to your build',
+        wa: 'https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20custom%20automated%20services.'
+      },
+      uxui: {
+        icon: '🎨', accent: 'var(--purple)', badge: 'UX / UI Design · How It Works',
+        title: 'UX / UI Design', sub: 'Screens People Actually Finish',
+        prob: 'Your product has high drop-off rates. Users get confused, miss key actions, or abandon forms halfway — and you don\'t know why.',
+        sol: 'A structured UX sprint that maps your user journeys, redesigns problem screens, and delivers a clickable prototype ready for stakeholder sign-off.',
+        steps: ['Discovery: I review your existing product, analytics, and user feedback', 'IA mapping: I define the primary journeys for each user type (admin vs customer)', 'Design: UI kit, responsive layouts, and interactive clickable prototype', 'Handover: annotated designs, component specs, and developer-ready files'],
+        gets: ['IA map: admin vs customer journeys', 'UI kit: buttons, tables, modals, filters', 'Responsive 360px–1440px layouts', 'Clickable prototype for sign-off', 'Accessibility audit: contrast & focus', 'Onboarding microcopy & error states'],
+        price: 'From R4,000 — sprint-based',
+        wa: 'https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20UX%2FUI%20design%20support.'
+      },
+      software: {
+        icon: '💻', accent: 'var(--gold)', badge: 'Software / App Development · How It Works',
+        title: 'Software / App Dev', sub: 'Web Apps · PWA · Mobile · Backend Systems',
+        prob: 'You need a custom software product — a web app, internal tool, or mobile-ready platform — but dev agencies want R80k+ and take 6 months to deliver.',
+        sol: 'I build production-grade web apps, PWAs, and backend systems using modern stacks — fast, affordable, with full code ownership handed over to you.',
+        steps: ['Discovery call: I learn your requirements, target users, and tech constraints', 'Proposal: I scope the build, stack, timeline, and cost clearly in ZAR', 'Development: iterative sprints with regular demos for your feedback', 'Delivery: deployed, documented, and fully handed over — the code is yours'],
+        gets: ['PWA with offline & push notifications', 'Full-stack: React/Next.js + Node/Python', 'REST & GraphQL APIs, documented', 'Auth: JWT, OAuth, role-based access', 'Cloud deployment on your host of choice', 'Full code handover — no walled garden'],
+        price: 'From R8,000 — optional retainer',
+        wa: 'https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20exploring%20software%20development.'
+      },
+      enterprise: {
+        icon: '🏢', accent: 'var(--fire)', badge: 'Enterprise Solutions · How It Works',
+        title: 'Enterprise Solutions', sub: 'Scale-Grade Systems for Mid-Market & Corporate',
+        prob: 'Your business has outgrown off-the-shelf tools. You need multi-branch systems, ERP integrations, compliance controls, or a bespoke internal platform.',
+        sol: 'A senior-led discovery process followed by a bespoke system built to your exact spec — POPIA compliant, load-tested, with a dedicated SLA and ongoing retainer.',
+        steps: ['Discovery workshop: I map your people, processes, data flows, and compliance needs', 'Architecture proposal: tech stack, integrations, security, and delivery phases', 'Phased delivery: core system first, enhancements next — you see progress early', 'Handover & SLA: staff training, documentation, and dedicated support retainer'],
+        gets: ['Multi-branch & multi-tenant architecture', 'ERP/CRM integrations (SAP, Salesforce)', 'POPIA-compliant data & audit trails', 'SSO & enterprise-grade auth', 'Executive dashboards with drill-down', 'Dedicated SLA & support retainer'],
+        price: 'Custom quote — retainer available',
+        wa: 'https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20discuss%20enterprise%20solutions.'
+      }
+    };
+
+    function openHiw(key) {
+      const d = HIW[key]; if (!d) return;
+      const stepsHtml = d.steps.map((s, i) => `
+    <div class="hiw-step">
+      <div class="hiw-step-num" style="background:${d.accent}22;color:${d.accent}">${i + 1}</div>
+      <div>${s}</div>
+    </div>`).join('');
+      const getsHtml = d.gets.map(g => `
+    <div class="hiw-check">
+      <span class="chk" style="color:${d.accent}">✓</span>
+      <span>${g}</span>
+    </div>`).join('');
+      document.getElementById('hiwContent').innerHTML = `
+    <button class="hiw-modal-close" onclick="closeHiw()">✕</button>
+    <div class="hiw-header">
+      <div class="hiw-badge" style="color:${d.accent};background:${d.accent}12;border:1px solid ${d.accent}40">${d.badge}</div>
+      <div class="hiw-title-row">
+        <span class="hiw-icon">${d.icon}</span>
+        <div class="hiw-title display">${d.title}</div>
+      </div>
+      <div class="hiw-subtitle">${d.sub}</div>
+    </div>
+    <div class="hiw-body">
+      <div class="hiw-two-col">
+        <div>
+          <div class="hiw-col-label" style="color:var(--fire)">The Problem</div>
+          <div class="hiw-col-text">${d.prob}</div>
+        </div>
+        <div>
+          <div class="hiw-col-label" style="color:${d.accent}">The Solution</div>
+          <div class="hiw-col-text">${d.sol}</div>
+        </div>
+      </div>
+      <div>
+        <div class="hiw-section-label">How It Works — Step by Step</div>
+        <div class="hiw-steps">${stepsHtml}</div>
+      </div>
+      <div>
+        <div class="hiw-section-label">What You Get</div>
+        <div class="hiw-checklist">${getsHtml}</div>
+      </div>
+      <div class="hiw-price-box">
+        <div class="hiw-price-label">Starting from</div>
+        <div class="hiw-price-val" style="color:${d.accent}">${d.price}</div>
+      </div>
+      <a class="hiw-cta-btn" href="${d.wa}" target="_blank" rel="noopener noreferrer">💬 WhatsApp Us to Get Started</a>
+    </div>`;
+      document.getElementById('hiwOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeHiw() {
+      document.getElementById('hiwOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function openDemo(name, icon, wa) {
+      document.getElementById('demoIcon').textContent = icon;
+      document.getElementById('demoBody').textContent = "We're putting the finishing touches on the live " + name + " demo. In the meantime, WhatsApp us and we'll walk you through it personally — live, right now.";
+      document.getElementById('demoWaBtn').href = wa;
+      document.getElementById('demoOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDemo() {
+      document.getElementById('demoOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('demoClose').addEventListener('click', closeDemo);
+    document.getElementById('demoOverlay').addEventListener('click', e => { if (e.target === document.getElementById('demoOverlay')) closeDemo(); });
+    document.getElementById('hiwOverlay').addEventListener('click', e => { if (e.target === document.getElementById('hiwOverlay')) closeHiw(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDemo(); closeHiw(); } });
+
+    // Mobile nav
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const overlay = document.getElementById('mobileOverlay');
+    menuBtn.addEventListener('click', () => { overlay.classList.add('open'); menuBtn.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; });
+    closeBtn.addEventListener('click', () => { overlay.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; });
+    overlay.querySelectorAll('.mobile-nav-link').forEach(l => { l.addEventListener('click', () => { overlay.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }); });
+  </script>
+</body>
+
+</html>

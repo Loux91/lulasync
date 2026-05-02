@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0A0705" />
+    <title>App Showcase | LulaSync</title>
+    <meta name="description"
+        content="See the branded apps LulaSync builds for South African businesses — food, salons, mechanics, retail, and more. WhatsApp-first. Live fast." />
+    <meta property="og:title" content="App Showcase | LulaSync" />
+    <meta property="og:description"
+        content="Real WhatsApp-native apps built for South African businesses. Bookings, digital menu, loyalty, and more." />
+    <meta property="og:site_name" content="LulaSync" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://lulasync.app/showcase" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --ink: #0A0705;
+            --paper: #F5EDD8;
+            --gold: #F0A500;
+            --fire: #E04E14;
+            --dim: rgba(245, 237, 216, 0.55);
+            --card: #0f0f0f;
+            --border: #1a1a1a;
+            --wa: #25D366;
+            --purple: #8B5CF6;
+            --cyan: #00C2FF;
+            --green: #1DB954;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--ink);
+            color: var(--paper);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden
+        }
+
+        .display {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px
+        }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5vw;
+            background: rgba(10, 7, 5, 0.96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px)
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--paper);
+            text-decoration: none
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px
+        }
+
+        .nav-link {
+            font-size: .72rem;
+            font-weight: 600;
+            color: var(--dim);
+            letter-spacing: .04em;
+            text-decoration: none;
+            padding: 4px 8px;
+            transition: color .15s
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--gold)
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--gold), var(--fire));
+            color: var(--ink);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            color: var(--paper)
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: currentColor;
+            transition: all .25s
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            background: rgba(10, 7, 5, 0.97);
+            backdrop-filter: blur(20px)
+        }
+
+        .mobile-overlay.open {
+            display: flex
+        }
+
+        .mobile-overlay .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 5vw;
+            background: none;
+            border: none;
+            color: var(--paper);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 8px
+        }
+
+        .mobile-nav-link {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: var(--paper);
+            display: block;
+            text-align: center;
+            margin: 4px 0;
+            transition: color .15s
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            color: var(--gold)
+        }
+
+        .grad-line {
+            position: sticky;
+            top: 56px;
+            z-index: 99;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--fire) 20%, var(--gold) 50%, var(--fire) 80%, transparent);
+            opacity: .6;
+            pointer-events: none
+        }
+
+        /* KENTE */
+        .kente-strip {
+            height: 4px;
+            width: 100%;
+            background: repeating-linear-gradient(90deg, var(--fire) 0, var(--fire) 8px, var(--gold) 8px, var(--gold) 16px, #1a1a1a 16px, #1a1a1a 20px, var(--gold) 20px, var(--gold) 28px, var(--fire) 28px, var(--fire) 36px, var(--paper) 36px, var(--paper) 40px)
+        }
+
+        /* PAGE HERO */
+        .page-hero {
+            padding: 72px 5vw 60px;
+            text-align: center
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(240, 165, 0, .12);
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            text-transform: uppercase
+        }
+
+        .page-h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 9vw, 5rem);
+            line-height: 1.05;
+            margin-bottom: 20px
+        }
+
+        .page-desc {
+            color: var(--dim);
+            font-size: 17px;
+            line-height: 1.7;
+            max-width: 560px;
+            margin: 0 auto
+        }
+
+        /* SHOWCASE GRID */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 0 5vw;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 72px
+        }
+
+        .showcase-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform .2s, border-color .2s
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-3px);
+            border-color: #333
+        }
+
+        .card-banner {
+            padding: 36px 28px 28px;
+            position: relative
+        }
+
+        .card-mockup {
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 12px;
+            padding: 12px 16px;
+            backdrop-filter: blur(8px)
+        }
+
+        .card-mockup-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px
+        }
+
+        .card-mockup-emoji {
+            font-size: 28px
+        }
+
+        .card-mockup-title {
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            margin: 0
+        }
+
+        .card-mockup-sub {
+            color: rgba(255, 255, 255, .6);
+            font-size: 11px;
+            margin: 0
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap
+        }
+
+        .card-tag {
+            background: rgba(255, 255, 255, .15);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 20px
+        }
+
+        .card-body {
+            padding: 24px
+        }
+
+        .card-type {
+            color: var(--dim);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 4px
+        }
+
+        .card-status-live {
+            background: rgba(29, 185, 84, .12);
+            color: #1DB954;
+            border: 1px solid rgba(29, 185, 84, .3);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap
+        }
+
+        .card-status-soon {
+            background: rgba(107, 114, 128, .12);
+            color: #6B7280;
+            border: 1px solid rgba(107, 114, 128, .3);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap
+        }
+
+        .card-features {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .card-features li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 14px;
+            color: var(--dim);
+            line-height: 1.5
+        }
+
+        /* FEATURES SECTION */
+        #features {
+            padding: 80px 5vw;
+            background: #0a0a0a;
+            border-top: 1px solid var(--border)
+        }
+
+        .section-eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .section-eyebrow .slash {
+            color: var(--fire)
+        }
+
+        .section-h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 9vw, 4rem);
+            letter-spacing: 1px;
+            line-height: .92;
+            margin-bottom: 12px
+        }
+
+        .section-p {
+            font-size: .9rem;
+            color: var(--dim);
+            line-height: 1.7;
+            max-width: 560px;
+            margin-bottom: 40px
+        }
+
+        /* FEATURE TOGGLES */
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        @media(max-width:768px) {
+            .feature-list {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .feature-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(29, 185, 84, .05);
+            border: 1px solid rgba(29, 185, 84, .2);
+            border-radius: 8px;
+            padding: 12px 14px;
+            gap: 12px
+        }
+
+        .feature-row.off {
+            background: var(--card);
+            border-color: var(--border)
+        }
+
+        .feature-row-left {
+            display: flex;
+            align-items: center;
+            gap: 11px
+        }
+
+        .feature-emoji {
+            font-size: 1.1rem;
+            flex-shrink: 0
+        }
+
+        .feature-name {
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--paper)
+        }
+
+        .feature-desc {
+            font-size: .7rem;
+            color: var(--dim);
+            margin-top: 2px
+        }
+
+        .feature-tier {
+            font-size: .6rem;
+            color: var(--gold);
+            margin-top: 2px;
+            font-weight: 600
+        }
+
+        .pill {
+            width: 36px;
+            height: 20px;
+            border-radius: 10px;
+            position: relative;
+            flex-shrink: 0;
+            background: #1a1a1a;
+            border: 1px solid #222
+        }
+
+        .pill.on {
+            background: rgba(29, 185, 84, .3);
+            border-color: rgba(29, 185, 84, .6)
+        }
+
+        .pill::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #333;
+            transition: all .2s;
+            left: 2px
+        }
+
+        .pill.on::after {
+            background: #1DB954;
+            left: calc(100% - 16px)
+        }
+
+        .feature-summary {
+            text-align: center;
+            font-size: .75rem;
+            color: var(--dim);
+            padding: 10px;
+            background: var(--card);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-top: 8px
+        }
+
+        /* CREATIVE STUDIO */
+        .creative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px
+        }
+
+        .creative-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--gold);
+            border-radius: 10px;
+            padding: 20px 20px 20px 18px
+        }
+
+        .creative-card .icon {
+            font-size: 1.6rem;
+            margin-bottom: 10px
+        }
+
+        .creative-card .title {
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--paper);
+            margin-bottom: 6px
+        }
+
+        .creative-card .desc {
+            font-size: .8rem;
+            color: var(--dim);
+            line-height: 1.6
+        }
+
+        /* SOFTWARE TOOLS */
+        #software-tools {
+            padding: 80px 5vw;
+            background: var(--ink);
+            border-top: 1px solid var(--border)
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto 56px
+        }
+
+        .tool-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--gold);
+            border-radius: 12px;
+            padding: 22px 20px;
+            display: flex;
+            flex-direction: column
+        }
+
+        .tool-card .icon {
+            font-size: 1.7rem;
+            margin-bottom: 10px
+        }
+
+        .tool-card .name {
+            font-size: .95rem;
+            font-weight: 800;
+            color: var(--paper);
+            margin-bottom: 6px
+        }
+
+        .tool-card .desc {
+            font-size: .8rem;
+            color: var(--dim);
+            line-height: 1.65;
+            margin-bottom: 12px;
+            flex: 1
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px
+        }
+
+        .tool-tag {
+            background: rgba(240, 165, 0, .08);
+            border: 1px solid rgba(240, 165, 0, .2);
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-size: .58rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: .04em
+        }
+
+        .tool-price {
+            display: inline-block;
+            background: rgba(240, 165, 0, .08);
+            border: 1px solid rgba(240, 165, 0, .2);
+            border-radius: 6px;
+            padding: 3px 9px;
+            font-size: .62rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: .04em;
+            margin-top: 12px
+        }
+
+        /* AUTOMATIONS */
+        #automations {
+            padding: 80px 5vw;
+            background: var(--card);
+            border-top: 1px solid var(--border)
+        }
+
+        .auto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto 56px
+        }
+
+        .auto-card {
+            background: var(--ink);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column
+        }
+
+        .auto-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--cyan)
+        }
+
+        .auto-card .icon {
+            font-size: 1.7rem;
+            margin-bottom: 10px
+        }
+
+        .auto-card .name {
+            font-size: .95rem;
+            font-weight: 800;
+            color: var(--paper);
+            margin-bottom: 6px
+        }
+
+        .auto-card .desc {
+            font-size: .8rem;
+            color: var(--dim);
+            line-height: 1.65;
+            margin-bottom: 12px;
+            flex: 1
+        }
+
+        .auto-label {
+            font-size: .6rem;
+            color: rgba(0, 194, 255, .6);
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 6px
+        }
+
+        .auto-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px
+        }
+
+        .auto-tag {
+            background: rgba(0, 194, 255, .08);
+            border: 1px solid rgba(0, 194, 255, .18);
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-size: .58rem;
+            font-weight: 700;
+            color: var(--cyan);
+            letter-spacing: .04em
+        }
+
+        /* AI AGENTS */
+        #ai-agents {
+            padding: 80px 5vw;
+            background: var(--ink);
+            border-top: 1px solid var(--border)
+        }
+
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto 56px
+        }
+
+        .agent-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column
+        }
+
+        .agent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--green)
+        }
+
+        .agent-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px
+        }
+
+        .agent-count {
+            font-size: .58rem;
+            color: var(--green);
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            background: rgba(29, 185, 84, .08);
+            border: 1px solid rgba(29, 185, 84, .2);
+            border-radius: 100px;
+            padding: 3px 8px
+        }
+
+        .agent-card .name {
+            font-size: .95rem;
+            font-weight: 800;
+            color: var(--paper);
+            margin-bottom: 6px
+        }
+
+        .agent-card .desc {
+            font-size: .8rem;
+            color: var(--dim);
+            line-height: 1.65;
+            margin-bottom: 12px;
+            flex: 1
+        }
+
+        .agent-label {
+            font-size: .6rem;
+            color: rgba(29, 185, 84, .6);
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 6px
+        }
+
+        .agent-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px
+        }
+
+        .agent-tag {
+            background: rgba(29, 185, 84, .08);
+            border: 1px solid rgba(29, 185, 84, .2);
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-size: .58rem;
+            font-weight: 700;
+            color: var(--green);
+            letter-spacing: .04em
+        }
+
+        /* CTA CARD */
+        .cta-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 48px 40px;
+            text-align: center;
+            margin: 0 5vw 80px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .cta-card h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: 16px
+        }
+
+        .cta-card p {
+            color: var(--dim);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 32px
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--wa);
+            color: #fff;
+            font-weight: 700;
+            font-size: .95rem;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: opacity .2s
+        }
+
+        .btn-wa:hover {
+            opacity: .9
+        }
+
+        .btn-outline-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            font-weight: 700;
+            font-size: .95rem;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background .2s
+        }
+
+        .btn-outline-gold:hover {
+            background: rgba(240, 165, 0, .08)
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: #030D08;
+            padding: 13px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 15px;
+            transition: opacity .2s
+        }
+
+        .btn-gold:hover {
+            opacity: .9
+        }
+
+        .btn-cyan {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--cyan);
+            color: #030D08;
+            padding: 13px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 15px;
+            transition: opacity .2s
+        }
+
+        .btn-cyan:hover {
+            opacity: .85
+        }
+
+        .btn-green {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--green), var(--cyan));
+            color: #030D08;
+            padding: 13px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 15px
+        }
+
+        .text-center {
+            text-align: center
+        }
+
+        .btn-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--border);
+            color: var(--paper);
+            padding: 13px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: border-color .2s
+        }
+
+        .btn-call:hover {
+            border-color: #444
+        }
+
+        .price-note {
+            color: var(--dim);
+            font-size: 13px;
+            margin-top: 20px
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 56px 5vw 32px
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+            margin-bottom: 48px
+        }
+
+        .footer-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px
+        }
+
+        .footer-desc {
+            font-size: .8rem;
+            color: rgba(245, 237, 216, .4);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 240px
+        }
+
+        .footer-col-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .footer-link {
+            font-size: .8rem;
+            color: rgba(245, 237, 216, .4);
+            text-decoration: none;
+            transition: color .15s
+        }
+
+        .footer-link:hover {
+            color: var(--gold)
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .footer-copy {
+            font-size: .65rem;
+            color: rgba(245, 237, 216, .2)
+        }
+
+
+        /* RESPONSIVE */
+        @media(max-width:900px) {
+            .nav-links {
+                display: none
+            }
+
+            .hamburger {
+                display: flex
+            }
+        }
+
+        @media(max-width:600px) {
+            .cta-card {
+                padding: 32px 24px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="./lulasync.dev/index.html" class="nav-logo" style="display:flex;align-items:center;gap:10px"><img
+                src="./lulasync.dev/assets/logo-ls.svg" width="36" height="36" alt="LulaSync" /><span>Lula<span
+                    style="color:var(--gold)">Sync</span></span></a>
+        <div class="nav-links" role="menubar">
+            <a href="./lulasync.dev/index.html" class="nav-link">Home</a>
+            <a href="./showcase.html" class="nav-link active">Showcase</a>
+            <a href="./lulasync.dev/about.html" class="nav-link">About</a>
+            <a href="./agents.html" class="nav-link">Agents</a>
+            <a href="./lulasync.dev/contact.html" class="nav-link">Contact</a>
+            <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20chat." target="_blank"
+                rel="noopener noreferrer" class="nav-cta" style="margin-left:8px">WhatsApp Us →</a>
+        </div>
+        <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+    <div class="grad-line"></div>
+
+    <!-- MOBILE OVERLAY -->
+    <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-label="Mobile navigation">
+        <button class="close-btn" id="closeBtn" aria-label="Close menu">✕</button>
+        <div style="text-align:center">
+            <a href="./lulasync.dev/index.html" class="mobile-nav-link">Home</a>
+            <a href="./showcase.html" class="mobile-nav-link active">Showcase</a>
+            <a href="./lulasync.dev/about.html" class="mobile-nav-link">About</a>
+            <a href="./agents.html" class="mobile-nav-link">Agents</a>
+            <a href="./lulasync.dev/contact.html" class="mobile-nav-link">Contact</a>
+        </div>
+        <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20chat." target="_blank"
+            rel="noopener noreferrer" class="btn-wa" style="width:min(320px,80vw);justify-content:center">WhatsApp Us
+            →</a>
+    </div>
+
+    <main>
+
+        <!-- SHOWCASE HERO -->
+        <div style="padding:72px 5vw 60px;text-align:center;background:#0a0a0a">
+            <span class="badge">App Showcase</span>
+            <h1 class="page-h1 display">APPS WE BUILD<br /><span style="color:var(--gold)">FOR YOUR BUSINESS</span></h1>
+            <p class="page-desc">Every LulaSync app is custom-branded and built for how South African businesses
+                actually work. WhatsApp-first, no downloads, live fast.</p>
+        </div>
+
+        <div class="kente-strip"></div>
+
+        <!-- SHOWCASE CARDS -->
+        <section style="padding:60px 0 0;background:#0a0a0a">
+            <div class="showcase-grid">
+
+                <!-- Mama Thandi's Spaza -->
+                <div class="showcase-card">
+                    <div class="card-banner" style="background:linear-gradient(135deg,#E8A020,#D94B12)">
+                        <div class="card-mockup">
+                            <div class="card-mockup-header">
+                                <span class="card-mockup-emoji">🛒</span>
+                                <div>
+                                    <p class="card-mockup-title">Mama Thandi's Spaza</p>
+                                    <p class="card-mockup-sub">lulasync.app/mama-thandis-spaza</p>
+                                </div>
+                            </div>
+                            <div class="card-tags">
+                                <span class="card-tag">Menu</span>
+                                <span class="card-tag">WhatsApp Orders</span>
+                                <span class="card-tag">Loyalty</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div
+                            style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+                            <p class="card-type">Spaza Shop</p>
+                            <span class="card-status-live">Live Now</span>
+                        </div>
+                        <ul class="card-features">
+                            <li><span style="color:#E8A020;margin-top:2px;flex-shrink:0">✓</span>Digital product
+                                catalogue with prices</li>
+                            <li><span style="color:#E8A020;margin-top:2px;flex-shrink:0">✓</span>WhatsApp ordering with
+                                one tap</li>
+                            <li><span style="color:#E8A020;margin-top:2px;flex-shrink:0">✓</span>Loyalty stamp card —
+                                buy 10, get 1 free</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Big Boy's Braai -->
+                <div class="showcase-card">
+                    <div class="card-banner" style="background:linear-gradient(135deg,#D94B12,#8B0000)">
+                        <div class="card-mockup">
+                            <div class="card-mockup-header">
+                                <span class="card-mockup-emoji">🔥</span>
+                                <div>
+                                    <p class="card-mockup-title">Big Boy's Braai</p>
+                                    <p class="card-mockup-sub">lulasync.app/big-boys-braai</p>
+                                </div>
+                            </div>
+                            <div class="card-tags">
+                                <span class="card-tag">Bookings</span>
+                                <span class="card-tag">Orders</span>
+                                <span class="card-tag">Sales Log</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div
+                            style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+                            <p class="card-type">Shisa Nyama</p>
+                            <span class="card-status-live">Live Now</span>
+                        </div>
+                        <ul class="card-features">
+                            <li><span style="color:#D94B12;margin-top:2px;flex-shrink:0">✓</span>Table &amp; braai area
+                                booking calendar</li>
+                            <li><span style="color:#D94B12;margin-top:2px;flex-shrink:0">✓</span>WhatsApp meat-cut
+                                orders</li>
+                            <li><span style="color:#D94B12;margin-top:2px;flex-shrink:0">✓</span>Daily sales tracker for
+                                the owner</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Glam & Go Salon -->
+                <div class="showcase-card">
+                    <div class="card-banner" style="background:linear-gradient(135deg,#00C2FF,#0057FF)">
+                        <div class="card-mockup">
+                            <div class="card-mockup-header">
+                                <span class="card-mockup-emoji">💇</span>
+                                <div>
+                                    <p class="card-mockup-title">Glam &amp; Go Salon</p>
+                                    <p class="card-mockup-sub">lulasync.app/glam-go-salon</p>
+                                </div>
+                            </div>
+                            <div class="card-tags">
+                                <span class="card-tag">Appointments</span>
+                                <span class="card-tag">Menu</span>
+                                <span class="card-tag">Reminders</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div
+                            style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+                            <p class="card-type">Hair Salon</p>
+                            <span class="card-status-live">Live Now</span>
+                        </div>
+                        <ul class="card-features">
+                            <li><span style="color:#00C2FF;margin-top:2px;flex-shrink:0">✓</span>Online appointment
+                                booking 24/7</li>
+                            <li><span style="color:#00C2FF;margin-top:2px;flex-shrink:0">✓</span>Service menu with
+                                prices &amp; durations</li>
+                            <li><span style="color:#00C2FF;margin-top:2px;flex-shrink:0">✓</span>Automated booking
+                                reminders</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sipho's Auto Workshop -->
+                <div class="showcase-card">
+                    <div class="card-banner" style="background:linear-gradient(135deg,#6B7280,#374151)">
+                        <div class="card-mockup">
+                            <div class="card-mockup-header">
+                                <span class="card-mockup-emoji">🔧</span>
+                                <div>
+                                    <p class="card-mockup-title">Sipho's Auto Workshop</p>
+                                    <p class="card-mockup-sub">lulasync.app/siphos-auto-workshop</p>
+                                </div>
+                            </div>
+                            <div class="card-tags">
+                                <span class="card-tag">Bookings</span>
+                                <span class="card-tag">Voice Log</span>
+                                <span class="card-tag">Quotes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div
+                            style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+                            <p class="card-type">Mechanic / Panel Beater</p>
+                            <span class="card-status-soon">Coming Soon</span>
+                        </div>
+                        <ul class="card-features">
+                            <li><span style="color:#6B7280;margin-top:2px;flex-shrink:0">✓</span>Job booking &amp;
+                                drop-off scheduling</li>
+                            <li><span style="color:#6B7280;margin-top:2px;flex-shrink:0">✓</span>Parts quote requests
+                                via WhatsApp</li>
+                            <li><span style="color:#6B7280;margin-top:2px;flex-shrink:0">✓</span>Voice-based daily
+                                income logging</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ntombi's Tuck Shop -->
+                <div class="showcase-card">
+                    <div class="card-banner" style="background:linear-gradient(135deg,#1DB954,#0D7A37)">
+                        <div class="card-mockup">
+                            <div class="card-mockup-header">
+                                <span class="card-mockup-emoji">🍱</span>
+                                <div>
+                                    <p class="card-mockup-title">Ntombi's Tuck Shop</p>
+                                    <p class="card-mockup-sub">lulasync.app/ntombis-tuck-shop</p>
+                                </div>
+                            </div>
+                            <div class="card-tags">
+                                <span class="card-tag">Menu</span>
+                                <span class="card-tag">Inventory</span>
+                                <span class="card-tag">Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div
+                            style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+                            <p class="card-type">Tuck Shop / Canteen</p>
+                            <span class="card-status-live">Live Now</span>
+                        </div>
+                        <ul class="card-features">
+                            <li><span style="color:#1DB954;margin-top:2px;flex-shrink:0">✓</span>Daily specials menu
+                                updated via WhatsApp</li>
+                            <li><span style="color:#1DB954;margin-top:2px;flex-shrink:0">✓</span>Inventory tracking with
+                                low-stock alerts</li>
+                            <li><span style="color:#1DB954;margin-top:2px;flex-shrink:0">✓</span>Weekly sales summary
+                                reports</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sbu's Events & Catering -->
+                <div class="showcase-card">
+                    <div class="card-banner" style="background:linear-gradient(135deg,#A8FF3E,#1DB954)">
+                        <div class="card-mockup">
+                            <div class="card-mockup-header">
+                                <span class="card-mockup-emoji">🎪</span>
+                                <div>
+                                    <p class="card-mockup-title">Sbu's Events &amp; Catering</p>
+                                    <p class="card-mockup-sub">lulasync.app/sbus-events-catering</p>
+                                </div>
+                            </div>
+                            <div class="card-tags">
+                                <span class="card-tag">Enquiries</span>
+                                <span class="card-tag">Packages</span>
+                                <span class="card-tag">Payments</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div
+                            style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+                            <p class="card-type">Event Caterer</p>
+                            <span class="card-status-soon">Coming Soon</span>
+                        </div>
+                        <ul class="card-features">
+                            <li><span style="color:#A8FF3E;margin-top:2px;flex-shrink:0">✓</span>Event enquiry &amp;
+                                availability form</li>
+                            <li><span style="color:#A8FF3E;margin-top:2px;flex-shrink:0">✓</span>Customisable function
+                                menu packages</li>
+                            <li><span style="color:#A8FF3E;margin-top:2px;flex-shrink:0">✓</span>Deposit payment link
+                                (PayShap / Ozow)</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="kente-strip"></div>
+
+        <!-- FEATURE ARCHITECTURE -->
+        <section id="features" style="padding:80px 5vw;background:#0a0a0a">
+            <div>
+                <div class="section-eyebrow"><span class="slash">//</span> Feature Architecture</div>
+                <h2 class="section-h2 display">Every tool.<br /><span style="color:var(--gold)">Any business.</span>
+                </h2>
+                <p class="section-p">Custom web apps, AI agent teams, WhatsApp automation, booking systems, dashboards,
+                    e-commerce, payments, and more. <strong style="color:var(--paper)">We build the software your
+                        business actually needs</strong> — from a simple booking bot to a full multi-user platform.</p>
+            </div>
+
+            <!-- FEATURE TOGGLE DEMO -->
+            <div
+                style="background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:'SF Mono','Fira Code',monospace;font-size:.7rem;line-height:2;overflow-x:auto;margin-bottom:24px">
+                <span style="color:rgba(240,165,0,.5)">// Bra Mike's Shisa Nyama — config</span><br />
+                {<div style="padding-left:1.5rem">
+                    <span style="color:#7dd3fc">"digital_menu"</span>: <span
+                        style="color:var(--green)">true</span>,<br />
+                    <span style="color:#7dd3fc">"whatsapp_ai_bot"</span>: <span
+                        style="color:var(--green)">true</span>,<br />
+                    <span style="color:#7dd3fc">"booking_calendar"</span>: <span
+                        style="color:var(--green)">true</span>,<br />
+                    <span style="color:#7dd3fc">"inventory_tracker"</span>: <span
+                        style="color:rgba(217,75,18,.5)">false</span>,<br />
+                    <span style="color:#7dd3fc">"loyalty_points"</span>: <span
+                        style="color:var(--green)">true</span>,<br />
+                    <span style="color:#7dd3fc">"ai_voice_bookkeeping"</span>: <span
+                        style="color:rgba(217,75,18,.5)">false</span>,<br />
+                    <span style="color:#7dd3fc">"sales_analytics"</span>: <span
+                        style="color:rgba(217,75,18,.5)">false</span>,
+                </div>}
+            </div>
+
+            <div class="feature-list">
+                <div class="feature-row">
+                    <div class="feature-row-left">
+                        <span class="feature-emoji">📋</span>
+                        <div>
+                            <div class="feature-name">Digital Menu / Service List</div>
+                            <div class="feature-desc">Show prices and items before customers arrive.</div>
+                            <div class="feature-tier">Starter · Growth · Boss</div>
+                        </div>
+                    </div>
+                    <div class="pill on"></div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-row-left">
+                        <span class="feature-emoji">💬</span>
+                        <div>
+                            <div class="feature-name">WhatsApp AI Chatbot</div>
+                            <div class="feature-desc">Takes orders 24/7 automatically.</div>
+                            <div class="feature-tier">Growth · Boss</div>
+                        </div>
+                    </div>
+                    <div class="pill on"></div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-row-left">
+                        <span class="feature-emoji">📅</span>
+                        <div>
+                            <div class="feature-name">Booking Calendar</div>
+                            <div class="feature-desc">Slots + automated WhatsApp reminders.</div>
+                            <div class="feature-tier">Growth · Boss</div>
+                        </div>
+                    </div>
+                    <div class="pill on"></div>
+                </div>
+                <div class="feature-row off">
+                    <div class="feature-row-left">
+                        <span class="feature-emoji">📦</span>
+                        <div>
+                            <div class="feature-name">Inventory Tracker</div>
+                            <div class="feature-desc">Real-time stock alerts before you run out.</div>
+                            <div class="feature-tier">Growth · Boss</div>
+                        </div>
+                    </div>
+                    <div class="pill"></div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-row-left">
+                        <span class="feature-emoji">⭐</span>
+                        <div>
+                            <div class="feature-name">Loyalty Points</div>
+                            <div class="feature-desc">Reward repeat customers automatically.</div>
+                            <div class="feature-tier">Growth · Boss</div>
+                        </div>
+                    </div>
+                    <div class="pill on"></div>
+                </div>
+                <div class="feature-row off">
+                    <div class="feature-row-left">
+                        <span class="feature-emoji">🎙️</span>
+                        <div>
+                            <div class="feature-name">AI Voice Bookkeeping</div>
+                            <div class="feature-desc">Speak your sales. AI logs them.</div>
+                            <div class="feature-tier">Boss only</div>
+                        </div>
+                    </div>
+                    <div class="pill"></div>
+                </div>
+                <div class="feature-row off">
+                    <div class="feature-row-left">
+                        <span class="feature-emoji">📊</span>
+                        <div>
+                            <div class="feature-name">Sales Analytics</div>
+                            <div class="feature-desc">Revenue, top sellers, busiest hours.</div>
+                            <div class="feature-tier">Boss only</div>
+                        </div>
+                    </div>
+                    <div class="pill"></div>
+                </div>
+                <div class="feature-summary"><span style="color:var(--gold);font-weight:700">4</span> features active ·
+                    <span style="color:var(--green)">📋 💬 📅 ⭐</span>
+                </div>
+            </div>
+
+            <!-- CREATIVE STUDIO -->
+            <div style="margin-top:80px;padding-top:64px;border-top:1px solid var(--border)">
+                <div class="section-eyebrow"><span class="slash">//</span> Creative Studio</div>
+                <h2 class="section-h2 display">More than apps.<br /><span style="color:var(--gold)">We build your brand
+                        too.</span></h2>
+                <p class="section-p">From posters to product photos — we handle all your visual identity needs so your
+                    business looks as sharp as it runs.</p>
+                <div class="creative-grid">
+                    <div class="creative-card">
+                        <div class="icon">🎨</div>
+                        <div class="title">Poster &amp; Flyer Design</div>
+                        <div class="desc">Promotions, events, weekly specials — eye-catching designs your customers will
+                            share.</div>
+                    </div>
+                    <div class="creative-card">
+                        <div class="icon">🖼️</div>
+                        <div class="title">Logo &amp; Branding</div>
+                        <div class="desc">Full brand identity — logo, colours, fonts, and a brand kit you can use
+                            anywhere.</div>
+                    </div>
+                    <div class="creative-card">
+                        <div class="icon">📱</div>
+                        <div class="title">Social Media Graphics</div>
+                        <div class="desc">Instagram, Facebook, WhatsApp status posts — scroll-stopping visuals made for
+                            mobile.</div>
+                    </div>
+                    <div class="creative-card">
+                        <div class="icon">🖨️</div>
+                        <div class="title">Business Cards &amp; Menus</div>
+                        <div class="desc">Print-ready professional designs. Hand them out at events or put them on every
+                            table.</div>
+                    </div>
+                    <div class="creative-card">
+                        <div class="icon">🎥</div>
+                        <div class="title">Video Editing</div>
+                        <div class="desc">Reels, promo videos, short-form content — we cut and colour-grade your footage
+                            fast.</div>
+                    </div>
+                    <div class="creative-card">
+                        <div class="icon">📸</div>
+                        <div class="title">Photo Editing</div>
+                        <div class="desc">Product photos, background removal, colour correction — looking sharp sells
+                            more.</div>
+                    </div>
+                </div>
+                <div style="text-align:center;width:100%;margin-top:8px">
+                    <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20a%20quote%20on%20creative%20work."
+                        target="_blank" rel="noopener noreferrer" class="btn-gold">Get a Quote on WhatsApp →</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="kente-strip"></div>
+
+        <!-- SOFTWARE TOOLS -->
+        <section id="software-tools">
+            <div style="text-align:center;margin-bottom:56px">
+                <div class="section-eyebrow" style="justify-content:center"><span class="slash">//</span> Software Tools
+                </div>
+                <h2 class="section-h2 display" style="text-align:center">We Build Software<br /><span
+                        style="color:var(--gold)">For Any Business</span></h2>
+                <p style="font-size:.9rem;color:var(--dim);line-height:1.7;max-width:560px;margin:0 auto">From booking
+                    systems to e-commerce stores — we build custom web apps and platforms tailored exactly to how your
+                    business works. You own it, we maintain it.</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="icon">📅</div>
+                    <div class="name">Online Booking System</div>
+                    <div class="desc">Customers book 24/7 via website or WhatsApp link. Automated reminders cut no-shows
+                        by 40%.</div>
+                    <div class="tag-row"><span class="tool-tag">Salons</span><span class="tool-tag">Clinics</span><span
+                            class="tool-tag">Mechanics</span></div>
+                    <div class="tool-price">R4,500 setup · R349/mo</div>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">🎁</div>
+                    <div class="name">Loyalty &amp; Rewards App</div>
+                    <div class="desc">Digital stamp cards and points that replace paper loyalty cards, trackable on
+                        WhatsApp or web.</div>
+                    <div class="tag-row"><span class="tool-tag">Spaza Shops</span><span class="tool-tag">Coffee
+                            Shops</span><span class="tool-tag">Salons</span></div>
+                    <div class="tool-price">R5,500 setup · R399/mo</div>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">🍔</div>
+                    <div class="name">Restaurant Menu &amp; Ordering</div>
+                    <div class="desc">Mobile-first digital menu with online ordering and WhatsApp order notifications.
+                        No third-party commission cuts.</div>
+                    <div class="tag-row"><span class="tool-tag">Restaurants</span><span
+                            class="tool-tag">Takeaways</span><span class="tool-tag">Food Stalls</span></div>
+                    <div class="tool-price">R3,800 setup · R299/mo</div>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">🛒</div>
+                    <div class="name">E-Commerce Store</div>
+                    <div class="desc">Fully branded online shop with South African payment rails. Inventory tracking,
+                        order management, WhatsApp notifications.</div>
+                    <div class="tag-row"><span class="tool-tag">Retail</span><span class="tool-tag">Clothing</span><span
+                            class="tool-tag">Hardware</span></div>
+                    <div class="tool-price">R7,500 setup · R499/mo</div>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">👥</div>
+                    <div class="name">Staff Management App</div>
+                    <div class="desc">Roster scheduling, QR clock-in, leave requests, and auto-generated payslips — no
+                        enterprise HR software needed.</div>
+                    <div class="tag-row"><span class="tool-tag">Restaurants</span><span
+                            class="tool-tag">Cleaning</span><span class="tool-tag">Security</span></div>
+                    <div class="tool-price">R6,000 setup · R449/mo</div>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">🎟️</div>
+                    <div class="name">Event Ticketing Platform</div>
+                    <div class="desc">Sell tickets online, QR scanning at the door, live sales dashboard. No 20%
+                        third-party commission.</div>
+                    <div class="tag-row"><span class="tool-tag">Promoters</span><span
+                            class="tool-tag">Churches</span><span class="tool-tag">Schools</span></div>
+                    <div class="tool-price">R5,000 setup · R399/mo</div>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">🏫</div>
+                    <div class="name">School Parent Portal</div>
+                    <div class="desc">Fee payments, attendance tracking, notices, and parent communication — all in one
+                        place.</div>
+                    <div class="tag-row"><span class="tool-tag">Schools</span><span class="tool-tag">Creches</span><span
+                            class="tool-tag">Academies</span></div>
+                    <div class="tool-price">R8,000 setup · R599/mo</div>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">🚚</div>
+                    <div class="name">Delivery Tracking System</div>
+                    <div class="desc">Driver assignment, real-time status, automatic WhatsApp updates to customers at
+                        every stage of delivery.</div>
+                    <div class="tag-row"><span class="tool-tag">Food</span><span class="tool-tag">Pharmacy</span><span
+                            class="tool-tag">Logistics</span></div>
+                    <div class="tool-price">R6,500 setup · R499/mo</div>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">🏠</div>
+                    <div class="name">Property Rental Portal</div>
+                    <div class="desc">Listings, rental applications, payment tracking, and automated WhatsApp reminders
+                        for landlords.</div>
+                    <div class="tag-row"><span class="tool-tag">Landlords</span><span class="tool-tag">Letting
+                            Agents</span></div>
+                    <div class="tool-price">R5,500 setup · R399/mo</div>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">📦</div>
+                    <div class="name">B2B Wholesale Order Portal</div>
+                    <div class="desc">Private portal for suppliers — retail clients order online, view their price list,
+                        and track deliveries.</div>
+                    <div class="tag-row"><span class="tool-tag">Wholesalers</span><span
+                            class="tool-tag">Distributors</span></div>
+                    <div class="tool-price">R9,000 setup · R649/mo</div>
+                </div>
+            </div>
+            <div class="text-center"><a
+                    href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20discuss%20a%20project."
+                    target="_blank" rel="noopener noreferrer" class="btn-gold">💬 Discuss Your Project →</a></div>
+        </section>
+
+        <div class="kente-strip"></div>
+
+        <!-- AUTOMATIONS -->
+        <section id="automations">
+            <div style="text-align:center;margin-bottom:56px">
+                <div class="section-eyebrow" style="justify-content:center"><span class="slash">//</span> Automations
+                </div>
+                <h2 class="section-h2 display" style="text-align:center">Connect Everything.<br /><span
+                        style="color:var(--cyan)">Automate the Rest.</span></h2>
+                <p style="font-size:.9rem;color:var(--dim);line-height:1.7;max-width:560px;margin:0 auto">We build
+                    custom automation workflows that connect your apps, tools, and WhatsApp — eliminating repetitive
+                    manual work and keeping your business running 24/7.</p>
+            </div>
+            <div class="auto-grid">
+                <div class="auto-card">
+                    <div class="icon">📲</div>
+                    <div class="name">WhatsApp Order Confirmation</div>
+                    <div class="desc">Auto-sends confirmation, dispatch, and delivery updates via WhatsApp. Eliminates
+                        manual messaging and saves 2–4 hrs/day.</div>
+                    <div class="auto-label">Tools Connected</div>
+                    <div class="auto-tags"><span class="auto-tag">WooCommerce</span><span
+                            class="auto-tag">WhatsApp</span><span class="auto-tag">Google Sheets</span></div>
+                    <div class="tool-price">R2,500 once-off · R299/mo</div>
+                </div>
+                <div class="auto-card">
+                    <div class="icon">📅</div>
+                    <div class="name">Appointment Reminder Sequence</div>
+                    <div class="desc">WhatsApp reminders 48h and 2h before each booking. Reduces no-shows by 40–60% —
+                        saving thousands in lost revenue.</div>
+                    <div class="auto-label">Tools Connected</div>
+                    <div class="auto-tags"><span class="auto-tag">Google Calendar</span><span
+                            class="auto-tag">WhatsApp</span></div>
+                    <div class="tool-price">R2,000 once-off · R249/mo</div>
+                </div>
+                <div class="auto-card">
+                    <div class="icon">🧾</div>
+                    <div class="name">Auto Invoice &amp; Receipt Sender</div>
+                    <div class="desc">Generates PDF invoices on payment confirmation and sends them via WhatsApp and
+                        email — no manual billing.</div>
+                    <div class="auto-label">Tools Connected</div>
+                    <div class="auto-tags"><span class="auto-tag">Yoco / PayFast</span><span class="auto-tag">Google
+                            Docs</span><span class="auto-tag">WhatsApp</span></div>
+                    <div class="tool-price">R3,000 once-off · R349/mo</div>
+                </div>
+                <div class="auto-card">
+                    <div class="icon">📱</div>
+                    <div class="name">Social Media Scheduler</div>
+                    <div class="desc">Owner sends a topic via WhatsApp; AI writes the caption and schedules posts to
+                        Facebook, Instagram, and TikTok.</div>
+                    <div class="auto-label">Tools Connected</div>
+                    <div class="auto-tags"><span class="auto-tag">WhatsApp</span><span class="auto-tag">Claude
+                            AI</span><span class="auto-tag">Buffer</span></div>
+                    <div class="tool-price">R4,500 once-off · R499/mo</div>
+                </div>
+                <div class="auto-card">
+                    <div class="icon">🎯</div>
+                    <div class="name">Lead Capture &amp; CRM Routing</div>
+                    <div class="desc">Captures leads from forms or Facebook Ads and sends a personalised WhatsApp
+                        follow-up within 5 minutes.</div>
+                    <div class="auto-label">Tools Connected</div>
+                    <div class="auto-tags"><span class="auto-tag">Facebook Ads</span><span class="auto-tag">Google
+                            Sheets</span><span class="auto-tag">WhatsApp</span></div>
+                    <div class="tool-price">R3,500 once-off · R399/mo</div>
+                </div>
+                <div class="auto-card">
+                    <div class="icon">📦</div>
+                    <div class="name">Low Stock Alert System</div>
+                    <div class="desc">Monitors inventory levels and sends a WhatsApp alert when a product drops below
+                        the reorder threshold.</div>
+                    <div class="auto-label">Tools Connected</div>
+                    <div class="auto-tags"><span class="auto-tag">Google Sheets / POS</span><span
+                            class="auto-tag">WhatsApp</span></div>
+                    <div class="tool-price">R2,500 once-off · R249/mo</div>
+                </div>
+                <div class="auto-card">
+                    <div class="icon">💰</div>
+                    <div class="name">Payroll &amp; Payslip Distribution</div>
+                    <div class="desc">Calculates net pay, generates PDF payslips, and sends them to each staff member
+                        via WhatsApp on payday.</div>
+                    <div class="auto-label">Tools Connected</div>
+                    <div class="auto-tags"><span class="auto-tag">Google Sheets</span><span
+                            class="auto-tag">WhatsApp</span></div>
+                    <div class="tool-price">R3,500 once-off · R349/mo</div>
+                </div>
+                <div class="auto-card">
+                    <div class="icon">⭐</div>
+                    <div class="name">Customer Review Collector</div>
+                    <div class="desc">Sends a WhatsApp review request after every service. Positive responses go to
+                        Google Reviews; negative ones alert the owner privately.</div>
+                    <div class="auto-label">Tools Connected</div>
+                    <div class="auto-tags"><span class="auto-tag">Google Sheets</span><span
+                            class="auto-tag">WhatsApp</span><span class="auto-tag">Google My Business</span></div>
+                    <div class="tool-price">R2,500 once-off · R299/mo</div>
+                </div>
+                <div class="auto-card">
+                    <div class="icon">🆕</div>
+                    <div class="name">Employee Onboarding Workflow</div>
+                    <div class="desc">New hire gets a WhatsApp welcome with all their day-one details. Manager gets a
+                        preparation checklist automatically.</div>
+                    <div class="auto-label">Tools Connected</div>
+                    <div class="auto-tags"><span class="auto-tag">Google Forms</span><span
+                            class="auto-tag">WhatsApp</span><span class="auto-tag">Gmail</span></div>
+                    <div class="tool-price">R2,000 once-off · R199/mo</div>
+                </div>
+                <div class="auto-card">
+                    <div class="icon">📊</div>
+                    <div class="name">Monthly Report Generator</div>
+                    <div class="desc">Pulls sales, appointment, and customer data and sends the owner a compiled
+                        business summary at month-end.</div>
+                    <div class="auto-label">Tools Connected</div>
+                    <div class="auto-tags"><span class="auto-tag">Google Sheets</span><span
+                            class="auto-tag">Gmail</span><span class="auto-tag">WhatsApp</span></div>
+                    <div class="tool-price">R3,000 once-off · R349/mo</div>
+                </div>
+            </div>
+            <div class="text-center"><a
+                    href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20an%20automation%20quote."
+                    target="_blank" rel="noopener noreferrer" class="btn-cyan">💬 Get an Automation Quote →</a></div>
+        </section>
+
+        <div class="kente-strip"></div>
+
+        <!-- AI AGENTS -->
+        <section id="ai-agents" style="padding:80px 5vw;background:var(--ink);border-top:1px solid var(--border)">
+            <div style="text-align:center;margin-bottom:56px">
+                <div class="section-eyebrow" style="justify-content:center"><span class="slash">//</span> AI Agent Teams
+                </div>
+                <h2 class="section-h2 display" style="text-align:center">Your Own Team<br /><span
+                        style="color:var(--green)">Of AI Agents.</span></h2>
+                <p style="font-size:.9rem;color:var(--dim);line-height:1.7;max-width:580px;margin:0 auto">AI agent teams
+                    work 24/7 on specific business functions — handling social media, sales, support, HR, and more. Each
+                    team is a set of specialised agents that coordinate to get the job done without human involvement.
+                </p>
+            </div>
+            <div class="agent-grid">
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div style="font-size:1.7rem">📱</div><span class="agent-count">4 agents</span>
+                    </div>
+                    <div class="name">Social Media Manager Team</div>
+                    <div class="desc">Handles trend research, caption writing, scheduling, and comment engagement across
+                        all platforms. Output of a 3-person social team — automated.</div>
+                    <div class="agent-label">Team Members</div>
+                    <div class="agent-tags"><span class="agent-tag">Trend Scout</span><span class="agent-tag">Content
+                            Writer</span><span class="agent-tag">Scheduler</span><span class="agent-tag">Engagement
+                            Monitor</span></div>
+                    <div class="tool-price">R8,500 setup · R1,999/mo</div>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div style="font-size:1.7rem">🎯</div><span class="agent-count">3 agents</span>
+                    </div>
+                    <div class="name">Sales &amp; Lead Conversion Team</div>
+                    <div class="desc">Qualifies inbound leads, sends personalised follow-ups, and books demos — your
+                        salesperson only speaks to ready-to-buy prospects.</div>
+                    <div class="agent-label">Team Members</div>
+                    <div class="agent-tags"><span class="agent-tag">Lead Qualifier</span><span
+                            class="agent-tag">Outreach Agent</span><span class="agent-tag">Booking Agent</span></div>
+                    <div class="tool-price">R9,000 setup · R2,499/mo</div>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div style="font-size:1.7rem">💬</div><span class="agent-count">3 agents</span>
+                    </div>
+                    <div class="name">Customer Support Team</div>
+                    <div class="desc">Handles WhatsApp enquiries, complaints, and FAQs 24/7. Escalates only complex
+                        issues to a human — with full context already written up.</div>
+                    <div class="agent-label">Team Members</div>
+                    <div class="agent-tags"><span class="agent-tag">First Response</span><span
+                            class="agent-tag">Complaints Handler</span><span class="agent-tag">Escalation Triage</span>
+                    </div>
+                    <div class="tool-price">R7,500 setup · R1,799/mo</div>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div style="font-size:1.7rem">👤</div><span class="agent-count">4 agents</span>
+                    </div>
+                    <div class="name">HR &amp; Recruitment Team</div>
+                    <div class="desc">Screens CVs, sends interview invitations, schedules interviews, and triggers
+                        onboarding — a 50-applicant job post processed in under an hour.</div>
+                    <div class="agent-label">Team Members</div>
+                    <div class="agent-tags"><span class="agent-tag">CV Screener</span><span
+                            class="agent-tag">Communications Agent</span><span class="agent-tag">Interview
+                            Scheduler</span><span class="agent-tag">Onboarding Trigger</span></div>
+                    <div class="tool-price">R8,000 setup · R1,999/mo</div>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div style="font-size:1.7rem">💰</div><span class="agent-count">3 agents</span>
+                    </div>
+                    <div class="name">Financial Monitoring Team</div>
+                    <div class="desc">Monitors daily cash flow, flags unusual spending, and sends weekly financial
+                        summaries — like a fractional CFO for a small business.</div>
+                    <div class="agent-label">Team Members</div>
+                    <div class="agent-tags"><span class="agent-tag">Transaction Monitor</span><span
+                            class="agent-tag">Anomaly Detector</span><span class="agent-tag">Reporting Agent</span>
+                    </div>
+                    <div class="tool-price">R7,000 setup · R1,599/mo</div>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div style="font-size:1.7rem">📲</div><span class="agent-count">3 agents</span>
+                    </div>
+                    <div class="name">WhatsApp Sales Bot Team</div>
+                    <div class="desc">Handles product enquiries, takes orders via WhatsApp conversation, and logs all
+                        transactions. Built for informal and SoleTraders in Kasi's, SME's and large enterprises
+                        businesses.</div>
+                    <div class="agent-label">Team Members</div>
+                    <div class="agent-tags"><span class="agent-tag">Product Enquiry</span><span class="agent-tag">Order
+                            &amp; Payment</span><span class="agent-tag">Dashboard Reporter</span></div>
+                    <div class="tool-price">R5,500 setup · R999/mo</div>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div style="font-size:1.7rem">📞</div><span class="agent-count">4 agents</span>
+                    </div>
+                    <div class="name">AI Voice Agent Team</div>
+                    <div class="desc">Answers every inbound call, screens spam, handles support queries, and calls
+                        outbound leads — 24/7. No salary, no sick days.</div>
+                    <div class="agent-label">Team Members</div>
+                    <div class="agent-tags"><span class="agent-tag">Spam Screener</span><span class="agent-tag">Customer
+                            Support</span><span class="agent-tag">Agent Support Line</span><span
+                            class="agent-tag">Outbound Caller</span></div>
+                    <div class="tool-price">R8,500 setup · R1,999/mo</div>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div style="font-size:1.7rem">🔍</div><span class="agent-count">3 agents</span>
+                    </div>
+                    <div class="name">Competitor Intelligence Team</div>
+                    <div class="desc">Monitors competitors' social media, pricing, and promotions weekly — then sends a
+                        WhatsApp briefing on what you should do about it.</div>
+                    <div class="agent-label">Team Members</div>
+                    <div class="agent-tags"><span class="agent-tag">Competitor Tracker</span><span
+                            class="agent-tag">Pricing Analyst</span><span class="agent-tag">Insights Reporter</span>
+                    </div>
+                    <div class="tool-price">R6,500 setup · R1,499/mo</div>
+                </div>
+            </div>
+            <div class="text-center" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20build%20an%20AI%20team."
+                    target="_blank" rel="noopener noreferrer" class="btn-green">💬 Build My AI Team →</a>
+                <a href="tel:+27837195064" class="btn-call">📞 Call Us</a>
+            </div>
+        </section>
+
+        <div class="kente-strip"></div>
+
+        <!-- CTA -->
+        <div style="padding:60px 5vw 80px;background:#080808">
+            <div class="cta-card">
+                <h2 class="display">READY TO GET<br /><span style="color:var(--gold)">YOUR BUSINESS ONLINE?</span></h2>
+                <p>WhatsApp us to get started. Your branded app goes live fast. No tech skills needed.</p>
+                <div class="cta-btns">
+                    <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27m%20ready%20to%20grow%20my%20business."
+                        target="_blank" rel="noopener noreferrer" class="btn-wa">WhatsApp to Get Started</a>
+                    <a href="apply.html" class="btn-outline-gold">Become an Agent →</a>
+                </div>
+                <p class="price-note">Starter plan from <strong style="color:var(--paper)">R1,500</strong> · No
+                    contracts</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <a href="./lulasync.dev/index.html" class="nav-logo"
+                    style="display:flex;align-items:center;gap:10px; margin-bottom: 14px !important;"><img
+                        src="./assets/logo-ls.svg" width="36" height="36" alt="LulaSync" /><span>Lula<span
+                            style="color:var(--gold)">Sync</span></span></a>
+                <p class="footer-desc">Your one stop Custom/end to end software, automation, UX/UI, PWAs, and WhatsApp
+                    ordering systems and more for South African teams — from startups to large enterprises.</p>
+                <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%20want%20an%20app%20for%20my%20business."
+                    target="_blank" rel="noopener noreferrer" class="btn-wa-sm">💬 WhatsApp Us</a>
+            </div>
+            <div>
+                <p class="footer-col-title">Products</p>
+                <div class="footer-links">
+                    <a href="showcase.html" class="footer-link">App showcase</a>
+                    <a href="lulasync.dev/products.html" class="footer-link">Pricing &amp; catalogue</a>
+                    <a href="lulasync.dev/index.html#products" class="footer-link">Solutions (home)</a>
+                </div>
+            </div>
+            <div>
+                <p class="footer-col-title">Company</p>
+                <div class="footer-links">
+                    <a href="lulasync.dev/about.html" class="footer-link">About Us</a>
+                    <a href="lulasync.dev/contact.html" class="footer-link">Contact</a>
+                    <a href="../lulasync/agents.html" class="footer-link">Become an Agent</a>
+                    <a href="" class="footer-link">Terms and Conditions</a>
+                    <a href="" class="footer-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 LulaSync · Built with love in South Africa 🇿🇦</p>
+            <p class="footer-copy">Building software for South African businesses.</p>
+        </div>
+    </footer>
+
+    <script src="lulasync.dev/assets/chat-widget.js" defer></script>
+    <script>
+        const menuBtn = document.getElementById('menuBtn'), closeBtn = document.getElementById('closeBtn'), overlay = document.getElementById('mobileOverlay');
+        menuBtn.addEventListener('click', () => { overlay.classList.add('open'); document.body.style.overflow = 'hidden' });
+        closeBtn.addEventListener('click', () => { overlay.classList.remove('open'); document.body.style.overflow = '' });
+        overlay.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => { overlay.classList.remove('open'); document.body.style.overflow = '' }));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) { overlay.classList.remove('open'); document.body.style.overflow = '' } });
+    </script>
+</body>
+
+</html>

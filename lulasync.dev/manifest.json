@@ -1,0 +1,30 @@
+{
+  "name": "LulaSync",
+  "short_name": "LulaSync",
+  "description": "AI builds your branded business app in 3 days. Made for South African teams from startup to enterprise scale.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0A0705",
+  "theme_color": "#0A0705",
+  "orientation": "portrait-primary",
+  "lang": "en-ZA",
+  "categories": [
+    "business",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "logo-ls.svg",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo-ls.svg",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [],
+  "related_applications": []
+}

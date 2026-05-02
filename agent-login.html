@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0A0705" />
+  <title>Agent Sign In | LulaSync</title>
+  <meta name="description"
+    content="Sign in to your LulaSync agent dashboard. View your referrals, commissions, and earnings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0A0705;
+      --paper: #F5EDD8;
+      --gold: #F0A500;
+      --fire: #E04E14;
+      --dim: rgba(245, 237, 216, 0.55);
+      --card: #0f0f0f;
+      --border: #1a1a1a;
+      --wa: #25D366;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      background: rgba(10, 7, 5, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px)
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--paper);
+      text-decoration: none
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .nav-link {
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--dim);
+      letter-spacing: .04em;
+      text-decoration: none;
+      padding: 4px 8px;
+      transition: color .15s
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold)
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--gold), var(--fire));
+      color: var(--ink);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--paper)
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      transition: all .25s
+    }
+
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      background: rgba(10, 7, 5, 0.97);
+      backdrop-filter: blur(20px)
+    }
+
+    .mobile-overlay.open {
+      display: flex
+    }
+
+    .mobile-overlay .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 5vw;
+      background: none;
+      border: none;
+      color: var(--paper);
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 8px
+    }
+
+    .mobile-nav-link {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: var(--paper);
+      display: block;
+      text-align: center;
+      margin: 4px 0;
+      transition: color .15s
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--gold)
+    }
+
+    .grad-line {
+      position: sticky;
+      top: 56px;
+      z-index: 99;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--fire) 20%, var(--gold) 50%, var(--fire) 80%, transparent);
+      opacity: .6;
+      pointer-events: none
+    }
+
+    /* MAIN */
+    .page-wrap {
+      min-height: calc(100vh - 57px);
+      background: #030D08;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 460px
+    }
+
+    /* badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 217, 126, .1);
+      border: 1px solid rgba(0, 217, 126, .25);
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #00D97E;
+      margin-bottom: 20px
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #A8FF3E;
+      animation: blink 1.8s ease-in-out infinite;
+      flex-shrink: 0
+    }
+
+    /* heading */
+    .login-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 9vw, 3.8rem);
+      line-height: .95;
+      letter-spacing: 1px;
+      color: #E8F5EE;
+      margin-bottom: 10px
+    }
+
+    .login-sub {
+      font-size: .88rem;
+      color: #4A7A62;
+      line-height: 1.65;
+      margin-bottom: 32px
+    }
+
+    /* form */
+    .form-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px
+    }
+
+    .field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #4A7A60;
+      margin-bottom: 6px
+    }
+
+    .field input {
+      width: 100%;
+      padding: 13px 14px;
+      background: #020C06;
+      border: 1px solid #0D3320;
+      border-radius: 8px;
+      color: #E8F5EE;
+      font-size: 15px;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      transition: border-color .2s
+    }
+
+    .field input:focus {
+      border-color: #00D97E
+    }
+
+    .field input::placeholder {
+      color: rgba(232, 245, 238, .2)
+    }
+
+    .field-hint {
+      font-size: 12px;
+      color: #3A6A50;
+      margin-top: 5px
+    }
+
+    .forgot {
+      text-align: right;
+      margin-top: -8px
+    }
+
+    .forgot a {
+      font-size: .75rem;
+      color: #4A7A62;
+      text-decoration: none;
+      transition: color .15s
+    }
+
+    .forgot a:hover {
+      color: #00D97E
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 15px;
+      background: #00D97E;
+      color: #030D08;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      letter-spacing: .4px;
+      transition: opacity .2s;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 6px 24px rgba(0, 217, 126, .25);
+      margin-top: 4px
+    }
+
+    .btn-login:hover {
+      opacity: .9
+    }
+
+    .btn-login:disabled {
+      opacity: .5;
+      cursor: not-allowed
+    }
+
+    /* divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 4px 0
+    }
+
+    .divider span {
+      font-size: .72rem;
+      color: #3A6A50;
+      white-space: nowrap
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #0F2B1E
+    }
+
+    /* alt actions */
+    .btn-alt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid #0F2B1E;
+      color: #4A7A62;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 600;
+      transition: border-color .2s, color .2s
+    }
+
+    .btn-alt:hover {
+      border-color: #00D97E;
+      color: #00D97E
+    }
+
+    .btn-wa {
+      background: #25D366;
+      border-color: #25D366;
+      color: #fff;
+      font-weight: 700
+    }
+
+    .btn-wa:hover {
+      opacity: .9;
+      border-color: #25D366;
+      color: #fff
+    }
+
+    /* info box */
+    .info-box {
+      background: #071410;
+      border: 1px solid #0F2B1E;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 28px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .info-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00D97E, #A8FF3E)
+    }
+
+    .info-box-title {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #00D97E;
+      margin-bottom: 10px
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .8rem;
+      color: #4A7A62;
+      padding: 5px 0;
+      border-bottom: 1px solid #0F2B1E
+    }
+
+    .info-row:last-child {
+      border-bottom: none
+    }
+
+    .info-row span:first-child {
+      color: #A8FF3E;
+      flex-shrink: 0
+    }
+
+    /* success state */
+    .success-wrap {
+      display: none;
+      text-align: center;
+      padding: 16px 0
+    }
+
+    .success-icon {
+      font-size: 2.8rem;
+      margin-bottom: 14px
+    }
+
+    .success-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: #00D97E;
+      margin-bottom: 10px
+    }
+
+    .success-p {
+      font-size: .88rem;
+      color: #4A7A62;
+      line-height: 1.65;
+      margin-bottom: 20px
+    }
+
+    /* error alert */
+    .error-alert {
+      display: none;
+      background: rgba(224, 78, 20, .1);
+      border: 1px solid rgba(224, 78, 20, .3);
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: .82rem;
+      color: #f87543;
+      margin-bottom: 4px
+    }
+
+    /* footer */
+    footer {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      padding: 56px 5vw 32px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+      margin-bottom: 48px
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px
+    }
+
+    .footer-desc {
+      font-size: .8rem;
+      color: rgba(245, 237, 216, .4);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      max-width: 240px
+    }
+
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-link {
+      font-size: .8rem;
+      color: rgba(245, 237, 216, .4);
+      text-decoration: none;
+      transition: color .15s
+    }
+
+    .footer-link:hover {
+      color: var(--gold)
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .footer-copy {
+      font-size: .65rem;
+      color: rgba(245, 237, 216, .2)
+    }
+
+    .btn-wa-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--wa);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 8px;
+      text-decoration: none
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    @media(max-width:900px) {
+      .nav-links {
+        display: none
+      }
+
+      .hamburger {
+        display: flex
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="./lulasync.dev/index.html" class="nav-logo" style="display:flex;align-items:center;gap:10px"><img
+        src="./lulasync.dev/assets/logo-ls.svg" width="36" height="36" alt="LulaSync" /><span>Lula<span
+          style="color:var(--gold)">Sync</span></span></a>
+    <div class="nav-links" role="menubar">
+      <a href="./lulasync.dev/index.html" class="nav-link">Home</a>
+      <a href="./showcase.html" class="nav-link">Showcase</a>
+      <a href="./lulasync.dev/about.html" class="nav-link">About</a>
+      <a href="./agents.html" class="nav-link active">Agents</a>
+      <a href="./lulasync.dev/contact.html" class="nav-link">Contact</a>
+      <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20chat." target="_blank"
+        rel="noopener noreferrer" class="nav-cta" style="margin-left:8px">WhatsApp Us →</a>
+    </div>
+    <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="grad-line"></div>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-label="Mobile navigation">
+    <button class="close-btn" id="closeBtn" aria-label="Close menu">✕</button>
+    <div style="text-align:center">
+      <a href="./lulasync.dev/index.html" class="mobile-nav-link">Home</a>
+      <a href="./showcase.html" class="mobile-nav-link">Showcase</a>
+      <a href="./lulasync.dev/about.html" class="mobile-nav-link">About</a>
+      <a href="./agents.html" class="mobile-nav-link active">Agents</a>
+      <a href="./lulasync.dev/contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+    <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%27d%20like%20to%20chat." target="_blank"
+      rel="noopener noreferrer" class="btn-wa" style="width:min(320px,80vw);justify-content:center">WhatsApp Us
+      →</a>
+  </div>
+
+  <!-- MAIN -->
+  <div class="page-wrap">
+    <div class="login-card">
+
+      <!-- FORM STATE -->
+      <div id="formState">
+        <div class="badge"><span class="badge-dot"></span>Agent Portal</div>
+        <h1 class="login-h1">AGENT<br /><span style="color:#00D97E">SIGN IN</span></h1>
+        <p class="login-sub">Access your dashboard to track referrals, active businesses, and your monthly commission
+          earnings.</p>
+
+        <div id="errorAlert" class="error-alert">⚠ Incorrect agent code or password. Please try again.</div>
+
+        <div class="form-stack">
+          <div class="field">
+            <label for="agentCode">Agent Code *</label>
+            <input type="text" id="agentCode" placeholder="e.g. THANDI3847" maxlength="16" autocomplete="username"
+              style="text-transform:uppercase" />
+            <p class="field-hint">Your personal referral code assigned when you joined</p>
+          </div>
+          <div class="field">
+            <label for="password">Password *</label>
+            <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" />
+          </div>
+          <div class="forgot"><a href="#">Forgot password? WhatsApp us →</a></div>
+          <button type="button" class="btn-login" onclick="handleLogin()">Sign In to Dashboard →</button>
+        </div>
+
+        <div class="divider" style="margin-top:24px"><span>or</span></div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+          <a href="https://wa.me/27837195064?text=Hi%20LulaSync!%20I%20need%20help%20signing%20into%20my%20agent%20account."
+            target="_blank" rel="noopener noreferrer" class="btn-alt btn-wa">💬 Sign In via WhatsApp</a>
+          <a href="apply.html" class="btn-alt">← Not an agent yet? Apply here</a>
+        </div>
+
+        <div class="info-box">
+          <div class="info-box-title">📊 What's in your dashboard</div>
+          <div class="info-row"><span>✦</span>Total businesses signed up via your code</div>
+          <div class="info-row"><span>✦</span>Active subscriptions &amp; monthly recurring value</div>
+          <div class="info-row"><span>✦</span>Commission earned this month &amp; all-time</div>
+          <div class="info-row"><span>✦</span>Your tier status — Starter, Growth, or Top Agent</div>
+          <div class="info-row"><span>✦</span>Next payout date and amount</div>
+        </div>
+
+        <p style="text-align:center;color:#3A6A50;font-size:.72rem;margin-top:20px;line-height:1.6">
+          By signing in you agree to the <a href=""
+            style="color:#4A7A62;text-decoration:underline">Terms of Use</a>.<br />
+          Need help? <a href="https://wa.me/27837195064" target="_blank" rel="noopener noreferrer"
+            style="color:#00D97E;text-decoration:none">WhatsApp us anytime →</a>
+        </p>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="success-wrap" id="successState">
+        <div class="success-icon">✅</div>
+        <h2 class="success-h2">Welcome Back!</h2>
+        <p class="success-p">You're signed in. Redirecting you to your agent dashboard now…</p>
+        <div style="width:100%;height:3px;background:#0F2B1E;border-radius:2px;overflow:hidden;margin-bottom:20px">
+          <div id="progressBar"
+            style="height:100%;width:0%;background:linear-gradient(90deg,#00D97E,#A8FF3E);transition:width 2s linear">
+          </div>
+        </div>
+        <a href="./agents.html" style="font-size:.82rem;color:#4A7A62;text-decoration:none">← Back to Agents page</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="./lulasync.dev/index.html" class="nav-logo"
+          style="display:flex;align-items:center;gap:10px; margin-bottom: 14px !important;"><img
+            src="./assets/logo-ls.svg" width="36" height="36" alt="LulaSync" /><span>Lula<span
+              style="color:var(--gold)">Sync</span></span></a>
+        <p class="footer-desc">Your one stop Custom/end to end software, automation, UX/UI, PWAs, and WhatsApp ordering
+          systems and more for
+          South African teams — from startups to large enterprises.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Products</p>
+        <div class="footer-links">
+          <a href="showcase.html" class="footer-link">App showcase</a>
+          <a href="lulasync.dev/products.html" class="footer-link">Pricing &amp; catalogue</a>
+          <a href="lulasync.dev/index.html#products" class="footer-link">Solutions (home)</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <div class="footer-links">
+          <a href="lulasync.dev/about.html" class="footer-link">About Us</a>
+          <a href="lulasync.dev/contact.html" class="footer-link">Contact</a>
+          <a href="../lulasync/agents.html" class="footer-link">Become an Agent</a>
+          <a href="" class="footer-link">Terms and Conditions</a>
+          <a href="" class="footer-link">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 LulaSync · Built with love in South Africa 🇿🇦</p>
+      <p class="footer-copy">Building software for South African businesses.</p>
+    </div>
+  </footer>
+
+  <script src="lulasync.dev/assets/chat-widget.js" defer></script>
+  <script>
+    // Mobile nav
+    const menuBtn = document.getElementById('menuBtn'), closeBtn = document.getElementById('closeBtn'), overlay = document.getElementById('mobileOverlay');
+    menuBtn.addEventListener('click', () => { overlay.classList.add('open'); document.body.style.overflow = 'hidden' });
+    closeBtn.addEventListener('click', () => { overlay.classList.remove('open'); document.body.style.overflow = '' });
+    overlay.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => { overlay.classList.remove('open'); document.body.style.overflow = '' }));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) { overlay.classList.remove('open'); document.body.style.overflow = '' } });
+
+    // Auto-uppercase agent code
+    document.getElementById('agentCode').addEventListener('input', function () { this.value = this.value.toUpperCase() });
+
+    // Enter key submits
+    document.getElementById('password').addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin() });
+
+    // Login handler
+    function handleLogin() {
+      const code = document.getElementById('agentCode').value.trim();
+      const pass = document.getElementById('password').value;
+      const err = document.getElementById('errorAlert');
+      const btn = document.querySelector('.btn-login');
+
+      err.style.display = 'none';
+
+      if (!code) { err.textContent = '⚠ Please enter your agent code.'; err.style.display = 'block'; return }
+      if (!pass) { err.textContent = '⚠ Please enter your password.'; err.style.display = 'block'; return }
+
+      btn.disabled = true;
+      btn.textContent = 'Signing in…';
+
+      // Simulate auth delay — replace with real fetch() to your backend
+      setTimeout(() => {
+        // Demo: any non-empty credentials show success
+        document.getElementById('formState').style.display = 'none';
+        const s = document.getElementById('successState');
+        s.style.display = 'block';
+        requestAnimationFrame(() => {
+          setTimeout(() => { document.getElementById('progressBar').style.width = '100%' }, 50);
+        });
+        // Redirect after 2.2s — update href to your real dashboard URL
+        setTimeout(() => { window.location.href = 'agents.html' }, 2300);
+      }, 800);
+    }
+  </script>
+</body>
+
+</html>
